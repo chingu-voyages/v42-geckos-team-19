@@ -4,6 +4,7 @@ import {
   isFulfilled,
   isPending,
   isRejected,
+  createSelector,
 } from "@reduxjs/toolkit";
 import { User } from "firebase/auth";
 import {
@@ -15,6 +16,7 @@ import {
   signOutUser,
   getCurrentUser,
 } from "../../utils/firebase/firebase.utils";
+import { RootState } from "../rootReducer";
 
 const getUserSnapshot = async (
   userAuth: User,
@@ -142,5 +144,17 @@ const userSlice = createSlice({
     });
   },
 });
+
+const selectUserSlice = (state: RootState) => state.user;
+
+export const selectCurrentUser = createSelector(
+  selectUserSlice,
+  (user) => user.currentUser
+);
+
+export const selectIsLoading = createSelector(
+  selectUserSlice,
+  (user) => user.isLoading
+);
 
 export default userSlice.reducer;
