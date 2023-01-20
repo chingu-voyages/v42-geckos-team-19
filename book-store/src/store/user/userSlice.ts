@@ -161,5 +161,9 @@ export const selectIsLoading = createSelector(
   selectUserSlice,
   (user) => user.isLoading
 );
+export const selectError = createSelector(
+  selectUserSlice,
+  (user) => user.error
+);
 
 export default userSlice.reducer;

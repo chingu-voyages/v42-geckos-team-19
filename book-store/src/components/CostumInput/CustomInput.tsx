@@ -1,23 +1,33 @@
 import { useField, FieldHookConfig } from "formik";
 import { InputHTMLAttributes, FC } from "react";
+import {
+  Input,
+  InputProps,
+  FormControl,
+  FormErrorMessage,
+} from "@chakra-ui/react";
 
-type CustomInputProps = {
-  label: string;
-} & InputHTMLAttributes<HTMLInputElement>;
+type CustomInputProps = InputHTMLAttributes<HTMLInputElement> & InputProps;
 
-const CustomInput: FC<CustomInputProps> = ({ label, ...props }) => {
+const CustomInput: FC<CustomInputProps> = ({ ...props }) => {
   const [field, meta, helpers] = useField(props as FieldHookConfig<string>);
 
   return (
-    <>
-      <label>{label}</label>
-      <input
+    <FormControl
+      id={props.name}
+      isInvalid={Boolean(meta.error) && Boolean(meta.touched)}
+    >
+      <Input
         {...field}
         {...props}
-        className={meta.touched && meta.error ? "input-error" : ""}
+        focusBorderColor={meta.touched && meta.error ? "red.300" : ""}
+        width="400px"
+        height="50px"
       />
-      {meta.touched && meta.error && <div className="error">{meta.error}</div>}
-    </>
+      {meta.touched && meta.error && (
+        <FormErrorMessage>{meta.error}</FormErrorMessage>
+      )}
+    </FormControl>
   );
 };
 
