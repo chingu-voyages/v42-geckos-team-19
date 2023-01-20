@@ -27,18 +27,20 @@ const getUserSnapshot = async (
     additionalInformation
   );
   if (!userSnapshot) return { success: false, data: null };
-  const userData = userSnapshot.data();
-  return { success: true, data: { id: userSnapshot.id, ...userData } };
+  return {
+    success: true,
+    data: { id: userSnapshot.id, ...userSnapshot.data() },
+  };
 };
 
-type SignIn = {
+export type SignInPayload = {
   email: string;
   password: string;
 };
 
 export const signIn = createAsyncThunk(
   "user/signIn",
-  async ({ email, password }: SignIn, { rejectWithValue }) => {
+  async ({ email, password }: SignInPayload, { rejectWithValue }) => {
     try {
       const userCredential = await signInAuthUserWithEmailAndPassword(
         email,
@@ -55,13 +57,16 @@ export const signIn = createAsyncThunk(
   }
 );
 
-type SignUp = {
+export type SignUpPayload = {
   displayName: string;
-} & SignIn;
+} & SignInPayload;
 
 export const signUp = createAsyncThunk(
   "user/signUp",
-  async ({ email, password, displayName }: SignUp, { rejectWithValue }) => {
+  async (
+    { email, password, displayName }: SignUpPayload,
+    { rejectWithValue }
+  ) => {
     try {
       const userCredential = await createAuthUserWithEmailAndPassword(
         email,

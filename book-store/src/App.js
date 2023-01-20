@@ -1,5 +1,7 @@
+import SignInForm from "./components/SignInForm/SignInForm";
+
 const App = () => {
-  return <h1>BOOK STORE</h1>;
+  return <SignInForm />;
 };
 
 export default App;
