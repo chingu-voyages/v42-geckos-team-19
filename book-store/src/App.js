@@ -1,5 +1,12 @@
+import React from 'react'
+import {NavBar} from './Components/NavBar/NavBar.tsx'
+
 const App = () => {
-  return <h1>BOOK STORE</h1>;
+  return (
+    <>
+    <NavBar/>
+    </>
+  );
 };
 
 export default App;
