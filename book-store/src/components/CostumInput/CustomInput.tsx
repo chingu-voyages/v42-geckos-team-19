@@ -16,16 +16,18 @@ const CustomInput: FC<CustomInputProps> = ({ ...props }) => {
     <FormControl
       id={props.name}
       isInvalid={Boolean(meta.error) && Boolean(meta.touched)}
+      pos="relative"
     >
       <Input
         {...field}
         {...props}
         focusBorderColor={meta.touched && meta.error ? "red.300" : ""}
-        width="400px"
-        height="50px"
+        h="12"
       />
       {meta.touched && meta.error && (
-        <FormErrorMessage>{meta.error}</FormErrorMessage>
+        <FormErrorMessage pos="absolute" top="45px">
+          {meta.error}
+        </FormErrorMessage>
       )}
     </FormControl>
   );

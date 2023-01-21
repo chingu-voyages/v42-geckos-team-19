@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
+const displayNameRules = /^[A-Za-z]+$/;
 export const signInSchema = yup.object().shape({
   email: yup
     .string()
@@ -10,6 +11,10 @@ export const signInSchema = yup.object().shape({
 });
 
 export const signUpSchema = yup.object().shape({
+  displayName: yup
+    .string()
+    .required("Name is required")
+    .matches(displayNameRules, "Please add a name with only letter"),
   email: yup
     .string()
     .email("Please enter a valid email")

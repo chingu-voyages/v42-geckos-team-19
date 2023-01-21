@@ -1,4 +1,4 @@
-import { Stack } from "@chakra-ui/react";
+import { Container, Stack } from "@chakra-ui/react";
 import { Formik, Form, FormikHelpers } from "formik";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../hooks";
@@ -16,11 +16,13 @@ const SignInForm = () => {
     actions: FormikHelpers<SignInPayload>
   ) => {
     await new Promise((r) => setTimeout(r, 500));
-    if (error) return;
-    dispatch(signIn(values));
-    actions.resetForm();
+    dispatch(signIn(values)).then((res) => {
+      if (res.type.includes("rejected")) {
+        return;
+      }
+      actions.resetForm();
+    });
   };
-
   return (
     <Formik
       initialValues={{ email: "", password: "" }}
@@ -29,34 +31,36 @@ const SignInForm = () => {
     >
       {({ isSubmitting }) => (
         <Form>
-          <Stack
-            my="4"
-            spacing="6"
-            padding="20"
-            borderWidth="1px"
-            height="600px"
-            align="center"
-          >
-            <Heading as="h2" size="lg" mb="3">
-              LOGIN
-            </Heading>
-            <CustomInput name="email" type="text" placeholder="Enter email" />
-            <CustomInput
-              name="password"
-              type="text"
-              placeholder="Enter password"
-              mb="2"
-            />
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              isLoading={isSubmitting}
-              width="200px"
-              colorScheme="gray"
+          <Container maxW="8xl" borderWidth="1px">
+            <Stack
+              my="4"
+              spacing="7"
+              p="12"
+              h="650px"
+              align="center"
+              w={{ sm: "sm", md: "base", lg: "md", xl: "lg" }}
             >
-              Login
-            </Button>
-          </Stack>
+              <Heading as="h2" size="lg" mb="3" fontWeight="500">
+                LOGIN
+              </Heading>
+              <CustomInput name="email" type="text" placeholder="Enter email" />
+              <CustomInput
+                name="password"
+                type="password"
+                placeholder="Enter password"
+                mb="2"
+              />
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                isLoading={isSubmitting}
+                w="100%"
+                colorScheme="gray"
+              >
+                Login
+              </Button>
+            </Stack>
+          </Container>
         </Form>
       )}
     </Formik>
