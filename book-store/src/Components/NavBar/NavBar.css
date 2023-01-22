@@ -1,0 +1,70 @@
+.navBar {
+  margin: auto;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBar_img {
+  padding: 10px 0px;
+  height: 90px;
+  width: auto;
+}
+.navBar_searchBar{
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.navBar_searchBar:hover{
+    border-style: solid;
+    border-width: 2px;
+    color: lightgray;
+}
+
+.navBar_searchBar > input {
+  height: 35px;
+  width: 400px;
+  border: none;
+ 
+}
+
+ ::placeholder{
+    color: #767FA7;
+}
+
+.navBar_searchBar > input:focus{
+    outline: none;
+}
+
+.navBar_list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+.navBar_list > li > a {
+  text-decoration: none;
+}
+
+a{
+    color: #272142;
+}
+
+a:active{
+    color: #6C63FF;
+}
+
+a:focus{
+    color: #6C63FF; 
+}
+
+.navBar_toggleButton{
+    border: none;
+    outline: none;
+}

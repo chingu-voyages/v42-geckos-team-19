@@ -1,20 +1,28 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { IconButton, Icon } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import SearchIcon from '@mui/icons-material/Search';
+import Logo from '../../Images/booktown-logo.png';
+import './NavBar.css';
 
 export const NavBar: FC = () => {
+  const [toggle, setToggle] = useState<boolean>(false);
+
   return (
-    <nav>
-      <img src='' alt='' />
-      <form /*onSubmit={handleSubmit}*/>
+    <nav className='navBar'>
+      <img src={Logo} alt='' className='navBar_img' />
+      <form /*onSubmit={handleSubmit}*/ className='navBar_searchBar'>
         <input
           type='text'
-          placeholder='Search...'
+          placeholder='Find your favorite book'
           //   value={searchTerm}
           //   onChange={handleChange}
         />
-        <button type='submit'>Search</button>
+        <IconButton type='submit' aria-label='search'>
+          <SearchIcon />
+        </IconButton>
       </form>
-      <ul>
+      <ul className='navBar_list'>
         <li>
           <a href='#' tabIndex={0} aria-label='Home'>
             Home
@@ -22,7 +30,7 @@ export const NavBar: FC = () => {
         </li>
         <li>
           <a href='#' tabIndex={0} aria-label='Shop'>
-            Shop
+            Categories
           </a>
         </li>
         <li>
@@ -31,9 +39,14 @@ export const NavBar: FC = () => {
           </a>
         </li>
         <li>
-          <a href='#' tabIndex={0} aria-label='myAccount'>
-            My Account
-          </a>
+          <button className='navBar_toggleButton' onClick={() => setToggle(!toggle)}>My Account</button>
+          {toggle && (
+            <ul className='navBar_toggleList'>
+              <li>Profile</li>
+              <li>Sign Up</li>
+              <li>Login</li>
+            </ul>
+          )}
         </li>
         <li>
           <a href='#' tabIndex={0} aria-label='ShoppingCar'>
