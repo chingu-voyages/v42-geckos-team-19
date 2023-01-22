@@ -14,14 +14,13 @@ const SignUpForm = () => {
   const dispatch = useAppDispatch();
 
   const handleSubmit = async (
-    values: SignUpValues,
+    { email, password, displayName }: SignUpPayload,
     actions: FormikHelpers<SignUpValues>
   ) => {
     await new Promise((r) => setTimeout(r, 500));
-    const { email, password, displayName } = values;
     dispatch(signUp({ email, password, displayName })).then((res) => {
       if (res.type.includes("rejected")) {
-        return;
+        return actions.setErrors({ email: "Email already in use" });
       }
       actions.resetForm();
     });
@@ -44,7 +43,7 @@ const SignUpForm = () => {
             <Container maxW="8xl" borderWidth="1px">
               <Stack
                 my="4"
-                spacing="7"
+                spacing="8"
                 p="12"
                 h="650px"
                 align="center"
@@ -62,6 +61,7 @@ const SignUpForm = () => {
                   name="email"
                   type="text"
                   placeholder="Enter email"
+                  id="email_signup"
                 />
                 <CustomInput
                   name="confirmEmail"
@@ -74,6 +74,7 @@ const SignUpForm = () => {
                   type="password"
                   placeholder="Enter password"
                   mb="2"
+                  id="email_signup"
                 />
                 <CustomInput
                   name="confirmPassword"

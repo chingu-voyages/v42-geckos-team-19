@@ -1,15 +1,25 @@
-import { Container, Stack } from "@chakra-ui/react";
+import { Container, Stack, Text } from "@chakra-ui/react";
 import { Formik, Form, FormikHelpers } from "formik";
-import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../hooks";
 import { signInSchema } from "../../schemas";
-import { selectError, signIn, SignInPayload } from "../../store/user/userSlice";
+import { signIn, SignInPayload } from "../../store/user/userSlice";
 import CustomInput from "../CostumInput/CustomInput";
 import { Button, Heading } from "@chakra-ui/react";
+import { FC } from "react";
+
+interface ErrorStatus {
+  error: string;
+}
+
+const DisplayError: FC<{ status?: ErrorStatus }> = ({ status }) => {
+  if (status && status.error) {
+    return <Text color="red.400">{status.error}</Text>;
+  }
+  return null;
+};
 
 const SignInForm = () => {
   const dispatch = useAppDispatch();
-  const error = useSelector(selectError);
 
   const handleSubmit = async (
     values: SignInPayload,
@@ -18,7 +28,7 @@ const SignInForm = () => {
     await new Promise((r) => setTimeout(r, 500));
     dispatch(signIn(values)).then((res) => {
       if (res.type.includes("rejected")) {
-        return;
+        return actions.setStatus({ error: res.payload });
       }
       actions.resetForm();
     });
@@ -29,7 +39,7 @@ const SignInForm = () => {
       validationSchema={signInSchema}
       onSubmit={handleSubmit}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting, status }) => (
         <Form>
           <Container maxW="8xl" borderWidth="1px">
             <Stack
@@ -43,11 +53,17 @@ const SignInForm = () => {
               <Heading as="h2" size="lg" mb="3" fontWeight="500">
                 LOGIN
               </Heading>
-              <CustomInput name="email" type="text" placeholder="Enter email" />
+              <CustomInput
+                name="email"
+                type="text"
+                placeholder="Enter email"
+                id="email_signin"
+              />
               <CustomInput
                 name="password"
                 type="password"
                 placeholder="Enter password"
+                id="password_signin"
                 mb="2"
               />
               <Button
@@ -59,6 +75,7 @@ const SignInForm = () => {
               >
                 Login
               </Button>
+              <DisplayError status={status} />
             </Stack>
           </Container>
         </Form>

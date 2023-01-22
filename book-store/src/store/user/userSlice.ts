@@ -6,7 +6,8 @@ import {
   isRejected,
   createSelector,
 } from "@reduxjs/toolkit";
-import { User } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import { User, AuthErrorCodes } from "firebase/auth";
 import {
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -52,7 +53,17 @@ export const signIn = createAsyncThunk(
       if (!success) return rejectWithValue("No user snapshot");
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const errorCode = (error as FirebaseError).code;
+      switch (errorCode) {
+        case AuthErrorCodes.INVALID_PASSWORD:
+          return rejectWithValue("Incorrect password");
+        case AuthErrorCodes.USER_DELETED:
+          return rejectWithValue("User not found, please sign up");
+        case AuthErrorCodes.TOO_MANY_ATTEMPTS_TRY_LATER:
+          return rejectWithValue("Too many attempts, try again later");
+        default:
+          return rejectWithValue(errorCode);
+      }
     }
   }
 );

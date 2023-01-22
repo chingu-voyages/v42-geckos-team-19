@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
-const displayNameRules = /^[A-Za-z]+$/;
+const displayNameRules = /^[A-Za-z\s]+$/;
 export const signInSchema = yup.object().shape({
   email: yup
     .string()
@@ -27,12 +27,14 @@ export const signUpSchema = yup.object().shape({
   password: yup
     .string()
     .min(6)
-    .matches(passwordRules, "Please add a stronger password")
+    .matches(
+      passwordRules,
+      "Password must contain 1 lowercase, 1 uppercase, 1 number and at least 6 characters."
+    )
     .required("Password is required"),
   confirmPassword: yup
     .string()
     .min(6)
-    .matches(passwordRules, "Please add a stronger password")
     .required("Password is required")
     .oneOf([yup.ref("password"), null], "Passwords must match"),
 });

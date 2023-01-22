@@ -25,7 +25,7 @@ const CustomInput: FC<CustomInputProps> = ({ ...props }) => {
         h="12"
       />
       {meta.touched && meta.error && (
-        <FormErrorMessage pos="absolute" top="45px">
+        <FormErrorMessage pos="absolute" top="41px">
           {meta.error}
         </FormErrorMessage>
       )}
