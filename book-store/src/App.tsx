@@ -1,6 +1,5 @@
-import Authentication from "./pages/Authentication";
 const App = () => {
-  return <Authentication />;
+  return <h1>BOOK STORE</h1>;
 };
 
 export default App;
