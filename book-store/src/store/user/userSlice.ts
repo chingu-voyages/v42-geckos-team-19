@@ -4,8 +4,10 @@ import {
   isFulfilled,
   isPending,
   isRejected,
+  createSelector,
 } from "@reduxjs/toolkit";
-import { User } from "firebase/auth";
+import { FirebaseError } from "firebase/app";
+import { User, AuthErrorCodes } from "firebase/auth";
 import {
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -15,6 +17,7 @@ import {
   signOutUser,
   getCurrentUser,
 } from "../../utils/firebase/firebase.utils";
+import { RootState } from "../rootReducer";
 
 const getUserSnapshot = async (
   userAuth: User,
@@ -25,18 +28,20 @@ const getUserSnapshot = async (
     additionalInformation
   );
   if (!userSnapshot) return { success: false, data: null };
-  const userData = userSnapshot.data();
-  return { success: true, data: { id: userSnapshot.id, ...userData } };
+  return {
+    success: true,
+    data: { id: userSnapshot.id, ...userSnapshot.data() },
+  };
 };
 
-type SignIn = {
+export type SignInPayload = {
   email: string;
   password: string;
 };
 
 export const signIn = createAsyncThunk(
   "user/signIn",
-  async ({ email, password }: SignIn, { rejectWithValue }) => {
+  async ({ email, password }: SignInPayload, { rejectWithValue }) => {
     try {
       const userCredential = await signInAuthUserWithEmailAndPassword(
         email,
@@ -48,18 +53,31 @@ export const signIn = createAsyncThunk(
       if (!success) return rejectWithValue("No user snapshot");
       return data;
     } catch (error) {
-      return rejectWithValue(error);
+      const errorCode = (error as FirebaseError).code;
+      switch (errorCode) {
+        case AuthErrorCodes.INVALID_PASSWORD:
+          return rejectWithValue("Incorrect password");
+        case AuthErrorCodes.USER_DELETED:
+          return rejectWithValue("User not found, please sign up");
+        case AuthErrorCodes.TOO_MANY_ATTEMPTS_TRY_LATER:
+          return rejectWithValue("Too many attempts, try again later");
+        default:
+          return rejectWithValue(errorCode);
+      }
     }
   }
 );
 
-type SignUp = {
+export type SignUpPayload = {
   displayName: string;
-} & SignIn;
+} & SignInPayload;
 
 export const signUp = createAsyncThunk(
   "user/signUp",
-  async ({ email, password, displayName }: SignUp, { rejectWithValue }) => {
+  async (
+    { email, password, displayName }: SignUpPayload,
+    { rejectWithValue }
+  ) => {
     try {
       const userCredential = await createAuthUserWithEmailAndPassword(
         email,
@@ -142,5 +160,21 @@ const userSlice = createSlice({
     });
   },
 });
+
+const selectUserSlice = (state: RootState) => state.user;
+
+export const selectCurrentUser = createSelector(
+  selectUserSlice,
+  (user) => user.currentUser
+);
+
+export const selectIsLoading = createSelector(
+  selectUserSlice,
+  (user) => user.isLoading
+);
+export const selectError = createSelector(
+  selectUserSlice,
+  (user) => user.error
+);
 
 export default userSlice.reducer;

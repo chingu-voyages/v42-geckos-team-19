@@ -13,3 +13,6 @@ export const store = configureStore({
       serializableCheck: false,
     }).concat(logger),
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
