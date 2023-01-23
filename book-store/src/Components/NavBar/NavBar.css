@@ -11,30 +11,33 @@
   height: 90px;
   width: auto;
 }
-.navBar_searchBar{
-    border-radius: 10px;
-    padding: 5px;
+.navBar_searchBar {
+  border-radius: 10px;
 }
 
-.navBar_searchBar:hover{
-    border-style: solid;
-    border-width: 2px;
-    color: lightgray;
+.navBar_inputText{
+  text-align: left;
+  padding: 0px 10px;
+}
+
+.navBar_searchBar:hover {
+  border-style: solid;
+  border-width: 2px;
+  color: lightgray;
 }
 
 .navBar_searchBar > input {
   height: 35px;
   width: 400px;
   border: none;
- 
 }
 
- ::placeholder{
-    color: #767FA7;
+::placeholder {
+  color: #767fa7;
 }
 
-.navBar_searchBar > input:focus{
-    outline: none;
+.navBar_searchBar > input:focus {
+  outline: none;
 }
 
 .navBar_list {
@@ -52,19 +55,29 @@ li {
   text-decoration: none;
 }
 
-a{
-    color: #272142;
+a {
+  color: #272142;
 }
 
-a:active{
-    color: #6C63FF;
+a:active {
+  color: #6c63ff;
 }
 
-a:focus{
-    color: #6C63FF; 
+a:focus {
+  color: #6c63ff;
 }
 
-.navBar_toggleButton{
-    border: none;
-    outline: none;
+.navBar_toggleButton {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.navBar_toggleList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 60px;
+  gap: 5px;
 }

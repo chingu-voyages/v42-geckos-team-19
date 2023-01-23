@@ -12,7 +12,7 @@ export const NavBar: FC = () => {
     <nav className='navBar'>
       <img src={Logo} alt='' className='navBar_img' />
       <form /*onSubmit={handleSubmit}*/ className='navBar_searchBar'>
-        <input
+        <input className='navBar_inputText'
           type='text'
           placeholder='Find your favorite book'
           //   value={searchTerm}
@@ -38,7 +38,7 @@ export const NavBar: FC = () => {
             Wishlist
           </a>
         </li>
-        <li>
+        <li className='navBar_buttonProfile'>
           <button className='navBar_toggleButton' onClick={() => setToggle(!toggle)}>My Account</button>
           {toggle && (
             <ul className='navBar_toggleList'>
