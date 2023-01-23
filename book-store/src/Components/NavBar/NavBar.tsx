@@ -12,13 +12,14 @@ export const NavBar: FC = () => {
     <nav className='navBar'>
       <img src={Logo} alt='' className='navBar_img' />
       <form /*onSubmit={handleSubmit}*/ className='navBar_searchBar'>
-        <input className='navBar_inputText'
+        <input
+          className='navBar_inputText'
           type='text'
           placeholder='Find your favorite book'
           //   value={searchTerm}
           //   onChange={handleChange}
         />
-        <IconButton type='submit' aria-label='search'>
+        <IconButton type='submit' aria-label='Search'>
           <SearchIcon />
         </IconButton>
       </form>
@@ -29,7 +30,7 @@ export const NavBar: FC = () => {
           </a>
         </li>
         <li>
-          <a href='#' tabIndex={0} aria-label='Shop'>
+          <a href='#' tabIndex={0} aria-label='Categories'>
             Categories
           </a>
         </li>
@@ -39,12 +40,23 @@ export const NavBar: FC = () => {
           </a>
         </li>
         <li className='navBar_buttonProfile'>
-          <button className='navBar_toggleButton' onClick={() => setToggle(!toggle)}>My Account</button>
+          <button
+            className='navBar_toggleButton'
+            onClick={() => setToggle(!toggle)}
+          >
+            My Account
+          </button>
           {toggle && (
             <ul className='navBar_toggleList'>
-              <li>Profile</li>
-              <li>Sign Up</li>
-              <li>Login</li>
+              <li>
+                <a href='#' aria-label='Profile'>Profile</a>
+              </li>
+              <li>
+                <a href='#' aria-label='Sign Up'>Sign Up</a>
+              </li>
+              <li>
+                <a href='#' aria-label='Login'>Login</a>
+              </li>
             </ul>
           )}
         </li>

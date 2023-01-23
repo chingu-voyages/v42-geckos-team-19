@@ -1,6 +1,5 @@
 .navBar {
   margin: auto;
-
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -51,12 +50,9 @@ li {
   list-style: none;
 }
 
-.navBar_list > li > a {
-  text-decoration: none;
-}
-
 a {
   color: #272142;
+  text-decoration: none;
 }
 
 a:active {
@@ -71,6 +67,14 @@ a:focus {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.navBar_toggleButton:active {
+  color: #6c63ff;
+}
+
+.navBar_toggleButton:active {
+  color: #6c63ff;
 }
 
 .navBar_toggleList {
