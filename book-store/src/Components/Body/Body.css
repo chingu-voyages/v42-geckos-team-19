@@ -1,0 +1,17 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.cover-img {
+  max-width: 781px;
+}
+
+.banner {
+  background-color: #767fa7;
+  color: white;
+  text-align: center;
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 10px;
+}
