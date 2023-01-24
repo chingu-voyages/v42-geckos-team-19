@@ -15,12 +15,13 @@ const data = [
   },
   {
     id: 2,
-    title: "PASIÖN",
-    author: "Antontio Walker",
+    title: "PASIÓN",
+    author: "Maryam Varela",
     description:
-      "¿Por qué hace falta pasión en las organizaciones? Estamos viviendo un cambio",
+      "¿Por qué hace falta pasión en las organizaciones? Estamos viviendo un ...",
     price: 49.99,
     coverImg: "pasion.png",
+    alt: "Pasión by Maryam Varela ",
     stats: {
       rating: 5.0,
       reviewCount: 9,
@@ -30,11 +31,12 @@ const data = [
   {
     id: 3,
     title: "EL MUNDO DE LAS EMOCIONES",
-    author: "Antontio Walker",
+    author: "Maryam Varela",
     description:
       "La primera guía fácil para desarrollar por uno mismo la inteligencia emocional ...",
     price: 49.99,
     coverImg: "elmundo-delas-emociones.png",
+    alt: "El mundo de las emociones by Maryam Varela ",
     stats: {
       rating: 5.0,
       reviewCount: 16,

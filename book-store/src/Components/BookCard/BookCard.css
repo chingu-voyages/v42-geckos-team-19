@@ -1,0 +1,11 @@
+.cards-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.card {
+  font-size: 12px;
+  padding: 10px;
+}
