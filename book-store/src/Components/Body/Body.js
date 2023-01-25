@@ -1,7 +1,16 @@
 import React from "react";
-import BookCard from "../BookCard/BookCard.js";
-import { Box, Center, Image } from "@chakra-ui/react";
-import data from "../data/data.js";
+import BookCard from "../BookCard/BookCard";
+import data from "../data/data";
+import Hero from "../Hero/Hero";
+import {
+  Box,
+  Center,
+  Image,
+  Container,
+  Text,
+  Button,
+  Heading,
+} from "@chakra-ui/react";
 import "./Body.css";
 
 export default function Body() {
@@ -10,16 +19,14 @@ export default function Body() {
   });
 
   return (
-    <div className="body">
-      <Box bg="#7d94d1" w="100%" p={3} color="white">
-        <Center as="b">
-          LIMITED TIME OFFER - 50% OFF ALL BOOKS WITH SOFT COVERS
-        </Center>
+    <Container maxW="1400px">
+      <Hero />
+      <Box display="flex" alignItems="center" justifyContent="space-between">
+        {cards}
       </Box>
-      <Box boxSize="100%">
-        <Image src="../images/main-image.png" alt="books" />
+      <Box mt="20">
+        <Image src="../images/book-stack.png" alt="books" />
       </Box>
-      <section className="cards-list">{cards}</section>
-    </div>
+    </Container>
   );
 }
