@@ -11,12 +11,16 @@
   width: auto;
 }
 .navBar_searchBar {
+  border-style: solid;
+  border-color: rgb(236, 233, 233);
   border-radius: 10px;
+  background-color: rgb(236, 233, 233);
 }
 
 .navBar_inputText{
   text-align: left;
   padding: 0px 10px;
+  background-color: rgb(236, 233, 233);
 }
 
 .navBar_searchBar:hover {
@@ -67,6 +71,7 @@ a:focus {
   border: none;
   outline: none;
   cursor: pointer;
+  background: none;
 }
 
 .navBar_toggleButton:active {

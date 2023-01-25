@@ -10,7 +10,11 @@ export const NavBar: FC = () => {
 
   return (
     <nav className='navBar'>
-      <img src={Logo} alt='' className='navBar_img' />
+      <a href='#'>
+  
+        <img src={Logo} alt='' className='navBar_img' />
+      </a>
+
       <form /*onSubmit={handleSubmit}*/ className='navBar_searchBar'>
         <input
           className='navBar_inputText'
@@ -49,13 +53,19 @@ export const NavBar: FC = () => {
           {toggle && (
             <ul className='navBar_toggleList'>
               <li>
-                <a href='#' aria-label='Profile'>Profile</a>
+                <a href='#' aria-label='Profile'>
+                  Profile
+                </a>
               </li>
               <li>
-                <a href='#' aria-label='Sign Up'>Sign Up</a>
+                <a href='#' aria-label='Sign Up'>
+                  Sign Up
+                </a>
               </li>
               <li>
-                <a href='#' aria-label='Login'>Login</a>
+                <a href='#' aria-label='Login'>
+                  Login
+                </a>
               </li>
             </ul>
           )}
