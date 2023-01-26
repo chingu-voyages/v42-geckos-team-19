@@ -153,7 +153,7 @@ export const selectCurrentUser = createSelector(
   (user) => user.currentUser
 );
 
-export const selectIsLoading = createSelector(
+export const selectUserIsLoading = createSelector(
   selectUserSlice,
   (user) => user.isLoading
 );
