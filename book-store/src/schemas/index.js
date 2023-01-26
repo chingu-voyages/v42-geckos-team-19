@@ -2,6 +2,7 @@ import * as yup from "yup";
 
 const passwordRules = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{6,})/;
 const displayNameRules = /^[A-Za-z\s]+$/;
+
 export const signInSchema = yup.object().shape({
   email: yup
     .string()

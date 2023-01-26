@@ -3,7 +3,8 @@ import { signUpSchema } from "../../schemas";
 import { Container, Stack, Heading, Button } from "@chakra-ui/react";
 import CustomInput from "../CostumInput/CustomInput";
 import { useAppDispatch } from "../../hooks";
-import { signUp, SignUpPayload } from "../../store/user/userSlice";
+import { signUp } from "../../store/user/userSlice";
+import { SignUpPayload } from "../../store/user/types";
 
 type SignUpValues = {
   confirmPassword: string;

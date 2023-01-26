@@ -11,12 +11,12 @@ import { User, AuthErrorCodes } from "firebase/auth";
 import {
   signInAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
-  UserData,
   createAuthUserWithEmailAndPassword,
   AdditionalInformation,
   signOutUser,
   getCurrentUser,
 } from "../../utils/firebase/firebase.utils";
+import { SignInPayload, SignUpPayload, UserState } from "./types";
 import { RootState } from "../rootReducer";
 
 const getUserSnapshot = async (
@@ -32,11 +32,6 @@ const getUserSnapshot = async (
     success: true,
     data: { id: userSnapshot.id, ...userSnapshot.data() },
   };
-};
-
-export type SignInPayload = {
-  email: string;
-  password: string;
 };
 
 export const signIn = createAsyncThunk(
@@ -67,10 +62,6 @@ export const signIn = createAsyncThunk(
     }
   }
 );
-
-export type SignUpPayload = {
-  displayName: string;
-} & SignInPayload;
 
 export const signUp = createAsyncThunk(
   "user/signUp",
@@ -119,12 +110,6 @@ export const checkUserSession = createAsyncThunk(
     }
   }
 );
-
-type UserState = {
-  readonly currentUser: UserData | null;
-  readonly isLoading: boolean;
-  readonly error: Error | null | unknown;
-};
 
 const initialState: UserState = {
   currentUser: null,
