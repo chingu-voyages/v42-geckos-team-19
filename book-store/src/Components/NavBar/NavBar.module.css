@@ -50,7 +50,7 @@
   gap: 20px;
 }
 
-li {
+.navBar_list > li {
   list-style: none;
 }
 
@@ -89,4 +89,8 @@ a:focus {
   position: absolute;
   top: 60px;
   gap: 5px;
+}
+
+.navBar_toggleList > li {
+  list-style: none;
 }

@@ -3,21 +3,21 @@ import { IconButton, Icon } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SearchIcon from '@mui/icons-material/Search';
 import Logo from '../../Images/booktown-logo.png';
-import './NavBar.css';
+import NavStyles from './NavBar.module.css';
 
 export const NavBar: FC = () => {
   const [toggle, setToggle] = useState<boolean>(false);
 
   return (
-    <nav className='navBar'>
+    <nav className={NavStyles.navBar}>
       <a href='#'>
   
-        <img src={Logo} alt='' className='navBar_img' />
+        <img src={Logo} alt='' className={NavStyles.navBar_img} />
       </a>
 
-      <form /*onSubmit={handleSubmit}*/ className='navBar_searchBar'>
+      <form /*onSubmit={handleSubmit}*/ className={NavStyles.navBar_searchBar}>
         <input
-          className='navBar_inputText'
+          className={NavStyles.navBar_inputText}
           type='text'
           placeholder='Find your favorite book'
           //   value={searchTerm}
@@ -27,7 +27,7 @@ export const NavBar: FC = () => {
           <SearchIcon />
         </IconButton>
       </form>
-      <ul className='navBar_list'>
+      <ul className={NavStyles.navBar_list}>
         <li>
           <a href='#' tabIndex={0} aria-label='Home'>
             Home
@@ -43,15 +43,15 @@ export const NavBar: FC = () => {
             Wishlist
           </a>
         </li>
-        <li className='navBar_buttonProfile'>
+        <li className={NavStyles.navBar_buttonProfile}>
           <button
-            className='navBar_toggleButton'
+            className={NavStyles.navBar_toggleButton}
             onClick={() => setToggle(!toggle)}
           >
             My Account
           </button>
           {toggle && (
-            <ul className='navBar_toggleList'>
+            <ul className={NavStyles.navBar_toggleList}>
               <li>
                 <a href='#' aria-label='Profile'>
                   Profile
