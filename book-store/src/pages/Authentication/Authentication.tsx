@@ -1,6 +1,6 @@
-import SignInForm from "../components/SignInForm/SignInForm";
+import SignInForm from "../../components/SignInForm/SignInForm";
 import { Center, Heading, Stack, VStack } from "@chakra-ui/react";
-import SignUpForm from "../components/SignUpForm/SignUpForm";
+import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
 const Authentication = () => {
   return (
