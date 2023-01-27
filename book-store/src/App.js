@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavBar} from './Components/NavBar/NavBar.tsx'
+import {NavBar} from './components/NavBar/NavBar'
 
 const App = () => {
   return (
