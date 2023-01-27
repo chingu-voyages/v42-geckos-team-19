@@ -1,6 +1,7 @@
 export type CartItem = {
   title: string;
-  iamgeUrl: string;
+  author: string;
+  imageUrl: string;
   id: string;
   quantity: number;
   price: number;
