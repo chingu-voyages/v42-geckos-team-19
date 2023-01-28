@@ -1,4 +1,5 @@
 import React from "react";
+import Faq from "../Faq/Faq";
 import data from "../data/data";
 import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
@@ -18,6 +19,7 @@ export default function Body() {
         {cards}
       </Box>
       <HomeGrid />
+      <Faq />
     </Container>
   );
 }

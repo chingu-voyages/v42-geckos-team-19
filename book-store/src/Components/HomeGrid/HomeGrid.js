@@ -10,7 +10,7 @@ export default function HomeGrid() {
       gap={5}
       mt="20"
     >
-      <GridItem colSpan={2} bg="tomato">
+      <GridItem colSpan={2} bg="white">
         <Image
           src="../images/grid-banners/grid-banner1.png"
           alt="books"
@@ -18,7 +18,7 @@ export default function HomeGrid() {
           w="100%"
         />
       </GridItem>
-      <GridItem colSpan={1} bg="papayawhip">
+      <GridItem colSpan={1} bg="white">
         <Image
           src="../images/grid-banners/grid-banner2.png"
           alt="books"
@@ -26,7 +26,7 @@ export default function HomeGrid() {
           w="100%"
         />
       </GridItem>
-      <GridItem colSpan={1} bg="papayawhip">
+      <GridItem colSpan={1} bg="white">
         <Image
           src="../images/grid-banners/grid-banner3.png"
           alt="books"
@@ -34,7 +34,7 @@ export default function HomeGrid() {
           w="100%"
         />
       </GridItem>
-      <GridItem colSpan={1} bg="tomato">
+      <GridItem colSpan={1} bg="white">
         <Image
           src="../images/grid-banners/grid-banner4.png"
           alt="books"
@@ -42,7 +42,7 @@ export default function HomeGrid() {
           w="100%"
         />
       </GridItem>
-      <GridItem colSpan={2} bg="papayawhip">
+      <GridItem colSpan={2} bg="white">
         <Image
           src="../images/grid-banners/grid-banner5.png"
           alt="books"
@@ -50,7 +50,7 @@ export default function HomeGrid() {
           w="100%"
         />
       </GridItem>
-      <GridItem colSpan={1} bg="papayawhip">
+      <GridItem colSpan={1} bg="white">
         <Image
           src="../images/grid-banners/grid-banner6.png"
           alt="books"

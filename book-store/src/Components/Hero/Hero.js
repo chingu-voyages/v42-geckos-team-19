@@ -9,8 +9,8 @@ export default function Hero() {
       p={{ base: 5, md: 10 }}
       direction={{ base: "column", md: "row" }}
       bgImage={{
-        base: "url(../images/BookTown-Hero-Tablet-768px.png)",
-        md: "url(../images/BookTown-Hero.png)",
+        base: "url(../images/hero-banners/BookTown-Hero-Tablet-768px.png)",
+        md: "url(../images/hero-banners/BookTown-Hero-Desktop.png)",
       }}
       backgroundSize={{ base: "100%", md: "100%" }}
       backgroundPosition="center right"
