@@ -57,13 +57,15 @@ export default function BookCard(props) {
         </Grid>
         <Stack align="center">
           <Button
-            bgColor="#C4B8C6"
-            color="white"
+            bgColor="white"
+            color="#E4573D"
+            colorScheme="E4573D"
             size="md"
-            pl="10"
-            pr="10"
-            mb="5"
-            mt="5"
+            rounded="sm"
+            px="12"
+            py="6"
+            my="5"
+            variant="outline"
           >
             Read More
           </Button>
