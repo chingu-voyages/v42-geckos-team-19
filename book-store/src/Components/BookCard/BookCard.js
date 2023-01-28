@@ -15,7 +15,7 @@ import "./BookCard.css";
 
 export default function BookCard(props) {
   return (
-    <Card maxW="sm" boxShadow="xl">
+    <Card maxW="sm" boxShadow="xl" mt="30">
       <CardBody>
         <Image
           src={`../images/${props.card.coverImg}`}
