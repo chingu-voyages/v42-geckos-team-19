@@ -6,12 +6,10 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
-  Center,
   Divider,
   Heading,
   Stack,
   chakra,
-  SimpleGrid,
   Image,
   Container,
 } from "@chakra-ui/react";
