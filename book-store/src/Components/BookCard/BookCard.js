@@ -27,7 +27,7 @@ export default function BookCard(props) {
           <Heading size="sm">{props.card.title}</Heading>
           <Text>{props.card.description}</Text>
         </Stack>
-        <Divider color="#D9D9D9" mb="4" mt="4" />
+        <Divider my="6" />
         <Grid
           templateRows="repeat(2, 1fr)"
           templateColumns="repeat(2, 1fr)"
