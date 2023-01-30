@@ -1,0 +1,151 @@
+.navBar {
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBar_img {
+  padding: 10px 0px;
+  height: 90px;
+  width: auto;
+}
+.navBar_searchBar {
+  border-style: solid;
+  border-color: rgb(236, 233, 233);
+  border-radius: 10px;
+  background-color: rgb(236, 233, 233);
+}
+
+.navBar_inputText{
+  text-align: left;
+  padding: 0px 10px;
+  background-color: rgb(236, 233, 233);
+}
+
+.navBar_searchBar:hover {
+  border-style: solid;
+  border-width: 2px;
+  color: lightgray;
+}
+
+.navBar_searchBar > input {
+  height: 35px;
+  width: 400px;
+  border: none;
+}
+
+::placeholder {
+  color: #767fa7;
+}
+
+.navBar_searchBar > input:focus {
+  outline: none;
+}
+
+.navBar_list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: #272142;
+  text-decoration: none;
+}
+
+a:active {
+  color: #6c63ff;
+}
+
+a:focus {
+  color: #6c63ff;
+}
+
+.navBar_toggleButton {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: none;
+}
+
+.navBar_toggleButton:active {
+  color: #6c63ff;
+}
+
+.navBar_toggleButton:active {
+  color: #6c63ff;
+}
+
+.navBar_toggleList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 60px;
+  gap: 5px;
+}
+
+/* /styles for extra large screens (e.g. 4K monitors)/  */
+@media (min-width: 2560px) {
+  /* / styles for screens 2560px and above / */
+}
+
+/* / styles for large screens (e.g. desktop) / */
+@media (min-width: 1920px) and (max-width: 2559px) {
+  /* / styles for screens between 1920px and 2559px / */
+}
+
+/* / styles for medium screens (e.g. tablets) / */
+@media (min-width: 768px) and (max-width: 1919px) {
+  /* / styles for screens between 768px and 1919px / */
+
+}
+
+/* / styles for small screens (e.g. mobile landscape) / */
+@media (min-width: 480px) and (max-width: 767px) {
+  /* / styles for screens between 480px and 767px / */ 
+   .navBar_list {
+    position: absolute;
+    top: 80px;
+    right:10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+
+/* / styles for extra small screens (e.g. mobile portrait) / */
+@media (max-width: 479px) {
+  /* / styles for screens 479px and below */
+  .navBar_searchBar {
+    position: absolute;
+    top: 90px;
+    display: flex;
+    justify-content: center;
+    width: 250px;
+  }
+  .navBar_searchBar > input {
+    height: 35px;
+    width: 200px;
+    border: none;
+  }
+
+  .navBar_list {
+    position: absolute;
+    top: 80px;
+    right:20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
