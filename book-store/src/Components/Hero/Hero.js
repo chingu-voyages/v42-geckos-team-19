@@ -1,6 +1,13 @@
 import React from "react";
-import { chakra, Stack, HStack, Text, Box } from "@chakra-ui/react";
-
+import {
+  chakra,
+  Stack,
+  HStack,
+  Text,
+  Box,
+  Button,
+  Heading,
+} from "@chakra-ui/react";
 import "./Hero.css";
 
 export default function Hero() {
@@ -37,27 +44,30 @@ export default function Hero() {
         justifyContent="center"
         spacing={6}
         maxW="550px"
+        alignItems="center"
       >
         <Text
-          fontSize="1.2rem"
+          fontSize="1.3rem"
           textAlign={{ base: "center", md: "left" }}
           lineHeight="2"
           fontWeight="400"
+          fontFamily="Poppins"
           color={{ base: "black", md: "#bababa" }}
           mt={{ base: 20, md: 0 }}
           pt={{ base: 20, md: 0 }}
         >
           Sale up to 20% off
         </Text>
-        <chakra.h1
-          fontSize={{ base: "3xl", sm: "5xl" }}
-          lineHeight={1}
-          fontWeight="light"
+        <Heading
+          fontSize={{ base: "3xl", md: "5xl" }}
+          lineHeight={1.2}
+          fontWeight="400"
           textAlign={{ base: "center", md: "left" }}
+          fontFamily="Libre Baskerville"
         >
           <chakra.div>Meet Your Next</chakra.div>
           <chakra.div as="i">Favorite Book</chakra.div>
-        </chakra.h1>
+        </Heading>
 
         <HStack
           spacing={{ base: 0, sm: 2 }}
@@ -65,21 +75,27 @@ export default function Hero() {
           alignItems={{ base: "center", md: "left" }}
           justifyContent={{ base: "center", md: "left" }}
         >
-          <chakra.button
-            h={12}
-            px={10}
+          <Button
+            h={16}
+            px={12}
             color="white"
-            variant="solid"
+            variant="outline"
+            borderColor="#E4573D"
             fontSize="lg"
             rounded="sm"
             mb={{ base: 2, sm: 0 }}
-            zIndex={5}
-            lineHeight={1}
+            lineHeight="20px"
             bg="#E4573D"
-            _hover={{ bg: "#DC5E47" }}
+            _hover={{
+              bg: "white",
+              color: "#E4573D",
+            }}
+            fontFamily="Poppins"
+            fontWeight="bold"
+            letterSpacing="2px"
           >
             Explore Now
-          </chakra.button>
+          </Button>
         </HStack>
       </Stack>
     </Stack>
