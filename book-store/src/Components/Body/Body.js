@@ -19,6 +19,7 @@ export default function Body() {
         {cards}
       </Box>
       <HomeGrid />
+
       <Faq />
     </Container>
   );
