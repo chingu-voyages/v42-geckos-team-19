@@ -3,6 +3,7 @@ import Faq from "../Faq/Faq";
 import data from "../data/data";
 import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
+import BookPage from "../BookPage/BookPage";
 import HomeGrid from "../HomeGrid/HomeGrid";
 import { Box, Container } from "@chakra-ui/react";
 import "./Body.css";
@@ -20,6 +21,8 @@ export default function Body() {
       </Box>
       <HomeGrid />
       <Faq />
+
+      <BookPage />
     </Container>
   );
 }
