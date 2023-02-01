@@ -1,5 +1,6 @@
 import React from "react";
 import data from "../data/data";
+import Counter from "../Counter/Counter";
 import {
   Stack,
   HStack,
@@ -25,10 +26,10 @@ export default function BookPage() {
   return (
     <Container maxW="1400px" mb="200px" fontFamily="Poppins">
       <Stack
-        p="50px"
         direction={{ base: "column", md: "row" }}
         spacing={{ base: "0", sm: "24px" }}
         alignItems="center"
+        pb="50px"
       >
         <Box
           bg="white"
@@ -61,26 +62,37 @@ export default function BookPage() {
           <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
             RRETOS HHUMANOS
           </Heading>
-          <Text>By Antontio Walker</Text>
+          <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
+            By Antontio Walker
+          </Text>
           <HStack
             spacing={{ base: 0, sm: 2 }}
             flexWrap="wrap"
             alignItems={{ base: "center", md: "left" }}
             justifyContent={{ base: "center", md: "left" }}
-            py="10px"
+            py="15px"
           >
             <Image src="../images/review-rating.png" boxSize="20%"></Image>
-            <Text>5.0 (27) </Text>
+            <Text pl="5px">5.0 (27)</Text>
           </HStack>
-          <Divider orientation="horizontal" borderColor="#D9D9D9" my="20px" />
+          <Divider
+            orientation="horizontal"
+            borderColor="#D9D9D9"
+            mt="10px"
+            mb="40px"
+          />
 
-          <Text fontSize="25px">$49.99</Text>
+          <Text my={6} fontSize="25px">
+            $49.99
+          </Text>
           <HStack
             spacing={{ base: 0, sm: 2 }}
             flexWrap="wrap"
             alignItems={{ base: "center", md: "left" }}
             justifyContent={{ base: "center", md: "left" }}
+            mb={5}
           >
+            <Counter />
             <Button
               h={12}
               px={8}
@@ -97,7 +109,7 @@ export default function BookPage() {
                 color: "#E4573D",
               }}
               fontFamily="Poppins"
-              fontWeight="300"
+              fontWeight="400"
               letterSpacing="2px"
             >
               Add to Cart
@@ -108,6 +120,7 @@ export default function BookPage() {
             flexWrap="wrap"
             alignItems={{ base: "center", md: "left" }}
             justifyContent={{ base: "center", md: "left" }}
+            mb={10}
           >
             <Image src="../images/delivery-truck.png" h="70px"></Image>
             <Text>
@@ -196,7 +209,7 @@ export default function BookPage() {
                 </Center>
               </Box>
               <Box p="30px" w={{ base: "100%", md: "50%" }}>
-                <Heading mb="30px" fontWeight="300" fontFamily="Poppins">
+                <Heading mb="30px" fontWeight="400" fontFamily="Poppins">
                   Ficha Técnica
                 </Heading>
                 <Text>
