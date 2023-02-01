@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   Heading,
+  Image,
 } from "@chakra-ui/react";
 import "./Hero.css";
 
@@ -14,6 +15,7 @@ export default function Hero() {
   return (
     <Stack
       p={{ base: 5, md: 10 }}
+      mb={{ base: 0, md: 20 }}
       direction={{ base: "column", md: "row" }}
       bgImage={{
         base: "url(../images/hero-banners/BookTown-Hero-Tablet-768px.png)",
@@ -35,7 +37,7 @@ export default function Hero() {
         width="800px"
         height="650px"
         zIndex="0"
-        opacity="0.6"
+        opacity="0.7"
       ></Box>
       <Stack
         pos="relative"
@@ -46,15 +48,19 @@ export default function Hero() {
         maxW="550px"
         alignItems="center"
       >
+        <Image
+          src="../images/bestseller-icon.png"
+          w="120px"
+          mt={{ base: 20, md: 0 }}
+          pt={{ base: 10, md: 0 }}
+        ></Image>
         <Text
           fontSize="1.3rem"
           textAlign={{ base: "center", md: "left" }}
           lineHeight="2"
           fontWeight="400"
           fontFamily="Poppins"
-          color={{ base: "black", md: "#bababa" }}
-          mt={{ base: 20, md: 0 }}
-          pt={{ base: 20, md: 0 }}
+          color={{ base: "#606465", md: "#bababa" }}
         >
           Sale up to 20% off
         </Text>

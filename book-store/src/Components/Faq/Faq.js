@@ -17,7 +17,7 @@ import "./Faq.css";
 
 export default function Faq() {
   return (
-    <Container maxW="100%" mt="700" mb="200">
+    <Container maxW="100%" mt={{ base: 250, md: 700 }} mb="200">
       <Stack alignItems="center" mb="60px">
         <Heading
           color="#E4573D"
