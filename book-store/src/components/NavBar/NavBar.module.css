@@ -17,7 +17,7 @@
   background-color: rgb(236, 233, 233);
 }
 
-.navBar_inputText{
+.navBar_inputText {
   text-align: left;
   padding: 0px 10px;
   background-color: rgb(236, 233, 233);
@@ -33,6 +33,7 @@
   height: 35px;
   width: 400px;
   border: none;
+  margin: 5px;
 }
 
 ::placeholder {
@@ -41,6 +42,10 @@
 
 .navBar_searchBar > input:focus {
   outline: none;
+}
+
+.navBar_searchBar > button {
+  margin: 10px 20px;
 }
 
 .navBar_list {
@@ -91,61 +96,142 @@ a:focus {
   gap: 5px;
 }
 
-/* /styles for extra large screens (e.g. 4K monitors)/  */
-@media (min-width: 2560px) {
-  /* / styles for screens 2560px and above / */
-}
 
 /* / styles for large screens (e.g. desktop) / */
-@media (min-width: 1920px) and (max-width: 2559px) {
+@media (min-width: 960px) and (max-width: 1260px) {
   /* / styles for screens between 1920px and 2559px / */
+  .navBar {
+    justify-content: space-evenly;
+  }  
+  .navBar_searchBar > input {
+    width: 200px; 
+  }
 }
 
 /* / styles for medium screens (e.g. tablets) / */
-@media (min-width: 768px) and (max-width: 1919px) {
+@media (min-width: 768px) and (max-width: 968px) {
   /* / styles for screens between 768px and 1919px / */
+  .navBar {
+    justify-content: space-evenly;
+  }  
 
+  .navBar_listMobile {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .navBar_toggleListMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: 0px;
+    gap: 0px;
+  }
 }
 
 /* / styles for small screens (e.g. mobile landscape) / */
 @media (min-width: 480px) and (max-width: 767px) {
-  /* / styles for screens between 480px and 767px / */ 
-   .navBar_list {
+  /* / styles for screens between 480px and 767px / */
+  .navBar {
+    justify-content: space-evenly;
+  }  
+  .navBar_searchBar > input {
+    width: 185px; 
+  }
+
+  .navBar_listMobile {
+    display: flex;
     position: absolute;
     top: 80px;
-    right:10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .navBar_toggleListMobile {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: 0px;
+    gap: 0px;
   }
 }
 
 /* / styles for extra small screens (e.g. mobile portrait) / */
 @media (max-width: 479px) {
   /* / styles for screens 479px and below */
-  .navBar_searchBar {
-    position: absolute;
-    top: 90px;
-    display: flex;
-    justify-content: center;
-    width: 250px;
-  }
-  .navBar_searchBar > input {
-    height: 35px;
-    width: 200px;
-    border: none;
+  .navBar_searchBtn{
+    position: relative;
+    left: 15%;
   }
 
-  .navBar_list {
+  .navBar_searchBarMobile {
     position: absolute;
     top: 80px;
-    right:20px;
+    border-style: solid;
+    border-color: rgb(236, 233, 233);
+    border-radius: 10px;
+    background-color: rgb(236, 233, 233);
+  }
+  .navBar_inputTextMobile {
+    text-align: left;
+    padding: 0px 10px;
+    background-color: rgb(236, 233, 233);
+  }
+  
+  .navBar_searchBarMobile:hover {
+    border-style: solid;
+    border-width: 2px;
+    color: lightgray;
+  }
+  
+  .navBar_searchBarMobile > input {
+    height: 35px;
+    width: 185px;
+    border: none;
+    margin: 3px;
+  }
+  
+  ::placeholder {
+    color: #767fa7;
+  }
+  
+  .navBar_searchBarMobile > input:focus {
+    outline: none;
+  }
+  
+  .navBar_searchBarMobile > button {
+    margin: 10px 15px;
+  }
+
+  .navBar_listMobile {
+    display: flex;
+    position: absolute;
+    top: 80px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .navBar_toggleListMobile {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: 0px;
+    gap: 0px;
   }
+
 }

@@ -1,27 +1,24 @@
 import React, { FC, useState } from 'react';
-// import { IconButton, Icon } from '@mui/material';
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import SearchIcon from '@mui/icons-material/Search';
-// import MenuIcon from '@mui/icons-material/Menu';
 import { useMediaQuery } from 'react-responsive';
 import Logo from '../../Images/booktown-logo.png';
 import styles from './NavBar.module.css';
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
-// import Search from '@mui/icons-material/Search';
 
 export const NavBar: FC = () => {
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(false);
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isMobileSearch = useMediaQuery({ maxWidth: 479 });
+  const isMobileMenu = useMediaQuery({ maxWidth: 967 });
 
   return (
     <nav className={styles.navBar}>
       <a href='#'>
         <img src={Logo} alt='' className={styles.navBar_img} />
       </a>
-      {isMobile ? (
-        <button onClick={() => setIsOpenSearch(!isOpenSearch)}>
+      {isMobileSearch ? (
+        <button className={styles.navBar_searchBtn} onClick={() => {setIsOpenSearch(!isOpenSearch)
+          setIsOpenList(false)}}>
           <FaSearch />
         </button>
       ) : (
@@ -38,10 +35,10 @@ export const NavBar: FC = () => {
           </button>
         </form>
       )}
-      {isOpenSearch && isMobile ? (
-        <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBar}>
+      {isOpenSearch && isMobileSearch ? (
+        <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBarMobile}>
           <input
-            className={styles.navBar_inputText}
+            className={styles.navBar_inputTextMobile}
             type='text'
             placeholder='Find your favorite book'
             //   value={searchTerm}
@@ -54,8 +51,8 @@ export const NavBar: FC = () => {
       ) : (
         ''
       )}
-      {isMobile ? (
-        <button onClick={() => setIsOpenList(!isOpenList)}>
+      {isMobileMenu ? (
+        <button className='styles.navBar_menuBtn' onClick={() => {setIsOpenList(!isOpenList); setIsOpenSearch(false)}}>
           <FaBars />
         </button>
       ) : (
@@ -109,8 +106,8 @@ export const NavBar: FC = () => {
           </li>
         </ul>
       )}{' '}
-      {isOpenList && isMobile ? (
-        <ul className={styles.navBar_list}>
+      {isOpenList && isMobileMenu ? (
+        <ul className={styles.navBar_listMobile}>
           <li>
             <a href='#' tabIndex={0} aria-label='Home'>
               Home
@@ -134,7 +131,7 @@ export const NavBar: FC = () => {
               My Account
             </button>
             {toggle && (
-              <ul className={styles.navBar_toggleList}>
+              <ul className={styles.navBar_toggleListMobile}>
                 <li>
                   <a href='#' aria-label='Profile'>
                     Profile
@@ -155,7 +152,7 @@ export const NavBar: FC = () => {
           </li>
           <li>
             <a href='#' tabIndex={0} aria-label='ShoppingCar'>
-              <FaShoppingCart />
+              <FaShoppingCart style={{height:'1rem'}} />
             </a>
           </li>
         </ul>
