@@ -1,5 +1,8 @@
+import React from "react";
+import Body from "./components/Body/Body.js";
+
 const App = () => {
-  return <h1>BOOK STORE</h1>;
+  return <Body />;
 };
 
 export default App;
