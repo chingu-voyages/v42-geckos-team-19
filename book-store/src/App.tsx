@@ -1,5 +1,5 @@
 import React from "react";
-import Body from "./components/Body/Body.js";
+import Body from "./Components/Body/Body.js";
 
 const App = () => {
   return <Body />;
