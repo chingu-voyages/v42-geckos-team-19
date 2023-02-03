@@ -17,11 +17,8 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "firebase": "^9.15.0",
-<<<<<<< HEAD
-=======
     "framer-motion": "^8.5.2",
     "formik": "^2.2.9",
->>>>>>> nasiro/product-page
     "logger": "^0.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
