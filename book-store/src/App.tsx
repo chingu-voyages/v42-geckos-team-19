@@ -1,8 +1,8 @@
-import React from 'react';
-import Body from './Components/Body/Body.js';
+import React from "react";
+import Body from "./components/Body/Body.js";
 
 const App = () => {
-    return <Body />;
+  return <Body />;
 };
 
 export default App;
