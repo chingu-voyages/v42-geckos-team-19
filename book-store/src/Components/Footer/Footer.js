@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
             <div class="container">
                 <div class="left">
-                    <a href="" title="Page coming soon!">
+                    <a href="#faq" title="Page coming soon!">
                         FAQ
                     </a>
                     <br />
@@ -65,7 +65,7 @@ export default function Footer() {
                 </div>
             </div>
             <p class="copyright">
-                Copyright © 2023 Team V2 All Rights Reserved
+                Copyright © 2023 Team Geckos19 V42 All Rights Reserved
             </p>
         </div>
     );
