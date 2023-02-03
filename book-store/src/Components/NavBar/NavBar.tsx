@@ -3,7 +3,7 @@ import React, { FC } from "react";
 
 export const NavBar: FC = () => {
   return (
-    <nav>
+    <nav style={{position: "relative", borderBottom: 'black solid 1px', zIndex: 1}}>
       <img src="" alt="" />
       <form /*onSubmit={handleSubmit}*/>
         <input
@@ -16,30 +16,35 @@ export const NavBar: FC = () => {
       </form>
       <ul>
         <li>
-          <a href="#" tabIndex={0} aria-label="Home">
+          <a href="/" tabIndex={0} aria-label="Home">
             Home
           </a>
         </li>
-        <li>
+        {/* <li>
           <a href="#" tabIndex={0} aria-label="Shop">
             Shop
           </a>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <a href="#" tabIndex={0} aria-label="Wishlist">
             Wishlist
           </a>
-        </li>
+        </li> */}
         <li>
-          <a href="#" tabIndex={0} aria-label="myAccount">
+          <a href="/authentication" tabIndex={0} aria-label="myAccount">
             My Account
           </a>
         </li>
         <li>
-          <a href="#" tabIndex={0} aria-label="ShoppingCar">
-            {/*<ShoppingCartIcon />*/}
+          <a href="/checkout" tabIndex={0} aria-label="checkout">
+            Checkout
           </a>
         </li>
+        {/* <li>
+          <a href="#" tabIndex={0} aria-label="ShoppingCar">
+            <ShoppingCartIcon />
+          </a>
+        </li> */}
       </ul>
     </nav>
   );
