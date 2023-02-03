@@ -1,9 +1,13 @@
-
+import { Box, Container } from "@chakra-ui/react";
 
 const Checkout = () => {
   return (
-    <div>HELLO WORLD HOLY MOLY</div>
+    <Container maxW="1400px">
+      Test
+    </Container>
   );
 };
 
 export default Checkout;
+
+
