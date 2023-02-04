@@ -27,34 +27,49 @@ import { booksSlice } from '../../store/books/booksSlice';
 import { useGetBooksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
 import './Categories.css';
+import { useParams, useNavigate } from 'react-router-dom';
+
+const FICTION_SUBJECTS = [
+    'Fantasy',
+    'Romance',
+    'Historical',
+    'Science fiction'
+];
+
+const NONFICTION_SUBJECTS = [
+    'Biography',
+    'Business',
+    'Finance',
+    'Travel',
+    'Religion & spirituality'
+];
 
 export default function Categories() {
+    const { param } = useParams();
+    const navigate = useNavigate();
+    const handleSelectCategory = (id) => {
+        navigate(`/categories/${id}`);
+    };
+
     /* Don't have to use isLoading, isError--just for future ref */
+    const { data, isLoading, isError } = useGetBooksBySubjectQuery(param);
 
-    const { data, isLoading, isError } = useGetBooksBySubjectQuery('general');
-
-    /* FIX: how to pass id to query above? */
-    var elements = document.querySelectorAll('a');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener(
-            'click',
-            function () {
-                console.log(this.id);
-            },
-            true
-        );
-    }
-
+    console.log(param);
     return (
         <Container maxW="1400px">
             <HStack spacing="5" mt="20" ml="5">
                 <Heading size="2xl">Sort books by</Heading>
                 <Popover>
                     <PopoverTrigger>
-                        <Button mx="5" size="lg" width="12vw">
+                        <Button mx="5" p="6" size="lg">
                             <Box fontSize="1.5em" mb="1">
-                                {/* TODO: change button text to match selected genre */}
-                                category
+                                {param.includes('fiction')
+                                    ? 'Fiction > ' +
+                                      param.replace(/fiction|general|_/gi, '')
+                                    : 'Nonfiction > ' +
+                                      param
+                                          .replace(/fiction|general/gi, '')
+                                          .replace(/(_).*(_)/, ' & ')}
                             </Box>
                         </Button>
                     </PopoverTrigger>
@@ -73,26 +88,29 @@ export default function Categories() {
                                     <Table variant="simple">
                                         <Tbody>
                                             <Tr>
-                                                <Td>
-                                                    <a id="art">Art</a>
-                                                </Td>
-                                                <Td>Business</Td>
-                                                <Td>Classics</Td>
-                                                <Td>Cookbooks</Td>
-                                                <Td>Ebooks</Td>
-                                                <Td>Fiction</Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>
-                                                    <a id="biography">
-                                                        Biography
-                                                    </a>
-                                                </Td>
-                                                <Td>Children</Td>
-                                                <Td>Comics</Td>
-                                                <Td>Crime</Td>
-                                                <Td>Fantasy</Td>
-                                                <Td>History</Td>
+                                                {FICTION_SUBJECTS.map(
+                                                    (item, index) => {
+                                                        return (
+                                                            <Td id={index}>
+                                                                <a
+                                                                    onClick={() =>
+                                                                        handleSelectCategory(
+                                                                            `fiction_${item
+                                                                                .toLowerCase()
+                                                                                .replace(
+                                                                                    ' ',
+                                                                                    '_'
+                                                                                )}_general`
+                                                                        )
+                                                                    }
+                                                                    id={item}
+                                                                >
+                                                                    {item}
+                                                                </a>
+                                                            </Td>
+                                                        );
+                                                    }
+                                                )}
                                             </Tr>
                                         </Tbody>
                                     </Table>
@@ -104,31 +122,37 @@ export default function Categories() {
                         </PopoverHeader>
                         <PopoverBody>
                             <TableContainer>
+                                {/* FIX: Create another component to turn all the table cells into map function */}
                                 <Box overflowY="auto" maxHeight="10vh">
                                     <Table>
                                         <Tbody>
-                                            <Tr>
-                                                <Td>
-                                                    <a id="art">Art</a>
-                                                </Td>
-                                                <Td>Business</Td>
-                                                <Td>Classics</Td>
-                                                <Td>Cookbooks</Td>
-                                                <Td>Ebooks</Td>
-                                                <Td>Fiction</Td>
-                                            </Tr>
-                                            <Tr>
-                                                <Td>
-                                                    <a id="biography">
-                                                        Biography
-                                                    </a>
-                                                </Td>
-                                                <Td>Children</Td>
-                                                <Td>Comics</Td>
-                                                <Td>Crime</Td>
-                                                <Td>Fantasy</Td>
-                                                <Td>History</Td>
-                                            </Tr>
+                                            {NONFICTION_SUBJECTS.map(
+                                                (item, index) => {
+                                                    return (
+                                                        <Td id={index}>
+                                                            <a
+                                                                onClick={() =>
+                                                                    handleSelectCategory(
+                                                                        `${item
+                                                                            .toLowerCase()
+                                                                            .replace(
+                                                                                /&/gi,
+                                                                                ''
+                                                                            )
+                                                                            .replace(
+                                                                                /\s/gi,
+                                                                                '_'
+                                                                            )}`
+                                                                    )
+                                                                }
+                                                                id={item}
+                                                            >
+                                                                {item}
+                                                            </a>
+                                                        </Td>
+                                                    );
+                                                }
+                                            )}
                                         </Tbody>
                                     </Table>
                                 </Box>
@@ -137,7 +161,6 @@ export default function Categories() {
                     </PopoverContent>
                 </Popover>
             </HStack>
-            {/* TODO: breakdown of how the boolean statement works */}
             {/* map function can only be used on an array */}
             <SimpleGrid columns={4} spacing={5} mb="100px">
                 {data &&

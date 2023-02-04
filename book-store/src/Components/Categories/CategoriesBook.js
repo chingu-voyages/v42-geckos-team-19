@@ -16,13 +16,6 @@ import {
 import { AuthErrorCodes } from 'firebase/auth';
 
 export default function BookCard(props) {
-    /* TODO: try to display cover without function? */
-    /* Display book cover */
-    function BookCover({ cover_id }) {
-        let str = 'https://covers.openlibrary.org/b/id/' + cover_id + '-L.jpg';
-        return <Image src={str} alt="" borderRadius="lg" boxSize="50vh" />;
-    }
-
     /* TODO: Length of titles and authors not responsive */
     /* Truncate long titles */
     function Title({ title }) {
@@ -61,8 +54,13 @@ export default function BookCard(props) {
             fontSize="sm"
         >
             <CardBody>
-                <Box height="50vh">
-                    <BookCover cover_id={props.card.cover_id} />
+                <Box height="55vh">
+                    <Image
+                        src={`https://covers.openlibrary.org/b/id/${props.card.cover_id}-L.jpg`}
+                        alt=""
+                        borderRadius="lg"
+                        boxSize="55vh"
+                    />
                 </Box>
                 <Stack mt="6" spacing="3">
                     <Heading size="xs">
@@ -98,7 +96,6 @@ export default function BookCard(props) {
                     </GridItem>
                 </Grid>
                 <Stack align="center">
-                    {/* FIX: button not changing color on hover */}
                     <Button
                         bgColor="white"
                         color="#E4573D"
