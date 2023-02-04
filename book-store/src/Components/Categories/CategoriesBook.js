@@ -91,6 +91,7 @@ export default function BookCard(props) {
                                 </Text>
                             </Box>
                             <Text as="b">
+                                {/* TODO: sync up prices for each book across the entire site */}
                                 ${(Math.random() * 30 + 10).toFixed(2)}
                             </Text>
                         </HStack>
