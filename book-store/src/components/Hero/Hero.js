@@ -9,7 +9,6 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
-import "./Hero.css";
 
 export default function Hero() {
   return (

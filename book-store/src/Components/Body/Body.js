@@ -3,9 +3,8 @@ import Faq from "../Faq/Faq";
 import data from "../data/data";
 import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
-import HomeGrid from "../HomeGrid/HomeGrid";
+import HomeGrid from "../Homegrid/Homegrid";
 import { Stack, Container } from "@chakra-ui/react";
-import "./Body.css";
 
 export default function Body() {
   const cards = data.map((card) => {

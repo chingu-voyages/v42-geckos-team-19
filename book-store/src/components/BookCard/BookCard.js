@@ -12,7 +12,6 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
-import "./BookCard.css";
 
 export default function BookCard(props) {
   return (

@@ -13,7 +13,6 @@ import {
   Image,
   Container,
 } from "@chakra-ui/react";
-import "./Faq.css";
 
 export default function Faq() {
   return (
