@@ -28,21 +28,7 @@ import { useGetBooksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
 import './Categories.css';
 import { useParams, useNavigate } from 'react-router-dom';
-
-const FICTION_SUBJECTS = [
-    'Fantasy',
-    'Romance',
-    'Historical',
-    'Science fiction'
-];
-
-const NONFICTION_SUBJECTS = [
-    'Biography',
-    'Business',
-    'Finance',
-    'Travel',
-    'Religion & spirituality'
-];
+import CategoriesFilterFunc from './CategoriesFilterFunc';
 
 export default function Categories() {
     const { param } = useParams();
@@ -85,33 +71,10 @@ export default function Categories() {
                         <PopoverBody>
                             <TableContainer>
                                 <Box overflowY="auto" maxHeight="10vh">
+                                    {/* FIX: Make uniform grid to display genres */}
                                     <Table variant="simple">
                                         <Tbody>
-                                            <Tr>
-                                                {FICTION_SUBJECTS.map(
-                                                    (item, index) => {
-                                                        return (
-                                                            <Td id={index}>
-                                                                <a
-                                                                    onClick={() =>
-                                                                        handleSelectCategory(
-                                                                            `fiction_${item
-                                                                                .toLowerCase()
-                                                                                .replace(
-                                                                                    ' ',
-                                                                                    '_'
-                                                                                )}_general`
-                                                                        )
-                                                                    }
-                                                                    id={item}
-                                                                >
-                                                                    {item}
-                                                                </a>
-                                                            </Td>
-                                                        );
-                                                    }
-                                                )}
-                                            </Tr>
+                                            <CategoriesFilterFunc fiction={1} />
                                         </Tbody>
                                     </Table>
                                 </Box>
@@ -122,37 +85,11 @@ export default function Categories() {
                         </PopoverHeader>
                         <PopoverBody>
                             <TableContainer>
-                                {/* FIX: Create another component to turn all the table cells into map function */}
                                 <Box overflowY="auto" maxHeight="10vh">
+                                    {/* FIX: Make uniform grid to display genres */}
                                     <Table>
                                         <Tbody>
-                                            {NONFICTION_SUBJECTS.map(
-                                                (item, index) => {
-                                                    return (
-                                                        <Td id={index}>
-                                                            <a
-                                                                onClick={() =>
-                                                                    handleSelectCategory(
-                                                                        `${item
-                                                                            .toLowerCase()
-                                                                            .replace(
-                                                                                /&/gi,
-                                                                                ''
-                                                                            )
-                                                                            .replace(
-                                                                                /\s/gi,
-                                                                                '_'
-                                                                            )}`
-                                                                    )
-                                                                }
-                                                                id={item}
-                                                            >
-                                                                {item}
-                                                            </a>
-                                                        </Td>
-                                                    );
-                                                }
-                                            )}
+                                            <CategoriesFilterFunc fiction={0} />
                                         </Tbody>
                                     </Table>
                                 </Box>

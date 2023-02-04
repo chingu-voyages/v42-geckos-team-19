@@ -55,6 +55,7 @@ export default function BookCard(props) {
         >
             <CardBody>
                 <Box height="55vh">
+                    {/* FIX: Display error message if no cover exists */}
                     <Image
                         src={`https://covers.openlibrary.org/b/id/${props.card.cover_id}-L.jpg`}
                         alt=""
@@ -90,7 +91,7 @@ export default function BookCard(props) {
                             </Box>
                             <Text as="b">
                                 {/* TODO: sync up prices for each book across the entire site */}
-                                ${(Math.random() * 30 + 10).toFixed(2)}
+                                ${(Math.random() * (25 - 10) + 10).toFixed(2)}
                             </Text>
                         </HStack>
                     </GridItem>
