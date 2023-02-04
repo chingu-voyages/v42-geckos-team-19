@@ -4,7 +4,7 @@ import data from "../data/data";
 import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
 import HomeGrid from "../HomeGrid/HomeGrid";
-import { Box, Container } from "@chakra-ui/react";
+import { Stack, Container } from "@chakra-ui/react";
 import "./Body.css";
 
 export default function Body() {
@@ -15,9 +15,12 @@ export default function Body() {
   return (
     <Container maxW="1400px">
       <Hero />
-      <Box display="flex" alignItems="center" justifyContent="space-between">
+      <Stack
+        direction={{ base: "column", md: "row" }}
+        spacing={{ base: 0, md: "50px" }}
+      >
         {cards}
-      </Box>
+      </Stack>
       <HomeGrid />
       <Faq />
     </Container>

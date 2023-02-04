@@ -18,7 +18,7 @@ const data = [
     title: "PASIÓN",
     author: "Maryam Varela",
     description:
-      "¿Por qué hace falta pasión en las organizaciones? Estamos viviendo un cambio...",
+      "¿Por qué hace falta pasión en las organizaciones? Estamos viviendo ...",
     price: 49.99,
     coverImg: "pasion.png",
     alt: "Pasión by Maryam Varela ",
