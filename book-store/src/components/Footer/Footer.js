@@ -9,20 +9,32 @@ export default function Footer() {
                 <img src="/booktown-logo.png" alt="booktown logo" />
             </div>
             <div class="icon-links">
-                <img src="/images/footer/chakra.png" alt="chakra icon" />
-                <img src="/images/footer/github.png" alt="github icon" />
-                <img
-                    src="/images/footer/opensource.png"
-                    alt="opensource icon"
-                />
+                <a href="https://chakra-ui.com/">
+                    <img src="/images/footer/chakra.png" alt="chakra icon" />
+                </a>
+                <a href="https://github.com/chingu-voyages/v42-geckos-team-19">
+                    <img src="/images/footer/github.png" alt="github icon" />
+                </a>
+                <a href="https://opensource.com/">
+                    <img
+                        src="/images/footer/opensource.png"
+                        alt="opensource icon"
+                    />
+                </a>
             </div>
             <div class="container">
                 <div class="left">
-                    <a href="">FAQ</a>
+                    <a href="#faq" title="Page coming soon!">
+                        FAQ
+                    </a>
                     <br />
-                    <a href="">My Account</a>
+                    <a href="" title="Page coming soon!">
+                        My Account
+                    </a>
                     <br />
-                    <a href="">Contact</a>
+                    <a href="" title="Page coming soon!">
+                        Contact
+                    </a>
                 </div>
                 <div class="middle">
                     <img
@@ -39,15 +51,21 @@ export default function Footer() {
                     <input type="submit" value="SUBSCRIBE" />
                 </div>
                 <div class="right">
-                    <a href="">About</a>
+                    <a href="" title="Page coming soon!">
+                        About
+                    </a>
                     <br />
-                    <a href="">Categories</a>
+                    <a href="" title="Page coming soon!">
+                        Categories
+                    </a>
                     <br />
-                    <a href="">Wishlist</a>
+                    <a href="" title="Page coming soon!">
+                        Wishlist
+                    </a>
                 </div>
             </div>
             <p class="copyright">
-                Copyright © 2023 Team V2 All Rights Reserved
+                Copyright © 2023 Team Geckos19 V42 All Rights Reserved
             </p>
         </div>
     );

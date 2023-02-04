@@ -6,6 +6,7 @@ import BookCard from "../BookCard/BookCard";
 import HomeGrid from "../HomeGrid/HomeGrid";
 import { Box, Container } from "@chakra-ui/react";
 import "./Body.css";
+import Footer from "../Footer/Footer";
 
 export default function Body() {
   const cards = data.map((card) => {
@@ -20,6 +21,7 @@ export default function Body() {
       </Box>
       <HomeGrid />
       <Faq />
+      <Footer />
     </Container>
   );
 }
