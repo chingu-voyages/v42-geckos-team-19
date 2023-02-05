@@ -13,7 +13,7 @@ export const NavBar: FC = () => {
 
   return (
     <nav className={styles.navBar}>
-      <a href='#'>
+      <a href='/'>
         <img src={Logo} alt='' className={styles.navBar_img} />
       </a>
       {isMobileSearch ? (
@@ -58,7 +58,7 @@ export const NavBar: FC = () => {
       ) : (
         <ul className={styles.navBar_list}>
           <li>
-            <a href='#' tabIndex={0} aria-label='Home'>
+            <a href='/' tabIndex={0} aria-label='Home'>
               Home
             </a>
           </li>
@@ -82,17 +82,17 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleList}>
                 <li>
-                  <a href='#' aria-label='Profile'>
+                  <a href='/authentication' aria-label='Profile'>
                     Profile
                   </a>
                 </li>
                 <li>
-                  <a href='#' aria-label='Sign Up'>
+                  <a href='/authentication' aria-label='Sign Up'>
                     Sign Up
                   </a>
                 </li>
                 <li>
-                  <a href='#' aria-label='Login'>
+                  <a href='/authentication' aria-label='Login'>
                     Login
                   </a>
                 </li>
@@ -109,7 +109,7 @@ export const NavBar: FC = () => {
       {isOpenList && isMobileMenu ? (
         <ul className={styles.navBar_listMobile}>
           <li>
-            <a href='#' tabIndex={0} aria-label='Home'>
+            <a href='/' tabIndex={0} aria-label='Home'>
               Home
             </a>
           </li>
@@ -133,17 +133,17 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleListMobile}>
                 <li>
-                  <a href='#' aria-label='Profile'>
+                  <a href='/authentication' aria-label='Profile'>
                     Profile
                   </a>
                 </li>
                 <li>
-                  <a href='#' aria-label='Sign Up'>
+                  <a href='/authentication' aria-label='Sign Up'>
                     Sign Up
                   </a>
                 </li>
                 <li>
-                  <a href='#' aria-label='Login'>
+                  <a href='/authentication' aria-label='Login'>
                     Login
                   </a>
                 </li>

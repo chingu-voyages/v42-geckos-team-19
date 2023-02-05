@@ -1,6 +1,8 @@
 .navBar {
   margin: auto;
   display: flex;
+  position: relative;
+  z-index: 1;
   justify-content: space-around;
   align-items: center;
 }
