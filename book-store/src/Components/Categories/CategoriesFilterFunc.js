@@ -1,19 +1,21 @@
 import { Td } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 
+// Must manually specify extension; too many variations
 const FICTION_SUBJECTS = [
-    'Science fiction',
-    'Fantasy',
-    'Historical',
-    'Romance'
+    ['Romance', 'fiction_romance_general'],
+    ['Thrillers', 'fiction_thrillers_general'],
+    ['Mystery & detective', 'fiction_mystery_&_detective_general'],
+    ['Horror', 'fiction_horror'],
+    ["Children's fiction", "children's_fiction"]
 ].sort();
 
 const NONFICTION_SUBJECTS = [
-    'Finance',
-    'Biography',
-    'Travel',
-    'Business',
-    'Religion & spirituality'
+    ['Finance', 'finance'],
+    ['Biography', 'biography'],
+    ['Travel', 'travel'],
+    ['Business', 'business'],
+    ['Religion', 'religion']
 ].sort();
 
 export default function CategoriesFilter({ fiction }) {
@@ -28,35 +30,16 @@ export default function CategoriesFilter({ fiction }) {
             {(fiction ? FICTION_SUBJECTS : NONFICTION_SUBJECTS).map(
                 (item, index) => {
                     return (
-                        <Td id={index}>
-                            {fiction ? (
-                                <a
-                                    onClick={() =>
-                                        handleSelectCategory(
-                                            `fiction_${item
-                                                .toLowerCase()
-                                                .replace(' ', '_')}_general`
-                                        )
-                                    }
-                                    id={item}
-                                >
-                                    {item}
-                                </a>
-                            ) : (
-                                <a
-                                    onClick={() =>
-                                        handleSelectCategory(
-                                            `${item
-                                                .toLowerCase()
-                                                .replace(/&/gi, '')
-                                                .replace(/\s/gi, '_')}`
-                                        )
-                                    }
-                                    id={item}
-                                >
-                                    {item}
-                                </a>
-                            )}
+                        <Td id={index[0]}>
+                            <a
+                                onClick={() =>
+                                    handleSelectCategory(`${item[1]}`)
+                                }
+                                // TODO: Check if id correctly initialized
+                                id={item[0]}
+                            >
+                                {item[0]}
+                            </a>
                         </Td>
                     );
                 }

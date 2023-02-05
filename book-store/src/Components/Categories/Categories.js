@@ -49,13 +49,12 @@ export default function Categories() {
                     <PopoverTrigger>
                         <Button mx="5" p="6" size="lg">
                             <Box fontSize="1.5em" mb="1">
-                                {param.includes('fiction')
-                                    ? 'Fiction > ' +
-                                      param.replace(/fiction|general|_/gi, '')
-                                    : 'Nonfiction > ' +
-                                      param
-                                          .replace(/fiction|general/gi, '')
-                                          .replace(/(_).*(_)/, ' & ')}
+                                {(param.includes('fiction')
+                                    ? 'Fiction > '
+                                    : 'Nonfiction > ') +
+                                    param
+                                        .replace(/fiction_|_general/gi, '')
+                                        .replace(/_/gi, ' ')}
                             </Box>
                         </Button>
                     </PopoverTrigger>
@@ -72,7 +71,7 @@ export default function Categories() {
                             <TableContainer>
                                 <Box overflowY="auto" maxHeight="10vh">
                                     {/* FIX: Make uniform grid to display genres */}
-                                    <Table variant="simple">
+                                    <Table variant="simple" size="sm">
                                         <Tbody>
                                             <CategoriesFilterFunc fiction={1} />
                                         </Tbody>
@@ -87,7 +86,7 @@ export default function Categories() {
                             <TableContainer>
                                 <Box overflowY="auto" maxHeight="10vh">
                                     {/* FIX: Make uniform grid to display genres */}
-                                    <Table>
+                                    <Table variant="simple">
                                         <Tbody>
                                             <CategoriesFilterFunc fiction={0} />
                                         </Tbody>
