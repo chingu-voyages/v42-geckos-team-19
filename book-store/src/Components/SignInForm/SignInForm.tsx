@@ -47,7 +47,7 @@ const SignInForm = () => {
               my="4"
               spacing="7"
               p="12"
-              h="650px"
+              h="700px"
               align="center"
               w={{ sm: "sm", md: "base", lg: "md", xl: "lg" }}
             >

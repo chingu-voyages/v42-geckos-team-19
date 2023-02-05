@@ -4,7 +4,7 @@ import SignUpForm from "../../components/SignUpForm/SignUpForm";
 
 const Authentication = () => {
   return (
-    <Center>
+    <Center mb="32">
       <VStack>
         <Heading
           as="h1"

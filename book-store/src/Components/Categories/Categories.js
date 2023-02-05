@@ -32,13 +32,11 @@ import CategoriesFilterFunc from "./CategoriesFilterFunc";
 
 export default function Categories() {
   const { param } = useParams();
-  const navigate = useNavigate();
-  const handleSelectCategory = (id) => {
-    navigate(`/categories/${id}`);
-  };
 
   /* Don't have to use isLoading, isError--just for future ref */
-  const { data, isLoading, isError } = useGetBooksBySubjectQuery(param);
+  const { data, isLoading, isError } = useGetBooksBySubjectQuery(
+    param || "general"
+  );
 
   console.log(param);
   return (
@@ -49,8 +47,11 @@ export default function Categories() {
           <PopoverTrigger>
             <Button mx="5" p="6" size="lg">
               <Box fontSize="1.5em" mb="1">
-                {(param.includes("fiction") ? "Fiction > " : "Nonfiction > ") +
-                  param.replace(/fiction_|_general/gi, "").replace(/_/gi, " ")}
+                {param &&
+                  (param.includes("fiction") ? "Fiction > " : "Nonfiction > ") +
+                    param
+                      .replace(/fiction_|_general/gi, "")
+                      .replace(/_/gi, " ")}
               </Box>
             </Button>
           </PopoverTrigger>
