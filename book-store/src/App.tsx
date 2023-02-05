@@ -1,5 +1,12 @@
+import { NavBar } from './components/NavBar/NavBar';
+
 const App = () => {
-  return <h1>BOOK STORE</h1>;
+  return (
+    <>
+      <NavBar />
+      <h1>BOOK STORE</h1>
+    </>
+  );
 };
 
 export default App;
