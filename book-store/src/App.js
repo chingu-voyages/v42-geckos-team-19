@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Categories from "./components/Categories/Categories.js";
-import Footer from "./components/Footer/Footer.js";
+import Categories from "./components/Categories/Categories";
+import Footer from "./components/Footer/Footer";
 import NavBar from "./components/NavBar/NavBar";
+import BookPage from "./components/BookPage/BookPage";
 import { useAppDispatch } from "./hooks";
 import Authentication from "./pages/Authentication/Authentication";
 import Home from "./pages/Home/Home";
@@ -30,6 +31,7 @@ const App = () => {
           <Route path="categories" element={<Categories />} />
           <Route path="categories/:param" element={<Categories />} />
           <Route path="/auth" element={<Authentication />} />
+          <Route path="/works/:param" element={<BookPage />} />
           <Route
             path="/account"
             element={

@@ -17,7 +17,7 @@ export const booksApi = createApi({
       query: (name) => `books/${name}.json`,
     }),
     getBookWorks: builder.query<BookWorks, string>({
-      query: (name) => `works/${name}.json`,
+      query: (name) => `${name}.json`,
     }),
     // Book Cover https://covers.openlibrary.org/b/$key/$value-$size.jpg
     // key ISBN (isbn_13) or ID (cover)

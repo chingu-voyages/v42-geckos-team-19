@@ -1,23 +1,37 @@
-import React, { FC, useState } from "react";
+import React, { ChangeEvent, FC, useState, FormEvent } from "react";
 import { useMediaQuery } from "react-responsive";
 import Logo from "../../Images/booktown-logo.png";
 import styles from "./NavBar.module.css";
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentUser, signOut } from "../../store/user/userSlice";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../hooks";
 
 const NavBar: FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const currentUser = useSelector(selectCurrentUser);
+
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState("");
+
   const isMobileSearch = useMediaQuery({ maxWidth: 479 });
   const isMobileMenu = useMediaQuery({ maxWidth: 967 });
 
-  const dispatch = useAppDispatch();
-  const currentUser = useSelector(selectCurrentUser);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearchValue(value);
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate(`categories/${searchValue}`);
+  };
   return (
     <>
       <nav className={styles.navBar}>
@@ -35,13 +49,13 @@ const NavBar: FC = () => {
             <FaSearch />
           </button>
         ) : (
-          <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBar}>
+          <form onSubmit={handleSubmit} className={styles.navBar_searchBar}>
             <input
               className={styles.navBar_inputText}
               type="text"
               placeholder="Find your favorite book"
-              //   value={searchTerm}
-              //   onChange={handleChange}
+              value={searchValue}
+              onChange={handleChange}
             />
             <button type="submit" aria-label="Search">
               <FaSearch />

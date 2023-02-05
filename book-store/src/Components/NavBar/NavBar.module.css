@@ -23,12 +23,6 @@
   background-color: rgb(236, 233, 233);
 }
 
-.navBar_searchBar:hover {
-  border-style: solid;
-  border-width: 2px;
-  color: lightgray;
-}
-
 .navBar_searchBar > input {
   height: 35px;
   width: 400px;
@@ -96,15 +90,14 @@ a:focus {
   gap: 5px;
 }
 
-
 /* / styles for large screens (e.g. desktop) / */
 @media (min-width: 960px) and (max-width: 1260px) {
   /* / styles for screens between 1920px and 2559px / */
   .navBar {
     justify-content: space-evenly;
-  }  
+  }
   .navBar_searchBar > input {
-    width: 200px; 
+    width: 200px;
   }
 }
 
@@ -113,7 +106,7 @@ a:focus {
   /* / styles for screens between 768px and 1919px / */
   .navBar {
     justify-content: space-evenly;
-  }  
+  }
 
   .navBar_listMobile {
     display: flex;
@@ -141,9 +134,9 @@ a:focus {
   /* / styles for screens between 480px and 767px / */
   .navBar {
     justify-content: space-evenly;
-  }  
+  }
   .navBar_searchBar > input {
-    width: 185px; 
+    width: 185px;
   }
 
   .navBar_listMobile {
@@ -170,7 +163,7 @@ a:focus {
 /* / styles for extra small screens (e.g. mobile portrait) / */
 @media (max-width: 479px) {
   /* / styles for screens 479px and below */
-  .navBar_searchBtn{
+  .navBar_searchBtn {
     position: relative;
     left: 15%;
   }
@@ -188,28 +181,22 @@ a:focus {
     padding: 0px 10px;
     background-color: rgb(236, 233, 233);
   }
-  
-  .navBar_searchBarMobile:hover {
-    border-style: solid;
-    border-width: 2px;
-    color: lightgray;
-  }
-  
+
   .navBar_searchBarMobile > input {
     height: 35px;
     width: 185px;
     border: none;
     margin: 3px;
   }
-  
+
   ::placeholder {
     color: #767fa7;
   }
-  
+
   .navBar_searchBarMobile > input:focus {
     outline: none;
   }
-  
+
   .navBar_searchBarMobile > button {
     margin: 10px 15px;
   }
@@ -233,5 +220,4 @@ a:focus {
     top: 0px;
     gap: 0px;
   }
-
 }

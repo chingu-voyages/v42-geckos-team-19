@@ -38,7 +38,7 @@ export default function Categories() {
     param || "general"
   );
 
-  console.log(param);
+  console.log(data);
   return (
     <Container maxW="1400px">
       <HStack spacing="5" mt="20" ml="5">
