@@ -64,8 +64,8 @@ export default function Categories() {
                         <PopoverHeader textAlign="center">
                             Select a category
                         </PopoverHeader>
-                        <PopoverHeader ml="3" bg="gray.50" as="b">
-                            Fiction
+                        <PopoverHeader bg="gray.50" as="b">
+                            <Text ml="2">Fiction</Text>
                         </PopoverHeader>
                         <PopoverBody>
                             <TableContainer>
@@ -79,8 +79,8 @@ export default function Categories() {
                                 </Box>
                             </TableContainer>
                         </PopoverBody>
-                        <PopoverHeader ml="3" bg="gray.50" as="b">
-                            Nonfiction
+                        <PopoverHeader bg="gray.50" as="b">
+                            <Text ml="2">Nonfiction</Text>
                         </PopoverHeader>
                         <PopoverBody>
                             <TableContainer>

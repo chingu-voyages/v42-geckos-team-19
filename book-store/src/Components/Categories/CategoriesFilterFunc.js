@@ -7,7 +7,8 @@ const FICTION_SUBJECTS = [
     ['Thrillers', 'fiction_thrillers_general'],
     ['Mystery & detective', 'fiction_mystery_&_detective_general'],
     ['Horror', 'fiction_horror'],
-    ["Children's fiction", "children's_fiction"]
+    ["Children's fiction", "children's_fiction"],
+    ['Crime', 'crime_fiction']
 ].sort();
 
 const NONFICTION_SUBJECTS = [
