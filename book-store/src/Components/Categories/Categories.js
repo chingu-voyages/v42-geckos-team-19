@@ -33,6 +33,7 @@ import CategoriesFilterFunc from './CategoriesFilterFunc';
 export default function Categories() {
     const { param } = useParams();
     const navigate = useNavigate();
+
     const handleSelectCategory = (id) => {
         navigate(`/categories/${id}`);
     };
@@ -53,8 +54,8 @@ export default function Categories() {
                                     ? 'Fiction > '
                                     : 'Nonfiction > ') +
                                     param
-                                        .replace(/fiction_|_general/gi, '')
-                                        .replace(/_/gi, ' ')}
+                                        .replace(/_/gi, ' ')
+                                        .replace(/fiction|general/gi, '')}
                             </Box>
                         </Button>
                     </PopoverTrigger>

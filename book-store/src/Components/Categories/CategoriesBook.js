@@ -76,6 +76,7 @@ export default function BookCard(props) {
                             <Box width="15vw">
                                 <Text color="#61625F">Author</Text>
                             </Box>
+                            {/* BUG: price disappears off screen on large screens  */}
                             <Text color="#61625F">Price</Text>
                         </HStack>
                     </GridItem>

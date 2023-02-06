@@ -8,7 +8,8 @@ const FICTION_SUBJECTS = [
     ['Mystery & detective', 'fiction_mystery_&_detective_general'],
     ['Horror', 'fiction_horror'],
     ["Children's fiction", "children's_fiction"],
-    ['Crime', 'crime_fiction']
+    ['Crime', 'crime_fiction'],
+    ['Science fiction', 'fiction_science_fiction_general']
 ].sort();
 
 const NONFICTION_SUBJECTS = [
@@ -36,7 +37,6 @@ export default function CategoriesFilter({ fiction }) {
                                 onClick={() =>
                                     handleSelectCategory(`${item[1]}`)
                                 }
-                                // TODO: Check if id correctly initialized
                                 id={item[0]}
                             >
                                 {item[0]}
