@@ -7,6 +7,7 @@ import BookPage from "../BookPage/BookPage";
 import HomeGrid from "../HomeGrid/HomeGrid";
 import { Box, Container } from "@chakra-ui/react";
 import "./Body.css";
+import Footer from "../Footer/Footer";
 
 export default function Body() {
   const cards = data.map((card) => {
@@ -21,8 +22,8 @@ export default function Body() {
       </Box>
       <HomeGrid />
       <Faq />
-
       <BookPage />
+      <Footer />
     </Container>
   );
 }
