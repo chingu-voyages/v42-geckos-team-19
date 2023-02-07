@@ -13,6 +13,7 @@ import {
   AccordionPanel,
   AccordionIcon,
   Box,
+  Button,
 } from "@chakra-ui/react";
 
 export default function CheckoutForm() {
@@ -30,30 +31,96 @@ export default function CheckoutForm() {
           </AccordionButton>
 
           <AccordionPanel pb={4}>
-            <FormControl isRequired my="35px">
+            <FormControl isRequired my="35px" borderColor="#d9d9d9">
               <HStack mb="15px">
-                <Input placeholder="First name" size="lg" />
-                <Input placeholder="Last name" size="lg" />
+                <Input
+                  placeholder="First name"
+                  size="lg"
+                  borderColor="#d9d9d9"
+                  color="#d9d9d9"
+                  focusBorderColor="#E4573D"
+                  _placeholder={{ color: "#d9d9d9" }}
+                />
+                <Input
+                  placeholder="Last name"
+                  size="lg"
+                  borderColor="#d9d9d9"
+                  focusBorderColor="#E4573D"
+                  _placeholder={{ color: "#d9d9d9" }}
+                />
               </HStack>
-              <Input placeholder="name@email.com" mb="15px" size="lg" />
-              <Input placeholder="Phone number" size="lg" />
+              <Input
+                placeholder="name@email.com"
+                mb="15px"
+                size="lg"
+                focusBorderColor="#E4573D"
+                _placeholder={{ color: "#d9d9d9" }}
+              />
+              <Input
+                placeholder="Phone number"
+                size="lg"
+                focusBorderColor="#E4573D"
+                _placeholder={{ color: "#d9d9d9" }}
+              />
             </FormControl>
 
-            <FormControl mt="60px">
+            <FormControl mt="60px" borderColor="#d9d9d9">
               <Input
                 placeholder="Company name (optional)"
                 mb="15px"
                 size="lg"
+                focusBorderColor="#E4573D"
+                _placeholder={{ color: "#d9d9d9" }}
               />
             </FormControl>
-            <FormControl isRequired>
-              <Input placeholder="Address" mb="15px" size="lg" />
+            <FormControl isRequired borderColor="#d9d9d9">
+              <Input
+                placeholder="Address"
+                mb="15px"
+                size="lg"
+                focusBorderColor="#E4573D"
+                _placeholder={{ color: "#d9d9d9" }}
+              />
               <HStack>
-                <Input placeholder="State" size="lg" />
-                <Select placeholder="Select country" size="lg">
+                <Input
+                  placeholder="State"
+                  size="lg"
+                  borderColor="#d9d9d9"
+                  focusBorderColor="#E4573D"
+                  _placeholder={{ color: "#d9d9d9" }}
+                />
+                <Select
+                  placeholder="Select country"
+                  size="lg"
+                  borderColor="#d9d9d9"
+                  focusBorderColor="#E4573D"
+                >
                   <option>United Arab Emirates</option>
                   <option>Dominican Republic</option>
                 </Select>
+              </HStack>
+              <HStack justifyContent="right" mb="50px">
+                <Button
+                  h={14}
+                  px={8}
+                  color="white"
+                  variant="outline"
+                  borderColor="#E4573D"
+                  fontSize="lg"
+                  rounded="sm"
+                  mt="10"
+                  lineHeight="20px"
+                  bg="#E4573D"
+                  _hover={{
+                    bg: "white",
+                    color: "#E4573D",
+                  }}
+                  fontFamily="Poppins"
+                  fontWeight="bold"
+                  letterSpacing="2px"
+                >
+                  Save & Continue
+                </Button>
               </HStack>
             </FormControl>
           </AccordionPanel>

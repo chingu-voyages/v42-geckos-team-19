@@ -83,6 +83,11 @@ const CheckoutCartSummary = () => {
               <Heading fontFamily="Poppins" as="h2" size="lg">
                 IN YOUR BAG
               </Heading>
+              <Divider
+                orientation="horizontal"
+                borderColor="#D9D9D9"
+                my="5px"
+              />
             </CardHeader>
             <CardBody>
               <Text className="grid-container">
