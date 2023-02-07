@@ -1,10 +1,11 @@
 import {
-  CloseButton,
   Flex,
   Link,
   Select,
   useColorModeValue,
+  IconButton,
 } from "@chakra-ui/react";
+import { FiTrash2 } from "react-icons/fi";
 import { CartPriceTag } from "../CartPriceTag/CartPriceTag";
 import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
 const QuantitySelect = (props) => {
@@ -12,7 +13,7 @@ const QuantitySelect = (props) => {
     <Select
       maxW="64px"
       aria-label="Select quantity"
-      focusBorderColor={useColorModeValue("blue.500", "blue.200")}
+      focusBorderColor={useColorModeValue("#E4573D", "#EFB865")}
       {...props}
     >
       <option value="1">1</option>
@@ -65,8 +66,12 @@ export const CartItem = (props) => {
           }}
         />
         <CartPriceTag price={price} currency={currency} />
-        <CloseButton
+        <IconButton
+          variant="outline"
+          borderColor="transparent"
           aria-label={`Delete ${title} from cart`}
+          fontSize="20px"
+          icon={<FiTrash2 />}
           onClick={onClickDelete}
         />
       </Flex>
