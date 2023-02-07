@@ -1,6 +1,6 @@
 import "./Checkout.css";
 import { useEffect } from "react";
-import CheckoutForm from "../../components/CheckoutForm/CheckoutForm";
+import CheckoutCart from "../../components/CheckoutCart/CheckoutCart";
 import type { RootState } from "../../store/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -73,7 +73,7 @@ const CheckoutCartSummary = () => {
         <Card>
           <CardBody>
             <CardBody>
-              <CheckoutForm />
+              <CheckoutCart />
             </CardBody>
           </CardBody>
         </Card>
