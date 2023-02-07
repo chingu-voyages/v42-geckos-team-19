@@ -14,8 +14,12 @@ import {
     HStack
 } from '@chakra-ui/react';
 import { AuthErrorCodes } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function BookCard(props) {
+    const navigate = useNavigate();
+
+
     /* TODO: Length of titles and authors not responsive */
     /* Truncate long titles */
     function Title({ title }) {
@@ -110,6 +114,10 @@ export default function BookCard(props) {
                         variant="outline"
                         _hover={{ bg: '#E4573D', color: 'white' }}
                         letterSpacing="2px"
+                        onClick={e => {
+                            const justKey = props.bookKey.replace('/works', '')
+                            navigate('/book' + justKey)
+                        }}
                     >
                         More Details
                     </Button>

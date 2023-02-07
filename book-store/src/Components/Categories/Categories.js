@@ -31,7 +31,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CategoriesFilterFunc from './CategoriesFilterFunc';
 
 export default function Categories() {
-    const { param } = useParams();
+    let { param } = useParams();
     const navigate = useNavigate();
 
     const handleSelectCategory = (id) => {
@@ -42,6 +42,7 @@ export default function Categories() {
     const { data, isLoading, isError } = useGetBooksBySubjectQuery(param);
 
     console.log(param);
+    param = param ? param : 'no-param-supplied';
     return (
         <Container maxW="1400px">
             <HStack spacing="5" mt="20" ml="5">
@@ -102,7 +103,7 @@ export default function Categories() {
             <SimpleGrid columns={4} spacing={5} mb="100px">
                 {data &&
                     data.works.map((card) => {
-                        return <CategoriesBook key={card.key} card={card} />;
+                        return <CategoriesBook bookKey={card.key} card={card} />;
                     })}
             </SimpleGrid>
             {/* TODO: add a "see more" button */}
