@@ -5,8 +5,8 @@ import {
   Select,
   useColorModeValue,
 } from "@chakra-ui/react";
-//import { PriceTag } from "./PriceTag";
-//import { CartProductMeta } from "./CartProductMeta";
+import { PriceTag } from "./PriceTag";
+import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
 const QuantitySelect = (props) => {
   return (
     <Select
@@ -44,6 +44,13 @@ export const CartItem = (props) => {
       justify="space-between"
       align="center"
     >
+      <CartProductMeta
+        name={name}
+        description={description}
+        image={imageUrl}
+        isGiftWrapping={isGiftWrapping}
+      />
+
       {/* Desktop */}
       <Flex
         width="full"
@@ -59,7 +66,7 @@ export const CartItem = (props) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-
+        <PriceTag price={price} currency={currency} />
         <CloseButton
           aria-label={`Delete ${name} from cart`}
           onClick={onClickDelete}
@@ -86,6 +93,7 @@ export const CartItem = (props) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
+        <PriceTag price={price} currency={currency} />
       </Flex>
     </Flex>
   );
