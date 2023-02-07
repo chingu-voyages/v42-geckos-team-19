@@ -65,30 +65,27 @@ const CheckoutCartSummary = () => {
           >
             CHECKOUT
           </Heading>
-          <Divider width="100%" />
+          <Divider width="100%" mb="30px" />
         </Box>
       </Box>
 
       <Grid templateColumns={"2fr 1fr"} columnGap="3%">
         <Card>
           <CardBody>
-            <CardBody>
-              <CheckoutCart />
-            </CardBody>
+            <Heading fontFamily="Poppins" as="h2" size="lg">
+              IN YOUR BAG
+            </Heading>
+            <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
+            <CheckoutCart />
           </CardBody>
         </Card>
         <Card>
           <CardBody>
-            <CardHeader>
-              <Heading fontFamily="Poppins" as="h2" size="lg">
-                IN YOUR BAG
-              </Heading>
-              <Divider
-                orientation="horizontal"
-                borderColor="#D9D9D9"
-                my="5px"
-              />
-            </CardHeader>
+            <Heading fontFamily="Poppins" as="h2" size="lg">
+              ORDER SUMMARY
+            </Heading>
+            <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
+
             <CardBody>
               <Text className="grid-container">
                 Subtotal

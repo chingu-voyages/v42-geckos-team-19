@@ -5,7 +5,7 @@ import data from "../data/data";
 
 export default function CheckoutCart() {
   return (
-    <Stack spacing="6">
+    <Stack spacing="6" mt="40px">
       {data.map((item) => (
         <CartItem key={item.id} {...item} />
       ))}
