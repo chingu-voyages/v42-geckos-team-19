@@ -3,6 +3,7 @@ import { useMediaQuery } from 'react-responsive';
 import Logo from '../../Images/booktown-logo.png';
 import styles from './NavBar.module.css';
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 export const NavBar: FC = () => {
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
@@ -17,8 +18,10 @@ export const NavBar: FC = () => {
         <img src={Logo} alt='' className={styles.navBar_img} />
       </a>
       {isMobileSearch ? (
-        <button className={styles.navBar_searchBtn} onClick={() => {setIsOpenSearch(!isOpenSearch)
-          setIsOpenList(false)}}>
+        <button className={styles.navBar_searchBtn} onClick={() => {
+          setIsOpenSearch(!isOpenSearch)
+          setIsOpenList(false)
+        }}>
           <FaSearch />
         </button>
       ) : (
@@ -27,8 +30,8 @@ export const NavBar: FC = () => {
             className={styles.navBar_inputText}
             type='text'
             placeholder='Find your favorite book'
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type='submit' aria-label='Search'>
             <FaSearch />
@@ -41,8 +44,8 @@ export const NavBar: FC = () => {
             className={styles.navBar_inputTextMobile}
             type='text'
             placeholder='Find your favorite book'
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type='submit' aria-label='Search'>
             <FaSearch />
@@ -52,7 +55,7 @@ export const NavBar: FC = () => {
         ''
       )}
       {isMobileMenu ? (
-        <button className='styles.navBar_menuBtn' onClick={() => {setIsOpenList(!isOpenList); setIsOpenSearch(false)}}>
+        <button className='styles.navBar_menuBtn' onClick={() => { setIsOpenList(!isOpenList); setIsOpenSearch(false) }}>
           <FaBars />
         </button>
       ) : (
@@ -82,19 +85,19 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleList}>
                 <li>
-                  <a href='/authentication' aria-label='Profile'>
+                  <Link to='authentication' aria-label='Profile'>
                     Profile
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='/authentication' aria-label='Sign Up'>
+                  <Link to='authentication' aria-label='Sign Up'>
                     Sign Up
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='/authentication' aria-label='Login'>
+                  <Link to='authentication' aria-label='Login'>
                     Login
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
@@ -133,26 +136,26 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleListMobile}>
                 <li>
-                  <a href='/authentication' aria-label='Profile'>
+                  <Link to='authentication' aria-label='Profile'>
                     Profile
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='/authentication' aria-label='Sign Up'>
+                  <Link to='authentication' aria-label='Sign Up'>
                     Sign Up
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href='/authentication' aria-label='Login'>
+                  <Link to='authentication' aria-label='Login'>
                     Login
-                  </a>
+                  </Link>
                 </li>
               </ul>
             )}
           </li>
           <li>
             <a href='#' tabIndex={0} aria-label='ShoppingCar'>
-              <FaShoppingCart style={{height:'1rem'}} />
+              <FaShoppingCart style={{ height: '1rem' }} />
             </a>
           </li>
         </ul>
