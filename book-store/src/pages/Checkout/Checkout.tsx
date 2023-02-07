@@ -72,12 +72,6 @@ const CheckoutCartSummary = () => {
       <Grid templateColumns={"2fr 1fr"} columnGap="3%">
         <Card>
           <CardBody>
-            <CardHeader>
-              <Heading fontFamily="Poppins" as="h2" size="lg">
-                1. Delivery
-              </Heading>
-              <Divider />
-            </CardHeader>
             <CardBody>
               <CheckoutForm />
             </CardBody>
