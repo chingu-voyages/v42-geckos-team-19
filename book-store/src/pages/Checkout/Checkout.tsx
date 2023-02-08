@@ -15,15 +15,11 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Text,
   Heading,
   Grid,
   Divider,
   Box,
   Container,
-  Flex,
-  HStack,
-  Link,
 } from "@chakra-ui/react";
 
 const AVAILABLE_ITEMS_ARR = data;
@@ -69,7 +65,7 @@ const CheckoutCartSummary = () => {
           >
             CHECKOUT
           </Heading>
-          <Divider width="100%" mb="30px" />
+          <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
         </Box>
       </Box>
 
