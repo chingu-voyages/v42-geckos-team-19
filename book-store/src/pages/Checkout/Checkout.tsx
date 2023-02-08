@@ -1,6 +1,7 @@
 import "./Checkout.css";
 import { useEffect } from "react";
 import CheckoutCart from "../../components/CheckoutCart/CheckoutCart";
+import CartOrderSummary from "../../components/CartOrderSummary/CartOrderSummary";
 import type { RootState } from "../../store/rootReducer";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -20,6 +21,9 @@ import {
   Divider,
   Box,
   Container,
+  Flex,
+  HStack,
+  Link,
 } from "@chakra-ui/react";
 
 const AVAILABLE_ITEMS_ARR = data;
@@ -87,24 +91,7 @@ const CheckoutCartSummary = () => {
             <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
 
             <CardBody>
-              <Text className="grid-container">
-                Subtotal
-                <span className="align-right">$149.97</span>
-              </Text>
-
-              <Text className="grid-container">
-                Estimated Delivery
-                <span className="align-right">$0.00</span>
-              </Text>
-
-              <Text className="grid-container">
-                <Heading as="h3" size="sm">
-                  TOTAL
-                </Heading>
-                <Heading as="h3" size="sm" className="align-right">
-                  $149.97
-                </Heading>
-              </Text>
+              <CartOrderSummary />
             </CardBody>
           </CardBody>
         </Card>
