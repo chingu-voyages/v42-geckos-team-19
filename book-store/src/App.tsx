@@ -7,7 +7,7 @@ import Authentication from "./pages/Authentication/Authentication";
 import Categories from "./components/Categories/Categories.js";
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { booksApi } from "./store/books/booksSlice";
-import BookPage from './components/BookPage/BookPage.js';
+import BookPage from './components/BookPage/BookPage';
 
 const App = () => {
   return (

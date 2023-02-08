@@ -9,7 +9,7 @@ export default function BookPage() {
   console.log('this is your key param! ' + param)
   return (
     <Container maxW="1400px">
-      <ProductDetails />
+      <ProductDetails heading="lolothon"/>
       <ProductDescription />
     </Container>
   );
