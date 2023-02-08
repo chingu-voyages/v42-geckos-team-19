@@ -7,20 +7,24 @@ import Authentication from "./pages/Authentication/Authentication";
 import Categories from "./components/Categories/Categories.js";
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { booksApi } from "./store/books/booksSlice";
+import BookPage from './components/BookPage/BookPage.js';
 
 const App = () => {
   return (
     <Router>
       <NavBar />
-      <Routes>
-        <Route path='/' element={<Body />} />
-        <Route path='categories/:param' element={<ApiProvider api={booksApi}>
-                <Categories />
-            </ApiProvider>} />
-        
-        <Route path='/authentication' element={<Authentication />} />
-        <Route path='/checkout' element={<Checkout />} />
-      </Routes>
+      <ApiProvider api={booksApi}>
+        <Routes>
+          <Route path='/' element={<Body />} />
+
+          <Route path='categories/:param' element={<Categories />} />
+          <Route path="/book/:param" element={<BookPage />} />
+
+
+          <Route path='/authentication' element={<Authentication />} />
+          <Route path='/checkout' element={<Checkout />} />
+        </Routes>
+      </ApiProvider>
     </Router>
   );
 };
