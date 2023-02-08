@@ -5,7 +5,6 @@ import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
 import BookPage from "../BookPage/BookPage";
 import HomeGrid from "../HomeGrid/HomeGrid";
-import Checkout from "../../pages/Checkout/Checkout";
 import { Box, Container } from "@chakra-ui/react";
 import "./Body.css";
 import Footer from "../Footer/Footer";
@@ -24,7 +23,6 @@ export default function Body() {
       <HomeGrid />
       <Faq />
       <BookPage />
-      <Checkout />
       <Footer />
     </Container>
   );
