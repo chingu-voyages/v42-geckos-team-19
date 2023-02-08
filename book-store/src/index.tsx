@@ -6,11 +6,14 @@ import { Provider } from "react-redux";
 import { store } from "./store/rootReducer";
 import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
+
+
 import "@fontsource/poppins";
 import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/libre-baskerville";
 import "@fontsource/libre-baskerville/400-italic.css";
+
 
 const theme = extendTheme({
   fonts: {

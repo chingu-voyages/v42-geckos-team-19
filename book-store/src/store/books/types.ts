@@ -1,6 +1,6 @@
 export type AuthorBySubject = {
   key: string;
-  name?: string;
+  name: string;
 };
 
 export type BookBySubject = {

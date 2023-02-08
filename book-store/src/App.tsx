@@ -4,6 +4,9 @@ import Body from "./components/Body/Body.js";
 import { NavBar } from "./components/NavBar/NavBar";
 import Checkout from "./pages/Checkout/Checkout";
 import Authentication from "./pages/Authentication/Authentication";
+import Categories from "./components/Categories/Categories.js";
+import { ApiProvider } from '@reduxjs/toolkit/query/react';
+import { booksApi } from "./store/books/booksSlice";
 
 const App = () => {
   return (
@@ -11,7 +14,10 @@ const App = () => {
       <NavBar />
       <Routes>
         <Route path='/' element={<Body />} />
-
+        <Route path='categories/:param' element={<ApiProvider api={booksApi}>
+                <Categories />
+            </ApiProvider>} />
+        
         <Route path='/authentication' element={<Authentication />} />
         <Route path='/checkout' element={<Checkout />} />
       </Routes>
