@@ -1,7 +1,7 @@
 import React from "react";
 import data from "../data/data";
 import Counter from "../Counter/Counter";
-import { props } from "./types";
+import { props, ratingsSummary, coverId } from "./types";
 import {
   Stack,
   HStack,
@@ -16,6 +16,7 @@ import {
   Button,
   chakra,
 } from "@chakra-ui/react";
+import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 export default function ProductDetails(props: props) {
   return (
@@ -38,12 +39,7 @@ export default function ProductDetails(props: props) {
             fontFamily="Poppins"
           >
             <CardBody>
-              <Image
-                src={`https://covers.openlibrary.org/b/olid/${props.param}-L.jpg?default=false`}
-                alt={props.title + " cover image"}
-                borderRadius="lg"
-                boxSize="100%"
-              />
+              <BookCoverImg coverId={props.coverId} title={props.title}/>
             </CardBody>
           </Card>
         </Box>
@@ -66,8 +62,14 @@ export default function ProductDetails(props: props) {
             justifyContent={{ base: "center", md: "left" }}
             py="15px"
           >
+            {/* TODO: display dynamic number of stars */}
             <Image src="../images/review-rating.png" boxSize="20%"></Image>
-            <Text pl="5px">5.0 (27)</Text>
+            <Text pl="5px">
+              <Rating
+                average={props.ratingsSummary.average}
+                count={props.ratingsSummary.count}
+              />
+            </Text>
           </HStack>
           <Divider
             orientation="horizontal"
@@ -145,4 +147,48 @@ export default function ProductDetails(props: props) {
       </Stack>
     </Container>
   );
+}
+
+
+function Rating(props: ratingsSummary) {
+  if (typeof props.average === 'number') {
+
+  }
+
+  return (
+    (typeof props.average === 'number')
+      ? (
+        <>
+          {props.average.toFixed(1)} ({props.count})
+        </>
+      )
+      : (
+        <>
+          Ratings not available
+        </>
+      )
+  )
+}
+
+
+interface BookCoverImgProps {
+  coverId: coverId | null;
+  title: string;
+}
+function BookCoverImg(props: BookCoverImgProps) {
+  return (
+    (props.coverId) 
+    ? (
+      <Image
+      src={`https://covers.openlibrary.org/b/id/${props.coverId}-L.jpg?default=false`}
+      alt={props.title + " cover image"}
+      borderRadius="lg"
+      boxSize="100%"
+    />
+    )
+    : (
+      <>No image available</>
+    )
+    
+  )
 }

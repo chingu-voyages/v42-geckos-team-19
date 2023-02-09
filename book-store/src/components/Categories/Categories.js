@@ -103,6 +103,7 @@ export default function Categories() {
             <SimpleGrid columns={4} spacing={5} mb="100px">
                 {data &&
                     data.works.map((card) => {
+                        console.log(card);
                         return <CategoriesBook bookKey={card.key} card={card} />;
                     })}
             </SimpleGrid>

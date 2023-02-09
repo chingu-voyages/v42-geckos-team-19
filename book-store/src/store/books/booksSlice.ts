@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookAuthors } from "./types";
+import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookRatings, BookAuthors } from "./types";
 
 export const booksApi = createApi({
   reducerPath: "booksAPI",
@@ -19,6 +19,9 @@ export const booksApi = createApi({
     getBookWorks: builder.query<BookWorks, string>({
       query: (name) => `works/${name}.json`,
     }),
+    getBookRatings: builder.query<BookRatings, string>({
+      query: (name) => `works/${name}/ratings.json`,
+    }),
     getBookAuthors: builder.query<BookAuthors, string>({
       query: (name) => `authors/${name}.json`,
     }),
@@ -33,5 +36,6 @@ export const {
   useGetBooksBySearchQuery,
   useGetBookBySeedQuery,
   useGetBookWorksQuery,
+  useGetBookRatingsQuery,
   useGetBookAuthorsQuery
 } = booksApi;

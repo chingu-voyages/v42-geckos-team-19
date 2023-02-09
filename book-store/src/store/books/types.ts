@@ -35,10 +35,26 @@ export type BookWorks = {
   title: string;
   description: string;
   authors: any;
+  covers: { [key: number]: string };
   links: BookWorksLinks[];
+};
+
+export type BookRatings = {
+  summary: {
+    average: number;
+    count: number;
+    sortable: number;
+  },
+  counts: {
+    1: number;
+    2: number;
+    3: number;
+    4: number;
+    5: number;
+  }
 };
 
 export type BookAuthors = {
   name: string;
-  bio: string;
+  bio?: string;
 };
