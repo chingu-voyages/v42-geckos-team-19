@@ -40,6 +40,5 @@ export type BookWorks = {
 
 export type BookAuthors = {
   name: string;
-  description: string;
-  links: BookWorksLinks[];
+  bio: string;
 };

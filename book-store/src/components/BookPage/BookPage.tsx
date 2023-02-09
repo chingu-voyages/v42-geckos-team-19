@@ -25,7 +25,7 @@ export default function BookPage() {
       : (
         <Container maxW="1400px">
           <ProductDetails title={workRes.data!.title} authors={authorRes.data!.name!} />
-          <ProductDescription description="Fantasitc" bio="young" reviews="bad book" />
+          <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio} reviews="bad book" />
         </Container>
       )
   );
