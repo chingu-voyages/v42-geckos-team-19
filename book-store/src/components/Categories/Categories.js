@@ -39,9 +39,13 @@ export default function Categories() {
     };
 
     /* Don't have to use isLoading, isError--just for future ref */
-    const { data, isLoading, isError } = useGetBooksBySubjectQuery(param);
+    const { data, isLoading, isError } = useGetBooksBySubjectQuery({
+        subject: param,
+        limit: 20,
+        offset: 0
+    });
 
-    console.log(param);
+    console.log(isLoading, data);
     param = param ? param : 'no-param-supplied';
     return (
         <Container maxW="1400px">

@@ -15,6 +15,12 @@ export type BooksBySubject = {
   works: BookBySubject[];
 };
 
+export type getBooksBySubjectOptions = {
+  subject: string;
+  limit: number;
+  offset: number;
+}
+
 export type BooksBySearch = {
   numFound: number;
   docs: [seed: string[]];
