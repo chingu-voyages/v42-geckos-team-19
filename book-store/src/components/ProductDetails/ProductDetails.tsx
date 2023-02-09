@@ -17,7 +17,7 @@ import {
   chakra,
 } from "@chakra-ui/react";
 
-export default function BookPage(props: props) {
+export default function ProductDetails(props: props) {
   return (
     <Container maxW="1400px" mb="100px" fontFamily="Poppins">
       <Stack
@@ -54,10 +54,10 @@ export default function BookPage(props: props) {
           mb={{ base: "25px", md: "0" }}
         >
           <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
-            {props.heading}
+            {props.title}
           </Heading>
           <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
-            By Antontio Walker
+            {props.authors}
           </Text>
           <HStack
             spacing={{ base: 0, sm: 2 }}

@@ -1,4 +1,5 @@
 import React from "react";
+import { props } from "./types";
 
 import {
   Stack,
@@ -15,7 +16,7 @@ import {
   TabPanel,
 } from "@chakra-ui/react";
 
-export default function BookPage() {
+export default function ProductDescription(props: props) {
   return (
     <Container maxW="1400px" mb="200px" fontFamily="Poppins">
       <Tabs variant="enclosed" borderColor="#D9D9D9">
@@ -38,33 +39,7 @@ export default function BookPage() {
                   Sinopsis
                 </Heading>
                 <Text textAlign="left">
-                  ¿Cuáles han sido las consecuencias de una pandemia que nos ha
-                  distanciado a los unos de los otros? Los trabajadores de Green
-                  Technology y su directora de Recursos Humanos han tenido sus
-                  propias vivencias, con sus luces y sus sombras. A veces sin
-                  que las sombras dejen espacio a la luz. RRetos HHumanos recoge
-                  doce historias de personajes muy diferentes, basadas en
-                  situaciones casi reales, que hacen que cualquiera de ellos
-                  pueda ser tu compañero, tu vecino… o tú mismo.
-                  <br />
-                  <br />
-                  A través de las experiencias de nuestros protagonistas
-                  caminamos por escenarios a veces desoladores compartiendo sus
-                  sentimientos más sinceros para llegar a comprender cómo el
-                  camino personal y el profesional al final suelen unirse en uno
-                  solo. En este libro, el tercero de esta saga temática,
-                  volvemos a constatar que la esencia de las empresas la forman
-                  las personas y sus sentimientos y emociones.
-                  <br />
-                  <br />
-                  Tanto si has leído las dos entregas anteriores como si es la
-                  primera vez que te adentras en el universo de Green
-                  Technology, este texto único creado por once directores de
-                  Recursos Humanos y su coordinador literario te hará
-                  reflexionar sobre todo lo que hemos vivido en tiempos de
-                  pandemia y cómo estos extraordinarios acontecimientos nos han
-                  marcado para siempre. ¿Qué lecciones nos llevamos de esta
-                  época, tanto las personas como las empresas?
+                  {props.description}
                 </Text>
               </Box>
               <Box>
@@ -107,9 +82,11 @@ export default function BookPage() {
           </TabPanel>
           <TabPanel>
             <p>About The Author</p>
+            {props.bio}
           </TabPanel>
           <TabPanel>
             <p>Reviews</p>
+            {props.reviews}
           </TabPanel>
         </TabPanels>
       </Tabs>

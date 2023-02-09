@@ -1,3 +1,4 @@
 export interface props {
-  heading: string;
+  title: string;
+  authors: string;
 }

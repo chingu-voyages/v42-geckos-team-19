@@ -32,6 +32,14 @@ export type BookWorksLinks = {
 };
 
 export type BookWorks = {
+  title: string;
+  description: string;
+  authors: any;
+  links: BookWorksLinks[];
+};
+
+export type BookAuthors = {
+  name: string;
   description: string;
   links: BookWorksLinks[];
 };

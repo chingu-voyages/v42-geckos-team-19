@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks } from "./types";
+import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookAuthors } from "./types";
 
 export const booksApi = createApi({
   reducerPath: "booksAPI",
@@ -19,6 +19,9 @@ export const booksApi = createApi({
     getBookWorks: builder.query<BookWorks, string>({
       query: (name) => `works/${name}.json`,
     }),
+    getBookAuthors: builder.query<BookAuthors, string>({
+      query: (name) => `authors/${name}.json`,
+    }),
     // Book Cover https://covers.openlibrary.org/b/$key/$value-$size.jpg
     // key ISBN (isbn_13) or ID (cover)
     // S, M , L sizes
@@ -30,4 +33,5 @@ export const {
   useGetBooksBySearchQuery,
   useGetBookBySeedQuery,
   useGetBookWorksQuery,
+  useGetBookAuthorsQuery
 } = booksApi;
