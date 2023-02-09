@@ -90,7 +90,7 @@ export default function BookCard(props) {
                                 <Text as="b" fontSize="xs">
                                     {/* Shorten author names to fit on card */}
                                     <Author
-                                        author={props.card.authors[0].name}
+                                        author={props.card.authors[0] ? props.card.authors[0].name : 'No author data available'}
                                     />
                                 </Text>
                             </Box>
