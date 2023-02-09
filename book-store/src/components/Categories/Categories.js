@@ -34,10 +34,6 @@ export default function Categories() {
     let { param } = useParams();
     const navigate = useNavigate();
 
-    const handleSelectCategory = (id) => {
-        navigate(`/categories/${id}`);
-    };
-
     /* Don't have to use isLoading, isError--just for future ref */
     const { data, isLoading, isError } = useGetBooksBySubjectQuery({
         subject: param,
