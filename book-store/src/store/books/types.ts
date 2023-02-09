@@ -30,7 +30,7 @@ export type BookWorksLinks = {
   url: string;
   title: string;
 };
-
+// TODO: flesh out authors type instead of using any
 export type BookWorks = {
   title: string;
   description: string;

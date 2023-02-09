@@ -11,7 +11,9 @@ export default function BookPage() {
   console.log('this is your key param! ' + param)
 
   const workRes = useGetBookWorksQuery(param!);
-
+  
+  // skip here is redux toolkit's way of allowing conditionally fetching from an api
+  // see: https://redux-toolkit.js.org/rtk-query/usage/conditional-fetching
   let skip: boolean;
   skip = workRes.isLoading ? true : false;
   let authorData = workRes.isLoading ? '' : workRes.data!.authors[0].author.key.replace('/authors/', '');
@@ -24,7 +26,7 @@ export default function BookPage() {
       )
       : (
         <Container maxW="1400px">
-          <ProductDetails title={workRes.data!.title} authors={authorRes.data!.name!} />
+          <ProductDetails title={workRes.data!.title} authors={authorRes.data!.name!} param={param!}/>
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio} reviews="bad book" />
         </Container>
       )

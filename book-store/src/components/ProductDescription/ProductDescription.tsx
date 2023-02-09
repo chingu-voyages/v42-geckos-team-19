@@ -39,7 +39,7 @@ export default function ProductDescription(props: props) {
                   Sinopsis
                 </Heading>
                 <Text textAlign="left">
-                  {props.description}
+                  {(typeof props.description !== "string") ? props.description.value : props.description}
                 </Text>
               </Box>
               <Box>
@@ -82,7 +82,7 @@ export default function ProductDescription(props: props) {
           </TabPanel>
           <TabPanel>
             <p>About The Author</p>
-            {props.bio}
+            {(typeof props.bio !== "string") ? props.bio.value : props.bio}
           </TabPanel>
           <TabPanel>
             <p>Reviews</p>

@@ -39,8 +39,8 @@ export default function ProductDetails(props: props) {
           >
             <CardBody>
               <Image
-                src={`../images/${data[0].coverImg}`}
-                alt={data[0].alt}
+                src={`https://covers.openlibrary.org/b/olid/${props.param}-L.jpg?default=false`}
+                alt={props.title + " cover image"}
                 borderRadius="lg"
                 boxSize="100%"
               />
