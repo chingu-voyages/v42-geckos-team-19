@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookRatings, BookAuthors } from "./types";
+import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookRatings, BookAuthors, getBooksBySubjectOptions } from "./types";
 
 export const booksApi = createApi({
   reducerPath: "booksAPI",
@@ -7,8 +7,8 @@ export const booksApi = createApi({
     baseUrl: "https://openlibrary.org/",
   }),
   endpoints: (builder) => ({
-    getBooksBySubject: builder.query<BooksBySubject, string>({
-      query: (name) => `subjects/${name}.json`,
+    getBooksBySubject: builder.query<BooksBySubject, getBooksBySubjectOptions>({
+      query: (options) => `subjects/${options.subject}.json?limit=${options.limit}&offset=${options.offset}`,
     }),
     getBooksBySearch: builder.query<BooksBySearch, string>({
       query: (name) => `search.json?q=${name}`,

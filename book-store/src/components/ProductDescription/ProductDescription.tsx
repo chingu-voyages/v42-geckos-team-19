@@ -39,7 +39,7 @@ export default function ProductDescription(props: props) {
                   Sinopsis
                 </Heading>
                 <Text textAlign="left">
-                  {(typeof props.description !== "string") ? props.description.value : props.description}
+                  {(typeof props.description !== "string" && props.description) ? props.description.value : props.description ? props.description : "No description available"}
                 </Text>
               </Box>
               <Box>
