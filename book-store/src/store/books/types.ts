@@ -3,16 +3,16 @@ export type AuthorBySubject = {
   name: string;
 };
 
-export type BookBySubject = {
+export type WorkBySubject = {
   key: string;
   title: string;
   cover_id: number;
   authors: AuthorBySubject[];
 };
 
-export type BooksBySubject = {
+export type WorksBySubject = {
   work_count: number;
-  works: BookBySubject[];
+  works: WorkBySubject[];
 };
 
 export type getBooksBySubjectOptions = {
@@ -21,12 +21,12 @@ export type getBooksBySubjectOptions = {
   offset: number;
 }
 
-export type BooksBySearch = {
+export type WorksBySearch = {
   numFound: number;
   docs: [seed: string[]];
 };
 
-export type BookBySeed = {
+export type Edition = {
   title: string;
   covers: number[];
   isbn_13: string[];
@@ -37,7 +37,7 @@ export type BookWorksLinks = {
   title: string;
 };
 // TODO: flesh out authors type instead of using any
-export type BookWorks = {
+export type Work = {
   title: string;
   description: string;
   authors: any;
@@ -60,7 +60,7 @@ export type BookRatings = {
   }
 };
 
-export type BookAuthors = {
+export type BookAuthor = {
   name: string;
   bio?: string;
 };

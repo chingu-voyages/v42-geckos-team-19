@@ -24,7 +24,7 @@ import {
     Text
 } from '@chakra-ui/react';
 import { booksSlice } from '../../store/books/booksSlice';
-import { useGetBooksBySubjectQuery } from '../../store/books/booksSlice';
+import { useGetWorksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
 import './Categories.css';
 import { useState, useEffect } from 'react';
@@ -47,7 +47,7 @@ export default function Categories() {
     }, [offset])
 
     /* Don't have to use isLoading, isError--just for future ref */
-    const { data, isLoading, isError } = useGetBooksBySubjectQuery({
+    const { data, isLoading, isError } = useGetWorksBySubjectQuery({
         subject: param,
         limit,
         offset

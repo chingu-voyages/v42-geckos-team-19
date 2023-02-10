@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { BooksBySubject, BooksBySearch, BookBySeed, BookWorks, BookRatings, BookAuthors, getBooksBySubjectOptions } from "./types";
+import { WorksBySubject, WorksBySearch, Edition, Work, BookRatings, BookAuthor, getBooksBySubjectOptions } from "./types";
 
 export const booksApi = createApi({
   reducerPath: "booksAPI",
@@ -7,23 +7,23 @@ export const booksApi = createApi({
     baseUrl: "https://openlibrary.org/",
   }),
   endpoints: (builder) => ({
-    getBooksBySubject: builder.query<BooksBySubject, getBooksBySubjectOptions>({
+    getWorksBySubject: builder.query<WorksBySubject, getBooksBySubjectOptions>({
       query: (options) => `subjects/${options.subject}.json?limit=${options.limit}&offset=${options.offset}`,
     }),
-    getBooksBySearch: builder.query<BooksBySearch, string>({
-      query: (name) => `search.json?q=${name}`,
+    getWorksBySearch: builder.query<WorksBySearch, string>({
+      query: (queryTerm) => `search.json?q=${queryTerm}`,
     }),
-    getBookBySeed: builder.query<BookBySeed, string>({
-      query: (name) => `books/${name}.json`,
+    getEditionById: builder.query<Edition, string>({
+      query: (editionId) => `books/${editionId}.json`,
     }),
-    getBookWorks: builder.query<BookWorks, string>({
-      query: (name) => `works/${name}.json`,
+    getWorkById: builder.query<Work, string>({
+      query: (workId) => `works/${workId}.json`,
     }),
-    getBookRatings: builder.query<BookRatings, string>({
-      query: (name) => `works/${name}/ratings.json`,
+    getRatingsByWorkId: builder.query<BookRatings, string>({
+      query: (workId) => `works/${workId}/ratings.json`,
     }),
-    getBookAuthors: builder.query<BookAuthors, string>({
-      query: (name) => `authors/${name}.json`,
+    getAuthorById: builder.query<BookAuthor, string>({
+      query: (authorId) => `authors/${authorId}.json`,
     }),
     // Book Cover https://covers.openlibrary.org/b/$key/$value-$size.jpg
     // key ISBN (isbn_13) or ID (cover)
@@ -32,10 +32,10 @@ export const booksApi = createApi({
 });
 
 export const {
-  useGetBooksBySubjectQuery,
-  useGetBooksBySearchQuery,
-  useGetBookBySeedQuery,
-  useGetBookWorksQuery,
-  useGetBookRatingsQuery,
-  useGetBookAuthorsQuery
+  useGetWorksBySubjectQuery,
+  useGetWorksBySearchQuery,
+  useGetEditionByIdQuery,
+  useGetWorkByIdQuery,
+  useGetRatingsByWorkIdQuery,
+  useGetAuthorByIdQuery
 } = booksApi;

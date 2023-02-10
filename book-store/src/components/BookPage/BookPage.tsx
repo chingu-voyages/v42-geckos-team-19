@@ -3,22 +3,22 @@ import ProductDetails from "../ProductDetails/ProductDetails";
 import ProductDescription from "../ProductDescription/ProductDescription";
 import { Container } from "@chakra-ui/react";
 import { useParams, useNavigate } from 'react-router-dom';
-import { useGetBookWorksQuery, useGetBookBySeedQuery, useGetBookRatingsQuery, useGetBookAuthorsQuery } from "../../store/books/booksSlice";
+import { useGetWorkByIdQuery, useGetRatingsByWorkIdQuery, useGetAuthorByIdQuery } from "../../store/books/booksSlice";
 
 
 export default function BookPage() {
   let { param } = useParams();
   console.log('this is your key param! ' + param)
 
-  const workRes = useGetBookWorksQuery(param!);
-  const ratingsRes = useGetBookRatingsQuery(param!);
+  const workRes = useGetWorkByIdQuery(param!);
+  const ratingsRes = useGetRatingsByWorkIdQuery(param!);
 
   // skip here is redux toolkit's way of allowing conditionally fetching from an api
   // see: https://redux-toolkit.js.org/rtk-query/usage/conditional-fetching
   let skip: boolean;
   skip = (workRes.isLoading) ? true : false;
   let authorData = workRes.isLoading ? '' : workRes.data!.authors[0].author.key.replace('/authors/', '');
-  const authorRes = useGetBookAuthorsQuery(authorData, { skip });
+  const authorRes = useGetAuthorByIdQuery(authorData, { skip });
   console.log(workRes.data);
 
   return (
