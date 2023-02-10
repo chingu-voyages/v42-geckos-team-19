@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Body from "./components/Body/Body.js";
+import Home from "./pages/Home/Home.js";
 import { NavBar } from "./components/NavBar/NavBar";
 import Checkout from "./pages/Checkout/Checkout";
 import Authentication from "./pages/Authentication/Authentication";
@@ -15,7 +15,7 @@ const App = () => {
       <NavBar />
       <ApiProvider api={booksApi}>
         <Routes>
-          <Route path='/' element={<Body />} />
+          <Route path='/' element={<Home />} />
 
           <Route path='categories/:param' element={<Categories />} />
           <Route path='categories/' element={<Categories />} />

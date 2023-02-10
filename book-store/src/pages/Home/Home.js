@@ -1,15 +1,15 @@
 import React from "react";
-import Faq from "../Faq/Faq";
-import data from "../data/data";
-import Hero from "../Hero/Hero";
-import BookCard from "../BookCard/BookCard";
-import HomeGrid from "../HomeGrid/HomeGrid";
-import Checkout from "../../pages/Checkout/Checkout";
+import Faq from "../../components/Faq/Faq";
+import data from "../../components/data/data";
+import Hero from "../../components/Hero/Hero";
+import BookCard from "../../components/BookCard/BookCard";
+import HomeGrid from "../../components/HomeGrid/HomeGrid";
+import Checkout from "../Checkout/Checkout";
 import { Box, Container } from "@chakra-ui/react";
-import "./Body.css";
-import Footer from "../Footer/Footer";
+import "./Home.css";
+import Footer from "../../components/Footer/Footer";
 
-export default function Body() {
+export default function Home() {
   const cards = data.map((card) => {
     return <BookCard key={card.id} card={card} />;
   });
