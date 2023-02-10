@@ -1,9 +1,9 @@
-import React, { FC, useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import Logo from '../../Images/booktown-logo.png';
-import styles from './NavBar.module.css';
-import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
+import React, { FC, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import styles from "./NavBar.module.css";
+import { FaBars, FaSearch } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import { GrCart } from "react-icons/gr";
 
 export const NavBar: FC = () => {
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
@@ -14,64 +14,79 @@ export const NavBar: FC = () => {
 
   return (
     <nav className={styles.navBar}>
-      <a href='/'>
-        <img src={Logo} alt='' className={styles.navBar_img} />
+      <a href="/">
+        <img
+          src="../images/booktown-logo.png"
+          alt=""
+          className={styles.navBar_img}
+        />
       </a>
       {isMobileSearch ? (
-        <button className={styles.navBar_searchBtn} onClick={() => {
-          setIsOpenSearch(!isOpenSearch)
-          setIsOpenList(false)
-        }}>
+        <button
+          className={styles.navBar_searchBtn}
+          onClick={() => {
+            setIsOpenSearch(!isOpenSearch);
+            setIsOpenList(false);
+          }}
+        >
           <FaSearch />
         </button>
       ) : (
         <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBar}>
           <input
             className={styles.navBar_inputText}
-            type='text'
-            placeholder='Find your favorite book'
-          //   value={searchTerm}
-          //   onChange={handleChange}
+            type="text"
+            placeholder="Find your favorite book"
+            //   value={searchTerm}
+            //   onChange={handleChange}
           />
-          <button type='submit' aria-label='Search'>
+          <button type="submit" aria-label="Search">
             <FaSearch />
           </button>
         </form>
       )}
       {isOpenSearch && isMobileSearch ? (
-        <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBarMobile}>
+        <form
+          /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBarMobile}
+        >
           <input
             className={styles.navBar_inputTextMobile}
-            type='text'
-            placeholder='Find your favorite book'
-          //   value={searchTerm}
-          //   onChange={handleChange}
+            type="text"
+            placeholder="Find your favorite book"
+            //   value={searchTerm}
+            //   onChange={handleChange}
           />
-          <button type='submit' aria-label='Search'>
+          <button type="submit" aria-label="Search">
             <FaSearch />
           </button>
         </form>
       ) : (
-        ''
+        ""
       )}
       {isMobileMenu ? (
-        <button className='styles.navBar_menuBtn' onClick={() => { setIsOpenList(!isOpenList); setIsOpenSearch(false) }}>
+        <button
+          className="styles.navBar_menuBtn"
+          onClick={() => {
+            setIsOpenList(!isOpenList);
+            setIsOpenSearch(false);
+          }}
+        >
           <FaBars />
         </button>
       ) : (
         <ul className={styles.navBar_list}>
           <li>
-            <a href='/' tabIndex={0} aria-label='Home'>
+            <a href="/" tabIndex={0} aria-label="Home">
               Home
             </a>
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='Categories'>
+            <a href="#" tabIndex={0} aria-label="Categories">
               Categories
             </a>
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='Wishlist'>
+            <a href="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
             </a>
           </li>
@@ -103,26 +118,26 @@ export const NavBar: FC = () => {
             )}
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='ShoppingCar'>
-              <FaShoppingCart />
+            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+              <GrCart fontSize="1.5em" />
             </a>
           </li>
         </ul>
-      )}{' '}
+      )}{" "}
       {isOpenList && isMobileMenu ? (
         <ul className={styles.navBar_listMobile}>
           <li>
-            <a href='/' tabIndex={0} aria-label='Home'>
+            <a href="/" tabIndex={0} aria-label="Home">
               Home
             </a>
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='Categories'>
+            <a href="#" tabIndex={0} aria-label="Categories">
               Categories
             </a>
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='Wishlist'>
+            <a href="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
             </a>
           </li>
@@ -154,13 +169,13 @@ export const NavBar: FC = () => {
             )}
           </li>
           <li>
-            <a href='#' tabIndex={0} aria-label='ShoppingCar'>
-              <FaShoppingCart style={{ height: '1rem' }} />
+            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+              <GrCart fontSize="1em" />
             </a>
           </li>
         </ul>
       ) : (
-        ''
+        ""
       )}
     </nav>
   );
