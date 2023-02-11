@@ -4,7 +4,10 @@ import data from "../data/data";
 import Hero from "../Hero/Hero";
 import BookCard from "../BookCard/BookCard";
 import HomeGrid from "../HomeGrid/HomeGrid";
-import { Stack, Container } from "@chakra-ui/react";
+import { Stack, Container, Box } from "@chakra-ui/react";
+import Checkout from "../../pages/Checkout/Checkout";
+import "./Body.css";
+import Footer from "../Footer/Footer";
 
 export default function Body() {
   const cards = data.map((card) => {
@@ -22,6 +25,7 @@ export default function Body() {
       </Stack>
       <HomeGrid />
       <Faq />
+      <Footer />
     </Container>
   );
 }

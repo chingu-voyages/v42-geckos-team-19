@@ -6,12 +6,13 @@ const data = [
     description:
       "Tiempos de pandemia. Una historia amena que genera poderosas reflexiones ...",
     price: 49.99,
+    currency: "USD",
     coverImg: "rretos-hhumanos.png",
     stats: {
       rating: 5.0,
       reviewCount: 13,
     },
-    available: 0,
+    quantity: 3,
   },
   {
     id: 2,
@@ -20,13 +21,14 @@ const data = [
     description:
       "¿Por qué hace falta pasión en las organizaciones? Estamos viviendo un cambio...",
     price: 49.99,
+    currency: "USD",
     coverImg: "pasion.png",
     alt: "Pasión by Maryam Varela ",
     stats: {
       rating: 5.0,
       reviewCount: 9,
     },
-    available: 15,
+    quantity: 15,
   },
   {
     id: 3,
@@ -35,13 +37,14 @@ const data = [
     description:
       "La primera guía fácil para desarrollar por uno mismo la inteligencia emocional ...",
     price: 49.99,
+    currency: "USD",
     coverImg: "elmundo-delas-emociones.png",
     alt: "El mundo de las emociones by Maryam Varela ",
     stats: {
       rating: 5.0,
       reviewCount: 16,
     },
-    available: 5,
+    quantity: 10,
   },
 ];
 
