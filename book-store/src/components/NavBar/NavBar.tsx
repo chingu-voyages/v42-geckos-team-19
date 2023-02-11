@@ -1,9 +1,9 @@
 import React, { FC, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import Logo from "../../Images/booktown-logo.png";
 import styles from "./NavBar.module.css";
-import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
+import { FaBars, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { GrCart } from "react-icons/gr";
 
 export const NavBar: FC = () => {
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
@@ -15,7 +15,11 @@ export const NavBar: FC = () => {
   return (
     <nav className={styles.navBar}>
       <a href="/">
-        <img src={Logo} alt="" className={styles.navBar_img} />
+        <img
+          src="../images/booktown-logo.png"
+          alt=""
+          className={styles.navBar_img}
+        />
       </a>
       {isMobileSearch ? (
         <button
@@ -115,7 +119,7 @@ export const NavBar: FC = () => {
           </li>
           <li>
             <a href="#" tabIndex={0} aria-label="ShoppingCar">
-              <FaShoppingCart />
+              <GrCart fontSize="1.5em" />
             </a>
           </li>
         </ul>
@@ -166,7 +170,7 @@ export const NavBar: FC = () => {
           </li>
           <li>
             <a href="#" tabIndex={0} aria-label="ShoppingCar">
-              <FaShoppingCart style={{ height: "1rem" }} />
+              <GrCart fontSize="1em" />
             </a>
           </li>
         </ul>

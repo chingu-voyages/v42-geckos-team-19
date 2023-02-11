@@ -1,4 +1,5 @@
 import React from "react";
+<<<<<<< HEAD:book-store/src/components/Body/Body.js
 import Faq from "../Faq/Faq";
 import data from "../data/data";
 import Hero from "../Hero/Hero";
@@ -8,8 +9,19 @@ import { Stack, Container, Box } from "@chakra-ui/react";
 import Checkout from "../../pages/Checkout/Checkout";
 import "./Body.css";
 import Footer from "../Footer/Footer";
+=======
+import Faq from "../../components/Faq/Faq";
+import data from "../../components/data/data";
+import Hero from "../../components/Hero/Hero";
+import BookCard from "../../components/BookCard/BookCard";
+import HomeGrid from "../../components/HomeGrid/HomeGrid";
+import Checkout from "../Checkout/Checkout";
+import { Box, Container } from "@chakra-ui/react";
+import "./Home.css";
+import Footer from "../../components/Footer/Footer";
+>>>>>>> development:book-store/src/pages/Home/Home.js
 
-export default function Body() {
+export default function Home() {
   const cards = data.map((card) => {
     return <BookCard key={card.id} card={card} />;
   });
