@@ -1,5 +1,9 @@
 import React from "react";
 import {
+  useGetWorkByIdQuery,
+  useGetAuthorByIdQuery,
+} from "../../store/books/booksSlice";
+import {
   Card,
   CardBody,
   Heading,
@@ -13,78 +17,83 @@ import {
   Box,
 } from "@chakra-ui/react";
 
-export default function BookCard(props) {
-  return (
-    <Box
-      display="flex"
-      alignItems="center"
-      justifyContent={{ base: "center", md: "space-around" }}
-    >
-      <Card
-        maxW={{ base: "lg", md: "md" }}
-        boxShadow="xl"
-        my={{ base: 10, md: 0 }}
-        mx={{ base: 0, md: 0 }}
-        fontFamily="Poppins"
+export default function BookCard({ workId }) {
+  const { data, isLoading, isError } = useGetWorkByIdQuery(workId);
+
+  if (!isLoading) {
+    console.log(data.authors[0].author.key);
+    return (
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent={{ base: "center", md: "space-around" }}
       >
-        <CardBody>
-          <Image
-            src={`../images/${props.card.coverImg}`}
-            alt={props.card.alt}
-            borderRadius="lg"
-            boxSize="100%"
-          />
-          <Stack mt="6" spacing="3">
-            <Heading size="sm">{props.card.title}</Heading>
-            <Text>{props.card.description}</Text>
-          </Stack>
-          <Divider my="6" borderColor="#D9D9D9" />
-          <Grid
-            templateRows="repeat(2, 1fr)"
-            templateColumns="repeat(2, 1fr)"
-            gap={2}
-            mb="5"
-          >
-            <GridItem w="100%" h="5">
-              <Text ml="3" color="#61625F">
-                Author
-              </Text>
-            </GridItem>
-            <GridItem w="100%" h="5">
-              <Text ml="20" color="#61625F">
-                Price
-              </Text>
-            </GridItem>
-            <GridItem w="100%" h="5">
-              <Text as="b" ml="3">
-                {props.card.author}
-              </Text>
-            </GridItem>
-            <GridItem w="100%" h="5">
-              <Text ml="20" as="b">
-                ${props.card.price}
-              </Text>
-            </GridItem>
-          </Grid>
-          <Stack align="center">
-            <Button
-              bgColor="white"
-              color="#E4573D"
-              colorScheme="E4573D"
-              size="md"
-              rounded="sm"
-              px="12"
-              py="6"
-              my="5"
-              variant="outline"
-              _hover={{ bg: "#E4573D", color: "white" }}
-              letterSpacing="2px"
+        <Card
+          maxW={{ base: "lg", md: "md" }}
+          boxShadow="xl"
+          my={{ base: 10, md: 0 }}
+          mx={{ base: 0, md: 0 }}
+          fontFamily="Poppins"
+        >
+          <CardBody>
+            <Image
+              src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-M.jpg`}
+              borderRadius="lg"
+              boxSize="100%"
+            />
+            <Stack mt="6" spacing="3">
+              <Heading size="sm">{data.title}</Heading>
+            </Stack>
+            <Divider my="6" borderColor="#D9D9D9" />
+            <Grid
+              templateRows="repeat(2, 1fr)"
+              templateColumns="repeat(2, 1fr)"
+              gap={2}
+              mb="5"
             >
-              Read More
-            </Button>
-          </Stack>
-        </CardBody>
-      </Card>
-    </Box>
-  );
+              <GridItem w="100%" h="5">
+                <Text ml="3" color="#61625F">
+                  Author
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="5">
+                <Text ml="20" color="#61625F">
+                  Price
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="5">
+                <Text as="b" ml="3">
+                  {data.authors[0].author.key}
+                </Text>
+              </GridItem>
+              <GridItem w="100%" h="5">
+                <Text ml="20" as="b">
+                  $49.99
+                </Text>
+              </GridItem>
+            </Grid>
+            <Stack align="center">
+              <Button
+                bgColor="white"
+                color="#E4573D"
+                colorScheme="E4573D"
+                size="md"
+                rounded="sm"
+                px="12"
+                py="6"
+                my="5"
+                variant="outline"
+                _hover={{ bg: "#E4573D", color: "white" }}
+                letterSpacing="2px"
+              >
+                Read More
+              </Button>
+            </Stack>
+          </CardBody>
+        </Card>
+      </Box>
+    );
+  } else {
+    return null;
+  }
 }
