@@ -11,8 +11,8 @@ export default function SearchResults() {
 
   return (
     <Container maxW="1400px">
-      <BookCard />
-      
+      {/* <BookCard /> */}
+      HELLO
     </Container>
   );
 }

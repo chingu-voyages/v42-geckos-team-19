@@ -8,12 +8,15 @@ import Checkout from "../Checkout/Checkout";
 import { Box, Container } from "@chakra-ui/react";
 import "./Home.css";
 import Footer from "../../components/Footer/Footer";
+import { useSearchParams } from "react-router-dom";
 
 export default function Home() {
   const cards = data.map((card) => {
     return <BookCard key={card.id} card={card} />;
   });
 
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log(searchParams);
   return (
     <Container maxW="1400px">
       <Hero />

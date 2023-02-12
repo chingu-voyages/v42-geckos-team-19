@@ -11,13 +11,14 @@ import BookPage from './components/BookPage/BookPage';
 import SearchResults from "./pages/SearchResults/SearchResults";
 
 const App = () => {
+
   return (
     <Router>
       <NavBar />
       <ApiProvider api={booksApi}>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/:param' element={<SearchResults />} />
+          <Route path=':param' element={<SearchResults />} />
           <Route path='categories/:param' element={<Categories />} />
           <Route path='categories/' element={<Categories />} />
           <Route path="/book/:param" element={<BookPage />} />
