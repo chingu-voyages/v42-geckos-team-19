@@ -46,7 +46,7 @@ const SignUpForm = () => {
                 my="4"
                 spacing="8"
                 p="12"
-                h="650px"
+                h="700px"
                 align="center"
                 w={{ sm: "sm", md: "base", lg: "md", xl: "lg" }}
               >
@@ -74,7 +74,7 @@ const SignUpForm = () => {
                   name="password"
                   type="password"
                   placeholder="Enter password"
-                  mb="2"
+                  mb="3"
                   id="email_signup"
                 />
                 <CustomInput
