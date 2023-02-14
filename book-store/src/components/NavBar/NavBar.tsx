@@ -10,8 +10,8 @@ import { useSelector } from "react-redux";
 
 
 const NavBar: FC = () => {
-const navigate = useNavigate();
-const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
@@ -55,8 +55,8 @@ const dispatch = useAppDispatch();
             className={styles.navBar_inputText}
             type="text"
             placeholder="Find your favorite book"
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -71,8 +71,8 @@ const dispatch = useAppDispatch();
             className={styles.navBar_inputTextMobile}
             type="text"
             placeholder="Find your favorite book"
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -122,15 +122,27 @@ const dispatch = useAppDispatch();
                     Profile
                   </Link>
                 </li>
+
                 <li>
-                  <Link to='auth' aria-label='Sign Up'>
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link to='auth' aria-label='Login'>
-                    Login
-                  </Link>
+                  {currentUser
+                    ? (
+                      <Link to="/" onClick={() => dispatch(signOut())}>
+                        Sign out
+                      </Link>
+                    )
+                    : (<>
+                      <li>
+                        <Link to="/auth" aria-label="Login">
+                          Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='auth' aria-label='Sign Up'>
+                          Sign Up
+                        </Link>
+                      </li>
+                    </>)
+                  }
                 </li>
               </ul>
             )}
