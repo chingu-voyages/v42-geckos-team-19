@@ -33,17 +33,13 @@ const App = () => {
   return (
     <Router>
       <NavBar />
-      <ApiProvider api={booksApi}>
         <Routes>
           <Route path='/' element={<Home />} />
-
           <Route path='categories/:param' element={<Categories />} />
           <Route path='categories/' element={<Categories />} />
           <Route path="/book/:param" element={<BookPage />} />
           <Route path="*" element={<div><h1>404</h1></div>} />
           <Route path="/auth" element={<Authentication />} />
-
-          <Route path='/authentication' element={<Authentication />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route
             path="/account"
@@ -54,7 +50,6 @@ const App = () => {
             }
           />
         </Routes>
-      </ApiProvider>
     </Router>
   );
 };
