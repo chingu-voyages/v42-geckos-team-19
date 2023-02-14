@@ -2,10 +2,17 @@ import React, { FC, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import styles from "./NavBar.module.css";
 import { FaBars, FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GrCart } from "react-icons/gr";
+import { useAppDispatch } from "../../hooks";
+import { selectCurrentUser, signOut } from "../../store/user/userSlice";
+import { useSelector } from "react-redux";
+
 
 const NavBar: FC = () => {
+const navigate = useNavigate();
+const dispatch = useAppDispatch();
+  const currentUser = useSelector(selectCurrentUser);
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(false);
