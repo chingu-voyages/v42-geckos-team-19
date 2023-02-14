@@ -16,6 +16,8 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+import { GrCart } from "react-icons/gr";
+import { FaRegHeart } from "react-icons/fa";
 
 export default function BookCard({ workId }) {
   const { data, isLoading, isError } = useGetWorkByIdQuery(workId);
@@ -32,11 +34,21 @@ export default function BookCard({ workId }) {
         <Card
           maxW={{ base: "lg", md: "md" }}
           boxShadow="xl"
-          my={{ base: 10, md: 0 }}
+          my={{ base: 10, md: 10 }}
           mx={{ base: 0, md: 0 }}
           fontFamily="Poppins"
         >
           <CardBody>
+            <Stack
+              direction="row"
+              spacing="10px"
+              justifyContent="right"
+              mt="10px"
+              mb="20px"
+            >
+              <GrCart fontSize="1.5em" />
+              <FaRegHeart fontSize="1.5em" />
+            </Stack>
             <Image
               src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-L.jpg`}
               borderRadius="lg"

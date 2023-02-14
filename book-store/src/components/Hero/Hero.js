@@ -14,7 +14,7 @@ export default function Hero() {
   return (
     <Stack
       p={{ base: 5, md: 10 }}
-      mb={{ base: 0, lg: 40, md: 0 }}
+      mb={{ base: 0, lg: 30, md: 0 }}
       direction={{ base: "column", md: "row" }}
       bgImage={{
         base: "url(../images/hero-banners/BookTown-Hero-Tablet-768px.png)",
