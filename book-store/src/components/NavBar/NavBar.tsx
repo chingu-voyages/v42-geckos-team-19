@@ -2,11 +2,7 @@ import React, { FC, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import styles from "./NavBar.module.css";
 import { FaBars, FaSearch } from "react-icons/fa";
-<<<<<<< HEAD
 import { Link, useNavigate } from 'react-router-dom';
-=======
-import { Link } from "react-router-dom";
->>>>>>> nasiro/homepage-body
 import { GrCart } from "react-icons/gr";
 import { useAppDispatch } from "../../hooks";
 import { selectCurrentUser, signOut } from "../../store/user/userSlice";
