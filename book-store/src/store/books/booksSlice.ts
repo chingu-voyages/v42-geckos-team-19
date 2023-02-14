@@ -1,5 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { WorksBySubject, WorksBySearch, Edition, Work, BookRatings, BookAuthor, getBooksBySubjectOptions } from "./types";
+import {
+  WorksBySubject,
+  WorksBySearch,
+  Edition,
+  Work,
+  BookRatings,
+  BookAuthor,
+  getBooksBySubjectOptions,
+} from "./types";
 
 export const booksApi = createApi({
   reducerPath: "booksAPI",
@@ -8,7 +16,8 @@ export const booksApi = createApi({
   }),
   endpoints: (builder) => ({
     getWorksBySubject: builder.query<WorksBySubject, getBooksBySubjectOptions>({
-      query: (options) => `subjects/${options.subject}.json?limit=${options.limit}&offset=${options.offset}`,
+      query: (options) =>
+        `subjects/${options.subject}.json?limit=${options.limit}&offset=${options.offset}`,
     }),
     getWorksBySearch: builder.query<WorksBySearch, string>({
       query: (queryTerm) => `search.json?q=${queryTerm}`,
@@ -26,7 +35,8 @@ export const booksApi = createApi({
       query: (authorId) => `authors/${authorId}.json`,
     }),
     // Book Cover https://covers.openlibrary.org/b/$key/$value-$size.jpg
-    // key ISBN (isbn_13) or ID (cover)
+    // key ISBN (isbn_13) or id (cover)
+    // value is the cover id
     // S, M , L sizes
   }),
 });
@@ -37,5 +47,5 @@ export const {
   useGetEditionByIdQuery,
   useGetWorkByIdQuery,
   useGetRatingsByWorkIdQuery,
-  useGetAuthorByIdQuery
+  useGetAuthorByIdQuery,
 } = booksApi;
