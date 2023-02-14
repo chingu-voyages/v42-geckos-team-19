@@ -22,6 +22,7 @@ export default function BookCard({ workId }) {
 
   if (!isLoading) {
     console.log(data.authors[0].author.key);
+    console.log(data);
     return (
       <Box
         display="flex"
@@ -37,12 +38,13 @@ export default function BookCard({ workId }) {
         >
           <CardBody>
             <Image
-              src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-M.jpg`}
+              src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-L.jpg`}
               borderRadius="lg"
               boxSize="100%"
             />
             <Stack mt="6" spacing="3">
               <Heading size="sm">{data.title}</Heading>
+              <Text noOfLines={2}>{data.description}</Text>
             </Stack>
             <Divider my="6" borderColor="#D9D9D9" />
             <Grid

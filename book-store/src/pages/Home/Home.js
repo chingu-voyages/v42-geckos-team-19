@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { Container, Stack } from "@chakra-ui/react";
 import "./Home.css";
 
-const BOOKS_DATA = ["OL17860744W", "OL17860744W", "OL17860744W"];
+const BOOKS_DATA = ["OL17860744W", "OL17823218W", "OL17352669W"];
 
 export default function Home() {
   return (
