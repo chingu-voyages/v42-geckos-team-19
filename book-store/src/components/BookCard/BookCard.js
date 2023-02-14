@@ -27,12 +27,9 @@ export default function BookCard({ workId }) {
   const authorId = workRes.isLoading ? '' : workRes.data.authors[0].author.key.replace('/authors/', '');
   const authorRes = useGetAuthorByIdQuery(authorId, { skip });
 
-  console.log({authorRes});
 
 
   if (!workRes.isLoading && !authorRes.isLoading) {
-    console.log(workRes.data.authors[0].author.key);
-    console.log(workRes.data);
     return (
       <Box
         display="flex"
