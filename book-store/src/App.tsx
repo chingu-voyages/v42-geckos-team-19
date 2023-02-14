@@ -24,7 +24,7 @@ const App = () => {
 
   const RequireAuth = ({ children }: { children: React.ReactNode }) => {
     if (currentUser && children) {
-      return <>children</>;
+      return <>{children}</>;
     } else  {
       return <Navigate to="/auth" />
     }
