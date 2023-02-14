@@ -118,17 +118,17 @@ const dispatch = useAppDispatch();
             {toggle && (
               <ul className={styles.navBar_toggleList}>
                 <li>
-                  <Link to='authentication' aria-label='Profile'>
+                  <Link to='auth' aria-label='Profile'>
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Sign Up'>
+                  <Link to='auth' aria-label='Sign Up'>
                     Sign Up
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Login'>
+                  <Link to='auth' aria-label='Login'>
                     Login
                   </Link>
                 </li>
@@ -169,17 +169,17 @@ const dispatch = useAppDispatch();
             {toggle && (
               <ul className={styles.navBar_toggleListMobile}>
                 <li>
-                  <Link to='authentication' aria-label='Profile'>
+                  <Link to='auth' aria-label='Profile'>
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Sign Up'>
+                  <Link to='auth' aria-label='Sign Up'>
                     Sign Up
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Login'>
+                  <Link to='auth' aria-label='Login'>
                     Login
                   </Link>
                 </li>
