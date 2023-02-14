@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { GrCart } from "react-icons/gr";
 import { FaRegHeart } from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 export default function BookCard({ workId }) {
   const workRes = useGetWorkByIdQuery(workId);
@@ -27,7 +28,7 @@ export default function BookCard({ workId }) {
   const authorId = workRes.isLoading ? '' : workRes.data.authors[0].author.key.replace('/authors/', '');
   const authorRes = useGetAuthorByIdQuery(authorId, { skip });
 
-
+  const navigate = useNavigate();
 
   if (!workRes.isLoading && !authorRes.isLoading) {
     return (
@@ -104,6 +105,7 @@ export default function BookCard({ workId }) {
                 variant="outline"
                 _hover={{ bg: "#E4573D", color: "white" }}
                 letterSpacing="2px"
+                onClick={e => navigate('/book/' + workId)}
               >
                 Read More
               </Button>
