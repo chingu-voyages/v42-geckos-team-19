@@ -31,12 +31,12 @@ export default function Hero() {
           md: "none",
         }}
         position="absolute"
-        top="0"
+        top="12"
         left="4"
         width="800px"
-        height="650px"
+        height="700px"
         zIndex="0"
-        opacity="0.7"
+        opacity="0.8"
       ></Box>
       <Stack
         pos="relative"
