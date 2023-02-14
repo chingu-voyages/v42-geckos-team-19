@@ -20,11 +20,19 @@ import { GrCart } from "react-icons/gr";
 import { FaRegHeart } from "react-icons/fa";
 
 export default function BookCard({ workId }) {
-  const { data, isLoading, isError } = useGetWorkByIdQuery(workId);
+  const workRes = useGetWorkByIdQuery(workId);
 
-  if (!isLoading) {
-    console.log(data.authors[0].author.key);
-    console.log(data);
+  
+  const skip = (workRes.isLoading) ? true : false;
+  const authorId = workRes.isLoading ? '' : workRes.data.authors[0].author.key.replace('/authors/', '');
+  const authorRes = useGetAuthorByIdQuery(authorId, { skip });
+
+  console.log({authorRes});
+
+
+  if (!workRes.isLoading && !authorRes.isLoading) {
+    console.log(workRes.data.authors[0].author.key);
+    console.log(workRes.data);
     return (
       <Box
         display="flex"
@@ -50,13 +58,13 @@ export default function BookCard({ workId }) {
               <FaRegHeart fontSize="1.5em" />
             </Stack>
             <Image
-              src={`https://covers.openlibrary.org/b/id/${data.covers[0]}-L.jpg`}
+              src={`https://covers.openlibrary.org/b/id/${workRes.data.covers[0]}-L.jpg`}
               borderRadius="lg"
               boxSize="100%"
             />
             <Stack mt="6" spacing="3">
-              <Heading size="sm">{data.title}</Heading>
-              <Text noOfLines={2}>{data.description}</Text>
+              <Heading size="sm">{workRes.data.title}</Heading>
+              <Text noOfLines={2}>{workRes.data.description}</Text>
             </Stack>
             <Divider my="6" borderColor="#D9D9D9" />
             <Grid
@@ -77,7 +85,7 @@ export default function BookCard({ workId }) {
               </GridItem>
               <GridItem w="100%" h="5">
                 <Text as="b" ml="3">
-                  {data.authors[0].author.key}
+                  {authorRes.data.name}
                 </Text>
               </GridItem>
               <GridItem w="100%" h="5">
