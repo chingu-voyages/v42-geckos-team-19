@@ -32,13 +32,13 @@ const dispatch = useAppDispatch();
   };
   return (
     <nav className={styles.navBar}>
-      <a href="/">
+      <Link to="/">
         <img
           src="../images/booktown-logo.png"
           alt=""
           className={styles.navBar_img}
         />
-      </a>
+      </Link>
       {isMobileSearch ? (
         <button
           className={styles.navBar_searchBtn}
@@ -94,19 +94,19 @@ const dispatch = useAppDispatch();
       ) : (
         <ul className={styles.navBar_list}>
           <li>
-            <a href="/" tabIndex={0} aria-label="Home">
+            <Link to="/" tabIndex={0} aria-label="Home">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Categories">
+            <Link to="/categories" tabIndex={0} aria-label="Categories">
               Categories
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Wishlist">
+            <Link to="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
-            </a>
+            </Link>
           </li>
           <li className={styles.navBar_buttonProfile}>
             <button
@@ -136,28 +136,28 @@ const dispatch = useAppDispatch();
             )}
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+            <Link to="#" tabIndex={0} aria-label="ShoppingCart">
               <GrCart fontSize="1.5em" />
-            </a>
+            </Link>
           </li>
         </ul>
       )}{" "}
       {isOpenList && isMobileMenu ? (
         <ul className={styles.navBar_listMobile}>
           <li>
-            <a href="/" tabIndex={0} aria-label="Home">
+            <Link to="/" tabIndex={0} aria-label="Home">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Categories">
+            <Link to="/categories" tabIndex={0} aria-label="Categories">
               Categories
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Wishlist">
+            <Link to="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
-            </a>
+            </Link>
           </li>
           <li className={styles.navBar_buttonProfile}>
             <button
@@ -187,9 +187,9 @@ const dispatch = useAppDispatch();
             )}
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+            <Link to="#" tabIndex={0} aria-label="ShoppingCar">
               <GrCart fontSize="1em" />
-            </a>
+            </Link>
           </li>
         </ul>
       ) : (
