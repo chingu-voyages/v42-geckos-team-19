@@ -32,7 +32,7 @@ const TextIcon = ({ icon, text }: TextIconProps) => {
 const UserAccount = () => {
   const currentUser = useSelector(selectCurrentUser);
   return (
-    <Center>
+    <Center mt={16}>
       {currentUser ? (
         <Flex
           gap={{ base: "8", md: "24" }}

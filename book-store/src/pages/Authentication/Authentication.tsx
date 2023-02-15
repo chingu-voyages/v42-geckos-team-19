@@ -1,10 +1,22 @@
+import { useEffect } from "react";
 import SignInForm from "../../components/SignInForm/SignInForm";
 import { Center, Heading, Stack, VStack } from "@chakra-ui/react";
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
+import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../store/user/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const Authentication = () => {
+  const currentUser = useSelector(selectCurrentUser);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/account");
+    }
+  });
+
   return (
-    <Center>
+    <Center mb="32">
       <VStack>
         <Heading
           as="h1"

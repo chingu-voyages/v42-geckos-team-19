@@ -2,25 +2,43 @@ import React, { FC, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import styles from "./NavBar.module.css";
 import { FaBars, FaSearch } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GrCart } from "react-icons/gr";
+import { useAppDispatch } from "../../hooks";
+import { selectCurrentUser, signOut } from "../../store/user/userSlice";
+import { useSelector } from "react-redux";
 
-export const NavBar: FC = () => {
+
+const NavBar: FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const currentUser = useSelector(selectCurrentUser);
   const [isOpenList, setIsOpenList] = useState<boolean>(false);
   const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false);
   const [toggle, setToggle] = useState<boolean>(false);
+  const [searchValue, setSearchValue] = useState("");
+
   const isMobileSearch = useMediaQuery({ maxWidth: 479 });
   const isMobileMenu = useMediaQuery({ maxWidth: 967 });
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSearchValue(value);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // navigate(`categories/${searchValue}`);
+  };
   return (
     <nav className={styles.navBar}>
-      <a href="/">
+      <Link to="/">
         <img
           src="../images/booktown-logo.png"
           alt=""
           className={styles.navBar_img}
         />
-      </a>
+      </Link>
       {isMobileSearch ? (
         <button
           className={styles.navBar_searchBtn}
@@ -37,8 +55,8 @@ export const NavBar: FC = () => {
             className={styles.navBar_inputText}
             type="text"
             placeholder="Find your favorite book"
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -53,8 +71,8 @@ export const NavBar: FC = () => {
             className={styles.navBar_inputTextMobile}
             type="text"
             placeholder="Find your favorite book"
-            //   value={searchTerm}
-            //   onChange={handleChange}
+          //   value={searchTerm}
+          //   onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -76,19 +94,19 @@ export const NavBar: FC = () => {
       ) : (
         <ul className={styles.navBar_list}>
           <li>
-            <a href="/" tabIndex={0} aria-label="Home">
+            <Link to="/" tabIndex={0} aria-label="Home">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Categories">
+            <Link to="/categories" tabIndex={0} aria-label="Categories">
               Categories
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Wishlist">
+            <Link to="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
-            </a>
+            </Link>
           </li>
           <li className={styles.navBar_buttonProfile}>
             <button
@@ -100,46 +118,58 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleList}>
                 <li>
-                  <Link to='authentication' aria-label='Profile'>
+                  <Link to='auth' aria-label='Profile'>
                     Profile
                   </Link>
                 </li>
+
                 <li>
-                  <Link to='authentication' aria-label='Sign Up'>
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <Link to='authentication' aria-label='Login'>
-                    Login
-                  </Link>
+                  {currentUser
+                    ? (
+                      <Link to="/" onClick={() => dispatch(signOut())}>
+                        Sign out
+                      </Link>
+                    )
+                    : (<>
+                      <li>
+                        <Link to="/auth" aria-label="Login">
+                          Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to='auth' aria-label='Sign Up'>
+                          Sign Up
+                        </Link>
+                      </li>
+                    </>)
+                  }
                 </li>
               </ul>
             )}
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+            <Link to="#" tabIndex={0} aria-label="ShoppingCart">
               <GrCart fontSize="1.5em" />
-            </a>
+            </Link>
           </li>
         </ul>
       )}{" "}
       {isOpenList && isMobileMenu ? (
         <ul className={styles.navBar_listMobile}>
           <li>
-            <a href="/" tabIndex={0} aria-label="Home">
+            <Link to="/" tabIndex={0} aria-label="Home">
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Categories">
+            <Link to="/categories" tabIndex={0} aria-label="Categories">
               Categories
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="Wishlist">
+            <Link to="#" tabIndex={0} aria-label="Wishlist">
               Wishlist
-            </a>
+            </Link>
           </li>
           <li className={styles.navBar_buttonProfile}>
             <button
@@ -151,17 +181,17 @@ export const NavBar: FC = () => {
             {toggle && (
               <ul className={styles.navBar_toggleListMobile}>
                 <li>
-                  <Link to='authentication' aria-label='Profile'>
+                  <Link to='auth' aria-label='Profile'>
                     Profile
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Sign Up'>
+                  <Link to='auth' aria-label='Sign Up'>
                     Sign Up
                   </Link>
                 </li>
                 <li>
-                  <Link to='authentication' aria-label='Login'>
+                  <Link to='auth' aria-label='Login'>
                     Login
                   </Link>
                 </li>
@@ -169,9 +199,9 @@ export const NavBar: FC = () => {
             )}
           </li>
           <li>
-            <a href="#" tabIndex={0} aria-label="ShoppingCar">
+            <Link to="#" tabIndex={0} aria-label="ShoppingCar">
               <GrCart fontSize="1em" />
-            </a>
+            </Link>
           </li>
         </ul>
       ) : (
@@ -180,3 +210,5 @@ export const NavBar: FC = () => {
     </nav>
   );
 };
+
+export default NavBar;
