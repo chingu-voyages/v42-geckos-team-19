@@ -12,9 +12,7 @@ import {
 import data from "../../components/data/data";
 import {
   Card,
-  CardHeader,
   CardBody,
-  CardFooter,
   Heading,
   Grid,
   Divider,

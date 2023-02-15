@@ -4,9 +4,9 @@ import {
   Select,
   useColorModeValue,
   IconButton,
+  Text,
 } from "@chakra-ui/react";
 import { FiTrash2 } from "react-icons/fi";
-import { CartPriceTag } from "../CartPriceTag/CartPriceTag";
 import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
 const QuantitySelect = (props) => {
   return (
@@ -30,8 +30,6 @@ export const CartItem = (props) => {
     description,
     quantity,
     coverImg,
-    currency,
-    price,
     onChangeQuantity,
     onClickDelete,
   } = props;
@@ -65,7 +63,7 @@ export const CartItem = (props) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-        <CartPriceTag price={price} currency={currency} />
+        <Text>$49.99</Text>
         <IconButton
           variant="outline"
           borderColor="transparent"
@@ -96,7 +94,7 @@ export const CartItem = (props) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         />
-        <CartPriceTag price={price} currency={currency} />
+        <Text>$49.99</Text>
       </Flex>
     </Flex>
   );
