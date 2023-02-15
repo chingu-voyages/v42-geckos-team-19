@@ -30,11 +30,6 @@ export default function SearchResults() {
   const searchRes = useGetWorksBySearchQuery(options, { skip });
   console.log({ skip, isLoading: searchRes.isLoading });
   console.log(searchRes.data);
-
-  if (searchRes.data && searchRes.data.docs) {
-    let docs: Doc[] = searchRes.data.docs
-  }
-
  
   return (
     <Container maxW="1400px">
