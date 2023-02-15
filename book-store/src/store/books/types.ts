@@ -29,7 +29,7 @@ export type WorksBySearch = {
     title: string; 
     authorKey: string[];
     author_name: string[];
-    cover_i: string;
+    cover_i?: string;
   }[];
 };
 
