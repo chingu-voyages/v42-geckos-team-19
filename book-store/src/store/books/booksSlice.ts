@@ -6,7 +6,8 @@ import {
   Work,
   BookRatings,
   BookAuthor,
-  getBooksBySubjectOptions,
+  getWorksBySubjectOptions,
+  getWorksBySearchOptions
 } from "./types";
 
 export const booksApi = createApi({
@@ -15,12 +16,12 @@ export const booksApi = createApi({
     baseUrl: "https://openlibrary.org/",
   }),
   endpoints: (builder) => ({
-    getWorksBySubject: builder.query<WorksBySubject, getBooksBySubjectOptions>({
+    getWorksBySubject: builder.query<WorksBySubject, getWorksBySubjectOptions>({
       query: (options) =>
         `subjects/${options.subject}.json?limit=${options.limit}&offset=${options.offset}`,
     }),
-    getWorksBySearch: builder.query<WorksBySearch, string>({
-      query: (queryTerm) => `search.json?q=${queryTerm}`,
+    getWorksBySearch: builder.query<WorksBySearch, getWorksBySearchOptions>({
+      query: (options) => `search.json?q=${options.queryTerm}&limit=${options.limit}&offset=${options.offset}`,
     }),
     getEditionById: builder.query<Edition, string>({
       query: (editionId) => `books/${editionId}.json`,
