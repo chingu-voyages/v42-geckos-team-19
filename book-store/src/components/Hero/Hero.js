@@ -9,8 +9,10 @@ import {
   Heading,
   Image,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const navigate = useNavigate();
   return (
     <Stack
       p={{ base: 5, md: 10 }}
@@ -98,6 +100,7 @@ export default function Hero() {
             fontFamily="Poppins"
             fontWeight="bold"
             letterSpacing="2px"
+            onClick={(e) => navigate("/categories")}
           >
             Explore Now
           </Button>
