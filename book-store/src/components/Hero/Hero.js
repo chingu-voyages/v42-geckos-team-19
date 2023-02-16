@@ -100,7 +100,7 @@ export default function Hero() {
             fontFamily="Poppins"
             fontWeight="bold"
             letterSpacing="2px"
-            onClick={(e) => navigate("/categories")}
+            onClick={(e) => navigate("/categories/general")}
           >
             Explore Now
           </Button>
