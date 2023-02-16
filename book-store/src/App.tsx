@@ -36,7 +36,7 @@ const App = () => {
       <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path=':param' element={<SearchResults />} />
+          <Route path='/search' element={<SearchResults />} />
           <Route path='categories/:param' element={<Categories />} />
           <Route path='categories/' element={<Categories />} />
           <Route path="/book/:param" element={<BookPage />} />

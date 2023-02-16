@@ -28,8 +28,10 @@ const NavBar: FC = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // navigate(`categories/${searchValue}`);
+    navigate(`/search/?q=${searchValue}`);
   };
+
+  
   return (
     <nav className={styles.navBar}>
       <Link to="/">
@@ -50,13 +52,13 @@ const NavBar: FC = () => {
           <FaSearch />
         </button>
       ) : (
-        <form /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBar}>
+        <form onSubmit={handleSubmit} className={styles.navBar_searchBar}>
           <input
             className={styles.navBar_inputText}
             type="text"
             placeholder="Find your favorite book"
-          //   value={searchTerm}
-          //   onChange={handleChange}
+            value={searchValue}
+            onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -65,14 +67,14 @@ const NavBar: FC = () => {
       )}
       {isOpenSearch && isMobileSearch ? (
         <form
-          /*onSubmit={handleSubmit}*/ className={styles.navBar_searchBarMobile}
+          onSubmit={handleSubmit} className={styles.navBar_searchBarMobile}
         >
           <input
             className={styles.navBar_inputTextMobile}
             type="text"
             placeholder="Find your favorite book"
-          //   value={searchTerm}
-          //   onChange={handleChange}
+            value={searchValue}
+            onChange={handleChange}
           />
           <button type="submit" aria-label="Search">
             <FaSearch />
@@ -99,7 +101,7 @@ const NavBar: FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/categories" tabIndex={0} aria-label="Categories">
+            <Link to="/categories/general" tabIndex={0} aria-label="Categories">
               Categories
             </Link>
           </li>

@@ -15,7 +15,7 @@ export type WorksBySubject = {
   works: WorkBySubject[];
 };
 
-export type getBooksBySubjectOptions = {
+export type getWorksBySubjectOptions = {
   subject: string;
   limit: number;
   offset: number;
@@ -23,8 +23,21 @@ export type getBooksBySubjectOptions = {
 
 export type WorksBySearch = {
   numFound: number;
-  docs: [seed: string[]];
+  docs: {
+    key: string; 
+    type: string; 
+    title: string; 
+    authorKey: string[];
+    author_name: string[];
+    cover_i?: string;
+  }[];
 };
+
+export type getWorksBySearchOptions = {
+  queryTerm: string;
+  limit: number;
+  offset: number;
+}
 
 export type Edition = {
   title: string;
