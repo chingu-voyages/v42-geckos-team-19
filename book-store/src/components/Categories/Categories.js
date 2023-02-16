@@ -22,7 +22,9 @@ import {
     TableCaption,
     TableContainer,
     Text,
-    Flex
+    Flex,
+    Grid,
+    GridItem
 } from '@chakra-ui/react';
 import { useGetWorksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
@@ -70,7 +72,7 @@ export default function Categories() {
                             <PopoverTrigger>
                                 <Button mx="5" p="6" size="lg">
                                     <Box fontSize="1.5em" mb="1">
-                                        {param.includes('general')
+                                        {param == 'general'
                                             ? 'General'
                                             : (param.includes('fiction')
                                                   ? 'Fiction > '
@@ -96,13 +98,16 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            <Table variant="simple" size="sm">
-                                                <Tbody>
-                                                    <CategoriesFilterFunc
-                                                        fiction={1}
-                                                    />
-                                                </Tbody>
-                                            </Table>
+                                            {/* TODO: Make categories display neatly in a grid/table */}
+                                            <Grid
+                                                templateColumns="repeat(5, 1fr)"
+                                                gap={1}
+                                                h="60px"
+                                            >
+                                                <CategoriesFilterFunc
+                                                    fiction={1}
+                                                />
+                                            </Grid>
                                         </Box>
                                     </TableContainer>
                                 </PopoverBody>
@@ -112,13 +117,16 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            <Table variant="simple">
-                                                <Tbody>
-                                                    <CategoriesFilterFunc
-                                                        fiction={0}
-                                                    />
-                                                </Tbody>
-                                            </Table>
+                                            {/* TODO: Make categories display neatly in a grid/table */}
+                                            <Grid
+                                                templateColumns="repeat(5, 1fr)"
+                                                gap={1}
+                                                h="60px"
+                                            >
+                                                <CategoriesFilterFunc
+                                                    fiction={0}
+                                                />
+                                            </Grid>
                                         </Box>
                                     </TableContainer>
                                 </PopoverBody>

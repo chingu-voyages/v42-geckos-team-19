@@ -1,4 +1,4 @@
-import { Td } from '@chakra-ui/react';
+import { GridItem } from '@chakra-ui/react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 // Must manually specify extension; too many variations
@@ -17,7 +17,17 @@ const NONFICTION_SUBJECTS = [
     ['Biography', 'biography'],
     ['Travel', 'travel'],
     ['Business', 'business'],
-    ['Religion', 'religion']
+    ['Religion', 'religion'],
+    ['Cookbooks', 'cookbooks'],
+    ['Self-help', 'self-help'],
+    ['Psychology', 'psychology'],
+    ['Music', 'music'],
+    ['Education', 'education'],
+    ['Anthropology', 'anthropology'],
+    ['Environment', 'environment'],
+    ['Sports', 'sports'],
+    ['Science', 'science'],
+    ['Politics', 'politics_and_government']
 ].sort();
 
 export default function CategoriesFilter({ fiction }) {
@@ -32,7 +42,7 @@ export default function CategoriesFilter({ fiction }) {
             {(fiction ? FICTION_SUBJECTS : NONFICTION_SUBJECTS).map(
                 (item, index) => {
                     return (
-                        <Td id={index[0]}>
+                        <GridItem>
                             <a
                                 onClick={() =>
                                     handleSelectCategory(`${item[1]}`)
@@ -41,7 +51,7 @@ export default function CategoriesFilter({ fiction }) {
                             >
                                 {item[0]}
                             </a>
-                        </Td>
+                        </GridItem>
                     );
                 }
             )}
