@@ -17,9 +17,14 @@ export default function BookPage() {
   // see: https://redux-toolkit.js.org/rtk-query/usage/conditional-fetching
   let skip: boolean;
   skip = (workRes.isLoading) ? true : false;
-  let authorData = workRes.isLoading ? '' : workRes.data!.authors[0].author.key.replace('/authors/', '');
+
+  let authorData = '';
+  if (!skip && workRes.data!.authors) {
+    authorData = workRes.isLoading ? '' : workRes.data!.authors[0].author.key.replace('/authors/', '');
+  }
+
   const authorRes = useGetAuthorByIdQuery(authorData, { skip });
-  console.log(workRes.data);
+  
 
   return (
     (workRes.isLoading || ratingsRes.isLoading || authorRes.isLoading)
@@ -31,7 +36,7 @@ export default function BookPage() {
           <ProductDetails
             title={workRes.data!.title}
             ratingsSummary={{ average: ratingsRes.data!.summary.average, count: ratingsRes.data!.summary.count }}
-            authors={authorRes.data!.name!}
+            authors={workRes.data!.authors ? authorRes.data!.name! : "Anonymous"}
             coverId={workRes.data!.covers ? workRes.data!.covers[0] : null}
           />
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
