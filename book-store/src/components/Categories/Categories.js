@@ -36,6 +36,9 @@ import CategoriesFilterFunc from './CategoriesFilterFunc';
 // TODO: Possibly only rerender when all CategoriesBook comps are fully loaded
 // I.e. when map function is complete?
 
+/* Display button with category next to "Sort books by" header */
+function sortBooksByButton({ fiction }) {}
+
 export default function Categories() {
     let { param } = useParams();
     const navigate = useNavigate();
@@ -54,7 +57,7 @@ export default function Categories() {
     });
 
     // console.log(isLoading, data);
-    param = param ? param : 'no-param-supplied';
+    // param = param ? param : 'no-param-supplied';
     return (
         <Container maxW="1400px">
             {isLoading ? (
@@ -70,9 +73,10 @@ export default function Categories() {
                         <Heading size="2xl">Sort books by</Heading>
                         <Popover>
                             <PopoverTrigger>
+                                {/* if button exists, use it. Else, use "general" */}
                                 <Button mx="5" p="6" size="lg">
                                     <Box fontSize="1.5em" mb="1">
-                                        {param == 'general'
+                                        {/* {param == 'general'
                                             ? 'General'
                                             : (param.includes('fiction')
                                                   ? 'Fiction > '
@@ -82,7 +86,9 @@ export default function Categories() {
                                                   .replace(
                                                       /fiction|general/gi,
                                                       ''
-                                                  )}
+                                                  )} */}
+                                        {/* // FIX: display categories on button */}
+                                        {/* Find out if a category was chosen. If not, displays "general" by default. */}
                                     </Box>
                                 </Button>
                             </PopoverTrigger>
@@ -98,7 +104,6 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            {/* TODO: Make categories display neatly in a grid/table */}
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
                                                 gap={1}
@@ -117,7 +122,6 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            {/* TODO: Make categories display neatly in a grid/table */}
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
                                                 gap={1}
