@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BookCard from "../../components/BookCard/BookCard";
-import { Box, Container, Heading, Stack, HStack, VStack, Alert, AlertTitle, AlertDescription, Button, ButtonGroup } from "@chakra-ui/react";
+import { Box, Container, Heading, Stack, HStack, VStack, Alert, AlertTitle, AlertDescription, Button, ButtonGroup, Fade } from "@chakra-ui/react";
 import "./SearchResults.css";
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import { useGetWorksBySearchQuery } from "../../store/books/booksSlice";
@@ -55,37 +55,39 @@ export default function SearchResults() {
 
                 {searchRes.data.docs.map((element) => {
                   return (
-                    <Link to={`/book${element.key.replace('/works', '')}`}>
-
-                      <Card direction="row">
-                        <Image
-                          fit="contain"
-                          overflow="auto"
-                          boxSize='100px'
-                          paddingRight="5px"
-                          fontSize="12px"
-                          src={
-                            element.cover_i
-                              ? `https://covers.openlibrary.org/b/id/${element.cover_i}-S.jpg`
-                              : '/no-image-found'
-                          }
-                          alt={
-                            element.cover_i
-                              ? `Cover image for "${element.title}"`
-                              : "No cover image available"
-                          }
-                        />
-                        {element.title} by {element.author_name}
-                      </Card>
-
+                    <Link key={element.key} to={`/book${element.key.replace('/works', '')}`}>
+                      <Fade in={true}>
+                        <Card
+                          direction="row"
+                        >
+                          <Image
+                            fit="contain"
+                            overflow="auto"
+                            boxSize='100px'
+                            paddingRight="5px"
+                            fontSize="12px"
+                            src={
+                              element.cover_i
+                                ? `https://covers.openlibrary.org/b/id/${element.cover_i}-S.jpg`
+                                : '/no-image-found'
+                            }
+                            alt={
+                              element.cover_i
+                                ? `Cover image for "${element.title}"`
+                                : "No cover image available"
+                            }
+                          />
+                          {element.title} by {element.author_name}
+                        </Card>
+                        </Fade>
                     </Link>
                   );
                 })}
-                <SearchNavigationButtons 
-                setSearchParams={setSearchParams} 
-                searchRes={searchRes} 
-                offset={offset} 
-                queryTerm={queryTerm} />
+                <SearchNavigationButtons
+                  setSearchParams={setSearchParams}
+                  searchRes={searchRes}
+                  offset={offset}
+                  queryTerm={queryTerm} />
               </Stack>
             )
             : (
@@ -121,7 +123,7 @@ export default function SearchResults() {
 
   }
 
-  
+
 
 
 }
