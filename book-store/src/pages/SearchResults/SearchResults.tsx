@@ -21,6 +21,11 @@ import SearchNavigationButtons from "../../components/SearchResults/SearchNaviga
 
 export default function SearchResults() {
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
+
+
   const [searchParams, setSearchParams] = useSearchParams();
   let queryTerm = "";
   let offset = 0;

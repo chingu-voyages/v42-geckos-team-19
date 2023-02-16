@@ -33,7 +33,6 @@ export default function SearchNavigationButtons(props: props) {
                                 newOffset = 0;
                             }
                             newParams.append('offset', `${newOffset}`)
-                            window.scrollTo(0, 0);
                             return newParams;
                         })}>Previous page</Button>
                 )
