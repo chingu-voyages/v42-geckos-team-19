@@ -24,7 +24,7 @@ export default function BookCard(props) {
     function Title({ title }) {
         if (title.length > 33) {
             let str = '';
-            for (let i = 0; i < 35; i++) {
+            for (let i = 0; i < 33; i++) {
                 str += title[i];
             }
             str += '...';
