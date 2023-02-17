@@ -17,7 +17,7 @@ const cartSlice = createSlice({
         (cartItem) => cartItem.id === itemToAdd.id
       );
       if (existingCartItem) {
-        existingCartItem.quantity++;
+        existingCartItem.quantity += itemToAdd.quantity;
       } else {
         state.cartItems.push({ ...itemToAdd, quantity: 1 });
       }
