@@ -3,13 +3,14 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 // Must manually specify extension; too many variations
 // 15 categories per (non)fiction
+// 15 categories per (non)fiction
 const FICTION_SUBJECTS = [
     ['Romance', 'fiction_romance_general'],
     ['Thrillers', 'fiction_thrillers_general'],
     ['Mystery & detective', 'fiction_mystery_&_detective_general'],
     ['Horror', 'fiction_horror'],
     ["Children's fiction", "children's_fiction"],
-    ['Graphic novels', 'comics_&_graphic_novels_general'],
+    ['Comics & graphic novels', 'comics_&_graphic_novels_general'],
     ['Fantasy', 'fiction_fantasy_general'],
     ['Humor', 'humor'],
     ['Action & adventure', 'fiction_action_&_adventure'],
@@ -36,7 +37,7 @@ const NONFICTION_SUBJECTS = [
     ['Environment', 'environment'],
     ['Sports', 'sports'],
     ['Science', 'science'],
-    ['Politics', 'politics_and_government']
+    ['Politics & government', 'politics_and_government']
 ].sort();
 
 export default function CategoriesFilter({ fiction }) {

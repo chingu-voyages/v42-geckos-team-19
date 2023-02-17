@@ -36,8 +36,24 @@ import CategoriesFilterFunc from './CategoriesFilterFunc';
 // TODO: Possibly only rerender when all CategoriesBook comps are fully loaded
 // I.e. when map function is complete?
 
-/* Display button with category next to "Sort books by" header */
-function sortBooksByButton({ fiction }) {}
+/* Check for nonfiction params because some fiction params look similar to nonfiction params */
+const NONFICTION_PARAMS = [
+    'finance',
+    'biography',
+    'travel',
+    'business',
+    'religion',
+    'cookbooks',
+    'self-help',
+    'psychology',
+    'music',
+    'education',
+    'anthropology',
+    'environment',
+    'sports',
+    'science',
+    'politics_and_government'
+];
 
 export default function Categories() {
     let { param } = useParams();
@@ -56,19 +72,12 @@ export default function Categories() {
         offset
     });
 
-    // console.log(isLoading, data);
-    // param = param ? param : 'no-param-supplied';
     return (
         <Container maxW="1400px">
             {isLoading ? (
                 <>Loading . . .</>
             ) : (
                 <>
-                    {console.log({
-                        offset,
-                        limit,
-                        work_count: data.work_count
-                    })}
                     <HStack spacing="5" mt="20" ml="5">
                         <Heading size="2xl">Sort books by</Heading>
                         <Popover>
@@ -76,13 +85,14 @@ export default function Categories() {
                                 {/* if button exists, use it. Else, use "general" */}
                                 <Button mx="5" p="6" size="lg">
                                     <Box fontSize="1.5em" mb="1">
-                                        {/* {param == 'general'
-                                            ? 'General'
-                                            : (param.includes('fiction')
-                                                  ? 'Fiction > '
-                                                  : 'Nonfiction > ') +
+                                        {param == 'general'
+                                            ? '< select a category >'
+                                            : (NONFICTION_PARAMS.includes(param)
+                                                  ? 'Nonfiction > '
+                                                  : 'Fiction > ') +
                                               param
                                                   .replace(/_/gi, ' ')
+                                                  .replace(/and/gi, '&')
                                                   .replace(
                                                       /fiction|general/gi,
                                                       ''
@@ -106,7 +116,7 @@ export default function Categories() {
                                         <Box overflowY="auto" maxHeight="10vh">
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
-                                                gap={1}
+                                                gap={3}
                                                 h="60px"
                                             >
                                                 <CategoriesFilterFunc
@@ -124,7 +134,7 @@ export default function Categories() {
                                         <Box overflowY="auto" maxHeight="10vh">
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
-                                                gap={1}
+                                                gap={3}
                                                 h="60px"
                                             >
                                                 <CategoriesFilterFunc
@@ -149,34 +159,29 @@ export default function Categories() {
                                 );
                             })}
                     </SimpleGrid>
-                    {
-                        // TODO: Double check this logic is correct for showing all items
-                        offset + limit < data.work_count ? (
-                            <Box textAlign="center">
-                                <Button
-                                    mb="24px"
-                                    bgColor="#E4573D"
-                                    color="white"
-                                    colorScheme="E4573D"
-                                    size="sm"
-                                    rounded="sm"
-                                    px="12"
-                                    py="6"
-                                    mt="2"
-                                    variant="outline"
-                                    _hover={{ bg: '#F49B8B', color: 'black' }}
-                                    letterSpacing="2px"
-                                    onClick={() => {
-                                        setOffset(
-                                            (oldOffset) => (oldOffset += 20)
-                                        );
-                                    }}
-                                >
-                                    See More
-                                </Button>
-                            </Box>
-                        ) : null
-                    }
+                    {offset + limit < data.work_count ? (
+                        <Box textAlign="center">
+                            <Button
+                                mb="24px"
+                                bgColor="#E4573D"
+                                color="white"
+                                colorScheme="E4573D"
+                                size="sm"
+                                rounded="sm"
+                                px="12"
+                                py="6"
+                                mt="2"
+                                variant="outline"
+                                _hover={{ bg: '#F49B8B', color: 'black' }}
+                                letterSpacing="2px"
+                                onClick={() => {
+                                    setOffset((oldOffset) => (oldOffset += 20));
+                                }}
+                            >
+                                See More
+                            </Button>
+                        </Box>
+                    ) : null}
                 </>
             )}
         </Container>
