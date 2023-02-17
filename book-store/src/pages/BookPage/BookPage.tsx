@@ -9,6 +9,7 @@ import {
   useGetAuthorByIdQuery,
 } from "../../store/books/booksSlice";
 import { CartItem } from "../../store/cart/types";
+import generateBookPrice from "../../utils/pricing/generateBookPrice"
 
 export default function BookPage() {
   let { param } = useParams();
