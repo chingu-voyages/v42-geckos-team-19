@@ -22,6 +22,8 @@ import {
   removeCartItem,
   clearCartItem,
 } from "../../../store/cart/cartSlice";
+import { FaRegHeart } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
 
 export default function ProductDetails(props: props) {
   const dispatch = useDispatch();
@@ -30,14 +32,8 @@ export default function ProductDetails(props: props) {
       <Stack
         direction={{ base: "column", md: "row" }}
         spacing={{ base: "0", sm: "24px" }}
-        alignItems="center"
       >
-        <Box
-          bg="white"
-          rounded="sm"
-          w={{ base: "100%", md: "50%" }}
-          mb={{ base: "25px", md: "0" }}
-        >
+        <Box w={{ base: "100%", md: "50%" }} mb={{ base: "25px", md: "0" }}>
           <Card
             maxW="sm"
             boxShadow="xl"
@@ -45,38 +41,40 @@ export default function ProductDetails(props: props) {
             fontFamily="Poppins"
           >
             <CardBody>
-              <BookCoverImg coverId={props.coverId} title={props.title}/>
+              <BookCoverImg coverId={props.coverId} title={props.title} />
             </CardBody>
           </Card>
         </Box>
         <Box
           bg="white"
-          rounded="sm"
           w={{ base: "100%", md: "50%" }}
           mb={{ base: "25px", md: "0" }}
         >
-          <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
-            {props.title}
-          </Heading>
-          <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
-            {props.authors}
-          </Text>
-          <HStack
-            spacing={{ base: 0, sm: 2 }}
-            flexWrap="wrap"
-            alignItems={{ base: "center", md: "left" }}
-            justifyContent={{ base: "center", md: "left" }}
-            py="15px"
-          >
-            {/* TODO: display dynamic number of stars */}
-            <Image src="../images/review-rating.png" boxSize="20%"></Image>
-            <Text pl="5px">
-              <Rating
-                average={props.ratingsSummary.average}
-                count={props.ratingsSummary.count}
-              />
+          <Stack mt={{ base: "0", md: "20" }}>
+            <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
+              {props.title}
+            </Heading>
+            <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
+              {props.authors}
             </Text>
-          </HStack>
+
+            <HStack
+              spacing={{ base: 0, sm: 2 }}
+              flexWrap="wrap"
+              alignItems={{ base: "center", md: "left" }}
+              justifyContent="left"
+              py="15px"
+            >
+              {/* TODO: display dynamic number of stars */}
+              <Image src="../images/review-rating.png" boxSize="20%"></Image>
+              <Text pl="5px">
+                <Rating
+                  average={props.ratingsSummary.average}
+                  count={props.ratingsSummary.count}
+                />
+              </Text>
+            </HStack>
+          </Stack>
           <Divider
             orientation="horizontal"
             borderColor="#D9D9D9"
@@ -145,8 +143,12 @@ export default function ProductDetails(props: props) {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Text mr="10">Share with friends</Text>
-                <Text>Save to wishlist</Text>
+                <HStack>
+                  <Text>Share with friends</Text> <FiShare2 />
+                </HStack>
+                <HStack>
+                  <Text>Save to wishlist</Text> <FaRegHeart />
+                </HStack>
               </HStack>
             </Box>
           </Stack>
@@ -156,46 +158,32 @@ export default function ProductDetails(props: props) {
   );
 }
 
-
 function Rating(props: ratingsSummary) {
-  if (typeof props.average === 'number') {
-
+  if (typeof props.average === "number") {
   }
 
-  return (
-    (typeof props.average === 'number')
-      ? (
-        <>
-          {props.average.toFixed(1)} ({props.count})
-        </>
-      )
-      : (
-        <>
-          Ratings not available
-        </>
-      )
-  )
+  return typeof props.average === "number" ? (
+    <>
+      {props.average.toFixed(1)} ({props.count})
+    </>
+  ) : (
+    <>Ratings not available</>
+  );
 }
-
 
 interface BookCoverImgProps {
   coverId: coverId | null;
   title: string;
 }
 function BookCoverImg(props: BookCoverImgProps) {
-  return (
-    (props.coverId) 
-    ? (
-      <Image
+  return props.coverId ? (
+    <Image
       src={`https://covers.openlibrary.org/b/id/${props.coverId}-L.jpg?default=false`}
       alt={props.title + " cover image"}
       borderRadius="lg"
       boxSize="100%"
     />
-    )
-    : (
-      <>No image available</>
-    )
-    
-  )
+  ) : (
+    <>No image available</>
+  );
 }
