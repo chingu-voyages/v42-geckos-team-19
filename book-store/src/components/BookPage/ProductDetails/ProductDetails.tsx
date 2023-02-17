@@ -14,8 +14,10 @@ import {
   Image,
   Button,
   chakra,
+  Icon,
+  StackProps,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
@@ -24,6 +26,7 @@ import {
 } from "../../../store/cart/cartSlice";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
+import { FaStar } from "react-icons/fa";
 
 export default function ProductDetails(props: props) {
   const dispatch = useDispatch();
@@ -111,7 +114,7 @@ export default function ProductDetails(props: props) {
               fontFamily="Poppins"
               fontWeight="400"
               letterSpacing="2px"
-              onClick={e => dispatch(addToCart(props.cartItemObj))}
+              onClick={(e) => dispatch(addToCart(props.cartItemObj))}
             >
               Add to Cart
             </Button>
@@ -159,11 +162,27 @@ export default function ProductDetails(props: props) {
 }
 
 function Rating(props: ratingsSummary) {
+  const max = 5;
+  const size = "md";
+  const color = useColorModeValue("orange.200", "orange.600");
+  const activeColor = useColorModeValue("orange.500", "yellow.200");
   if (typeof props.average === "number") {
   }
 
   return typeof props.average === "number" ? (
     <>
+      <HStack spacing="0.5">
+        {Array.from({ length: max })
+          .map((_, index) => index + 1)
+          .map((index) => (
+            <Icon
+              key={index}
+              as={FaStar}
+              fontSize={size}
+              color={index <= Math.round(props.average!) ? activeColor : color}
+            />
+          ))}
+      </HStack>
       {props.average.toFixed(1)} ({props.count})
     </>
   ) : (
