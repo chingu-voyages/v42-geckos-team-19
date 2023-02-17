@@ -26,52 +26,47 @@ export default function ProductDetails(props: props) {
         spacing={{ base: "0", sm: "24px" }}
       >
         <Box w={{ base: "100%", md: "50%" }} mb={{ base: "25px", md: "0" }}>
-          <HStack
-            spacing={{ base: 0, sm: 2 }}
-            flexWrap="wrap"
-            alignItems={{ base: "center", md: "left" }}
-            justifyContent={{ base: "center", md: "left" }}
-            py="15px"
+          <Card
+            maxW="sm"
+            boxShadow="xl"
+            my={{ base: 5, md: 50 }}
+            fontFamily="Poppins"
           >
-            <Card
-              maxW="sm"
-              boxShadow="xl"
-              my={{ base: 5, md: 50 }}
-              fontFamily="Poppins"
-            >
-              <CardBody>
-                <BookCoverImg coverId={props.coverId} title={props.title} />
-              </CardBody>
-            </Card>
-          </HStack>
+            <CardBody>
+              <BookCoverImg coverId={props.coverId} title={props.title} />
+            </CardBody>
+          </Card>
         </Box>
         <Box
           bg="white"
           w={{ base: "100%", md: "50%" }}
           mb={{ base: "25px", md: "0" }}
         >
-          <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
-            {props.title}
-          </Heading>
-          <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
-            {props.authors}
-          </Text>
-          <HStack
-            spacing={{ base: 0, sm: 2 }}
-            flexWrap="wrap"
-            alignItems={{ base: "center", md: "left" }}
-            justifyContent={{ base: "center", md: "left" }}
-            py="15px"
-          >
-            {/* TODO: display dynamic number of stars */}
-            <Image src="../images/review-rating.png" boxSize="20%"></Image>
-            <Text pl="5px">
-              <Rating
-                average={props.ratingsSummary.average}
-                count={props.ratingsSummary.count}
-              />
+          <Stack mt={{ base: "0", md: "20" }}>
+            <Heading fontSize="40px" fontWeight="600" fontFamily="Poppins">
+              {props.title}
+            </Heading>
+            <Text fontSize="20px" lineHeight={1.5} fontWeight="300">
+              {props.authors}
             </Text>
-          </HStack>
+
+            <HStack
+              spacing={{ base: 0, sm: 2 }}
+              flexWrap="wrap"
+              alignItems={{ base: "center", md: "left" }}
+              justifyContent="left"
+              py="15px"
+            >
+              {/* TODO: display dynamic number of stars */}
+              <Image src="../images/review-rating.png" boxSize="20%"></Image>
+              <Text pl="5px">
+                <Rating
+                  average={props.ratingsSummary.average}
+                  count={props.ratingsSummary.count}
+                />
+              </Text>
+            </HStack>
+          </Stack>
           <Divider
             orientation="horizontal"
             borderColor="#D9D9D9"
