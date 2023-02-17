@@ -4,7 +4,7 @@ import { useAppDispatch } from "../../hooks";
 import { signInSchema } from "../../schemas";
 import { signIn } from "../../store/user/userSlice";
 import { SignInPayload } from "../../store/user/types";
-import CustomInput from "../CostumInput/CustomInput";
+import CustomInput from "../CustomInput/CustomInput";
 import { Button, Heading } from "@chakra-ui/react";
 import { FC } from "react";
 

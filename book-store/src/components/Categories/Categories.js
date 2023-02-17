@@ -12,17 +12,9 @@ import {
     PopoverCloseButton,
     PopoverHeader,
     PopoverTrigger,
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
     TableContainer,
     Text,
-    Flex
+    Grid
 } from '@chakra-ui/react';
 import { useGetWorksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
@@ -34,6 +26,25 @@ import CategoriesFilterFunc from './CategoriesFilterFunc';
 // TODO: Possibly only rerender when all CategoriesBook comps are fully loaded
 // I.e. when map function is complete?
 
+/* Check for nonfiction params because some fiction params look similar to nonfiction params */
+const NONFICTION_PARAMS = [
+    'finance',
+    'biography',
+    'travel',
+    'business',
+    'religion',
+    'cookbooks',
+    'self-help',
+    'psychology',
+    'music',
+    'education',
+    'anthropology',
+    'environment',
+    'sports',
+    'science',
+    'politics_and_government'
+];
+
 export default function Categories() {
     let { param } = useParams();
     const navigate = useNavigate();
@@ -44,39 +55,33 @@ export default function Categories() {
         window.scrollTo(0, 0);
     }, [offset]);
 
-    /* Don't have to use isLoading, isError--just for future ref */
     const { data, isLoading, isError } = useGetWorksBySubjectQuery({
         subject: param,
         limit,
         offset
     });
 
-    // console.log(isLoading, data);
-    param = param ? param : 'no-param-supplied';
     return (
         <Container maxW="1400px">
             {isLoading ? (
                 <>Loading . . .</>
             ) : (
                 <>
-                    {console.log({
-                        offset,
-                        limit,
-                        work_count: data.work_count
-                    })}
                     <HStack spacing="5" mt="20" ml="5">
                         <Heading size="2xl">Sort books by</Heading>
                         <Popover>
                             <PopoverTrigger>
                                 <Button mx="5" p="6" size="lg">
                                     <Box fontSize="1.5em" mb="1">
-                                        {param.includes('general')
-                                            ? 'General'
-                                            : (param.includes('fiction')
-                                                  ? 'Fiction > '
-                                                  : 'Nonfiction > ') +
+                                        {/* Cannot use a function here; text will not display */}
+                                        {param == 'general'
+                                            ? '< select a category >'
+                                            : (NONFICTION_PARAMS.includes(param)
+                                                  ? 'Nonfiction > '
+                                                  : 'Fiction > ') +
                                               param
                                                   .replace(/_/gi, ' ')
+                                                  .replace(/and/gi, '&')
                                                   .replace(
                                                       /fiction|general/gi,
                                                       ''
@@ -96,13 +101,16 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            <Table variant="simple" size="sm">
-                                                <Tbody>
-                                                    <CategoriesFilterFunc
-                                                        fiction={1}
-                                                    />
-                                                </Tbody>
-                                            </Table>
+                                            {/* Display fiction categories in a 3x5 grid */}
+                                            <Grid
+                                                templateColumns="repeat(5, 1fr)"
+                                                gap={3}
+                                                h="60px"
+                                            >
+                                                <CategoriesFilterFunc
+                                                    fiction={1}
+                                                />
+                                            </Grid>
                                         </Box>
                                     </TableContainer>
                                 </PopoverBody>
@@ -112,13 +120,16 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
-                                            <Table variant="simple">
-                                                <Tbody>
-                                                    <CategoriesFilterFunc
-                                                        fiction={0}
-                                                    />
-                                                </Tbody>
-                                            </Table>
+                                            {/* Display nonfiction categories in a 3x5 grid */}
+                                            <Grid
+                                                templateColumns="repeat(5, 1fr)"
+                                                gap={3}
+                                                h="60px"
+                                            >
+                                                <CategoriesFilterFunc
+                                                    fiction={0}
+                                                />
+                                            </Grid>
                                         </Box>
                                     </TableContainer>
                                 </PopoverBody>
@@ -137,34 +148,30 @@ export default function Categories() {
                                 );
                             })}
                     </SimpleGrid>
-                    {
-                        // TODO: Double check this logic is correct for showing all items
-                        offset + limit < data.work_count ? (
-                            <Box textAlign="center">
-                                <Button
-                                    mb="24px"
-                                    bgColor="#E4573D"
-                                    color="white"
-                                    colorScheme="E4573D"
-                                    size="sm"
-                                    rounded="sm"
-                                    px="12"
-                                    py="6"
-                                    mt="2"
-                                    variant="outline"
-                                    _hover={{ bg: '#F49B8B', color: 'black' }}
-                                    letterSpacing="2px"
-                                    onClick={() => {
-                                        setOffset(
-                                            (oldOffset) => (oldOffset += 20)
-                                        );
-                                    }}
-                                >
-                                    See More
-                                </Button>
-                            </Box>
-                        ) : null
-                    }
+                    {/* Displays the next 20 books */}
+                    {offset + limit < data.work_count ? (
+                        <Box textAlign="center">
+                            <Button
+                                mb="24px"
+                                bgColor="#E4573D"
+                                color="white"
+                                colorScheme="E4573D"
+                                size="sm"
+                                rounded="sm"
+                                px="12"
+                                py="6"
+                                mt="2"
+                                variant="outline"
+                                _hover={{ bg: '#F49B8B', color: 'black' }}
+                                letterSpacing="2px"
+                                onClick={() => {
+                                    setOffset((oldOffset) => (oldOffset += 20));
+                                }}
+                            >
+                                See More
+                            </Button>
+                        </Box>
+                    ) : null}
                 </>
             )}
         </Container>
