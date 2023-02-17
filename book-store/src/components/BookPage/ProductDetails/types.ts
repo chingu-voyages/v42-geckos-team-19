@@ -1,4 +1,4 @@
-import { CartItem } from "../../store/cart/types";
+import { CartItem } from "../../../store/cart/types";
 
 export interface props {
   title: string;
