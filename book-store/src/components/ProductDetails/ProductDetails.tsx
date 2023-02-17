@@ -1,5 +1,4 @@
 import React from "react";
-import data from "../data/data";
 import Counter from "../Counter/Counter";
 import { props, ratingsSummary, coverId } from "./types";
 import {
@@ -16,7 +15,8 @@ import {
   Button,
   chakra,
 } from "@chakra-ui/react";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import { FaRegHeart } from "react-icons/fa";
+import { FiShare2 } from "react-icons/fi";
 
 export default function ProductDetails(props: props) {
   return (
@@ -24,28 +24,29 @@ export default function ProductDetails(props: props) {
       <Stack
         direction={{ base: "column", md: "row" }}
         spacing={{ base: "0", sm: "24px" }}
-        alignItems="center"
       >
-        <Box
-          bg="white"
-          rounded="sm"
-          w={{ base: "100%", md: "50%" }}
-          mb={{ base: "25px", md: "0" }}
-        >
-          <Card
-            maxW="sm"
-            boxShadow="xl"
-            my={{ base: 5, md: 50 }}
-            fontFamily="Poppins"
+        <Box w={{ base: "100%", md: "50%" }} mb={{ base: "25px", md: "0" }}>
+          <HStack
+            spacing={{ base: 0, sm: 2 }}
+            flexWrap="wrap"
+            alignItems={{ base: "center", md: "left" }}
+            justifyContent={{ base: "center", md: "left" }}
+            py="15px"
           >
-            <CardBody>
-              <BookCoverImg coverId={props.coverId} title={props.title}/>
-            </CardBody>
-          </Card>
+            <Card
+              maxW="sm"
+              boxShadow="xl"
+              my={{ base: 5, md: 50 }}
+              fontFamily="Poppins"
+            >
+              <CardBody>
+                <BookCoverImg coverId={props.coverId} title={props.title} />
+              </CardBody>
+            </Card>
+          </HStack>
         </Box>
         <Box
           bg="white"
-          rounded="sm"
           w={{ base: "100%", md: "50%" }}
           mb={{ base: "25px", md: "0" }}
         >
@@ -138,8 +139,12 @@ export default function ProductDetails(props: props) {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Text mr="10">Share with friends</Text>
-                <Text>Save to wishlist</Text>
+                <HStack>
+                  <Text>Share with friends</Text> <FiShare2 />
+                </HStack>
+                <HStack>
+                  <Text>Save to wishlist</Text> <FaRegHeart />
+                </HStack>
               </HStack>
             </Box>
           </Stack>
@@ -149,46 +154,32 @@ export default function ProductDetails(props: props) {
   );
 }
 
-
 function Rating(props: ratingsSummary) {
-  if (typeof props.average === 'number') {
-
+  if (typeof props.average === "number") {
   }
 
-  return (
-    (typeof props.average === 'number')
-      ? (
-        <>
-          {props.average.toFixed(1)} ({props.count})
-        </>
-      )
-      : (
-        <>
-          Ratings not available
-        </>
-      )
-  )
+  return typeof props.average === "number" ? (
+    <>
+      {props.average.toFixed(1)} ({props.count})
+    </>
+  ) : (
+    <>Ratings not available</>
+  );
 }
-
 
 interface BookCoverImgProps {
   coverId: coverId | null;
   title: string;
 }
 function BookCoverImg(props: BookCoverImgProps) {
-  return (
-    (props.coverId) 
-    ? (
-      <Image
+  return props.coverId ? (
+    <Image
       src={`https://covers.openlibrary.org/b/id/${props.coverId}-L.jpg?default=false`}
       alt={props.title + " cover image"}
       borderRadius="lg"
       boxSize="100%"
     />
-    )
-    : (
-      <>No image available</>
-    )
-    
-  )
+  ) : (
+    <>No image available</>
+  );
 }
