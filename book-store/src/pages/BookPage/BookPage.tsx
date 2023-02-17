@@ -1,5 +1,5 @@
 import React from "react";
-import ProductDetails from "../../components/ProductDetails/ProductDetails";
+import ProductDetails from "../../components/BookPage/ProductDetails/ProductDetails";
 import ProductDescription from "../../components/BookPage/ProductDescription/ProductDescription";
 import { Container } from "@chakra-ui/react";
 import { useParams, useNavigate } from 'react-router-dom';

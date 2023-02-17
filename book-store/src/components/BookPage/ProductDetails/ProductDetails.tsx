@@ -1,6 +1,5 @@
 import React from "react";
-import data from "../data/data";
-import Counter from "../Counter/Counter";
+import Counter from "../../Counter/Counter";
 import { props, ratingsSummary, coverId } from "./types";
 import {
   Stack,
@@ -22,7 +21,7 @@ import {
   addToCart,
   removeCartItem,
   clearCartItem,
-} from "../../store/cart/cartSlice";
+} from "../../../store/cart/cartSlice";
 
 export default function ProductDetails(props: props) {
   const dispatch = useDispatch();
