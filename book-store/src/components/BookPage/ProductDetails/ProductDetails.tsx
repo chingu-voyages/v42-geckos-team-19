@@ -14,8 +14,10 @@ import {
   Image,
   Button,
   chakra,
+  Icon,
+  StackProps,
+  useColorModeValue,
 } from "@chakra-ui/react";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import { useDispatch } from "react-redux";
 import {
   addToCart,
@@ -24,6 +26,7 @@ import {
 } from "../../../store/cart/cartSlice";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
+import { RiStarFill } from "react-icons/ri";
 
 export default function ProductDetails(props: props) {
   const dispatch = useDispatch();
@@ -65,8 +68,6 @@ export default function ProductDetails(props: props) {
               justifyContent="left"
               py="15px"
             >
-              {/* TODO: display dynamic number of stars */}
-              <Image src="../images/review-rating.png" boxSize="20%"></Image>
               <Text pl="5px">
                 <Rating
                   average={props.ratingsSummary.average}
@@ -111,7 +112,7 @@ export default function ProductDetails(props: props) {
               fontFamily="Poppins"
               fontWeight="400"
               letterSpacing="2px"
-              onClick={e => dispatch(addToCart(props.cartItemObj))}
+              onClick={(e) => dispatch(addToCart(props.cartItemObj))}
             >
               Add to Cart
             </Button>
@@ -159,12 +160,30 @@ export default function ProductDetails(props: props) {
 }
 
 function Rating(props: ratingsSummary) {
+  const max = 5;
+
+  const color = useColorModeValue("#d9d9d9", "#d9d9d9");
+  const activeColor = useColorModeValue("#F7B744", "orange.500");
   if (typeof props.average === "number") {
   }
 
   return typeof props.average === "number" ? (
     <>
-      {props.average.toFixed(1)} ({props.count})
+      <HStack spacing="0.5">
+        {Array.from({ length: max })
+          .map((_, index) => index + 1)
+          .map((index) => (
+            <Icon
+              key={index}
+              as={RiStarFill}
+              boxSize={6}
+              color={index <= Math.round(props.average!) ? activeColor : color}
+            />
+          ))}
+        <chakra.span pl="10px">
+          {props.average.toFixed(1)} ({props.count})
+        </chakra.span>
+      </HStack>
     </>
   ) : (
     <>Ratings not available</>

@@ -15,6 +15,5 @@ export interface ratingsSummary {
 }
 
 export interface coverId {
-  [key: number]: string 
+  [key: number]: string;
 }
-
