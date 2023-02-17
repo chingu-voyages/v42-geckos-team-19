@@ -21,13 +21,28 @@ export default function ProductDescription(props: props) {
     <Container maxW="1400px" mb="200px" fontFamily="Poppins">
       <Tabs variant="enclosed" borderColor="#D9D9D9">
         <TabList>
-          <Tab borderColor="#D9D9D9" mr="15px" _selected={{ color: "#E4573D" }}>
+          <Tab
+            borderColor="#D9D9D9"
+            borderBottom="none"
+            mr="15px"
+            _selected={{ color: "#E4573D" }}
+          >
             Description
           </Tab>
-          <Tab borderColor="#D9D9D9" mr="15px" _selected={{ color: "#E4573D" }}>
+          <Tab
+            borderColor="#D9D9D9"
+            borderBottom="none"
+            mr="15px"
+            _selected={{ color: "#E4573D" }}
+          >
             About The Author
           </Tab>
-          <Tab borderColor="#D9D9D9" mr="15px" _selected={{ color: "#E4573D" }}>
+          <Tab
+            borderColor="#D9D9D9"
+            borderBottom="none"
+            mr="15px"
+            _selected={{ color: "#E4573D" }}
+          >
             Reviews
           </Tab>
         </TabList>
@@ -39,7 +54,11 @@ export default function ProductDescription(props: props) {
                   Sinopsis
                 </Heading>
                 <Text textAlign="left">
-                  {(typeof props.description !== "string" && props.description) ? props.description.value : props.description ? props.description : "No description available"}
+                  {typeof props.description !== "string" && props.description
+                    ? props.description.value
+                    : props.description
+                    ? props.description
+                    : "No description available"}
                 </Text>
               </Box>
               <Box>
@@ -82,7 +101,7 @@ export default function ProductDescription(props: props) {
           </TabPanel>
           <TabPanel>
             <p>About The Author</p>
-            {(typeof props.bio !== "string") ? props.bio.value : props.bio}
+            {typeof props.bio !== "string" ? props.bio.value : props.bio}
           </TabPanel>
           <TabPanel>
             <p>Reviews</p>

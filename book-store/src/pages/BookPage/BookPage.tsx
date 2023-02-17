@@ -2,14 +2,16 @@ import React from "react";
 import ProductDetails from "../../components/BookPage/ProductDetails/ProductDetails";
 import ProductDescription from "../../components/BookPage/ProductDescription/ProductDescription";
 import { Container } from "@chakra-ui/react";
-import { useParams, useNavigate } from 'react-router-dom';
-import { useGetWorkByIdQuery, useGetRatingsByWorkIdQuery, useGetAuthorByIdQuery } from "../../store/books/booksSlice";
-import { CartItem } from "../../store/cart/types";
-
+import { useParams, useNavigate } from "react-router-dom";
+import {
+  useGetWorkByIdQuery,
+  useGetRatingsByWorkIdQuery,
+  useGetAuthorByIdQuery,
+} from "../../store/books/booksSlice";
 
 export default function BookPage() {
   let { param } = useParams();
-  console.log('this is your key param! ' + param)
+  console.log("this is your key param! " + param);
 
   const workRes = useGetWorkByIdQuery(param!);
   const ratingsRes = useGetRatingsByWorkIdQuery(param!);
