@@ -1,8 +1,11 @@
+import { CartItem } from "../../store/cart/types";
+
 export interface props {
   title: string;
   ratingsSummary: ratingsSummary;
   authors: string;
   coverId: coverId | null;
+  cartItemObj: CartItem;
 }
 
 export interface ratingsSummary {

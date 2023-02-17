@@ -17,8 +17,15 @@ import {
   chakra,
 } from "@chakra-ui/react";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
+import { useDispatch } from "react-redux";
+import {
+  addToCart,
+  removeCartItem,
+  clearCartItem,
+} from "../../store/cart/cartSlice";
 
 export default function ProductDetails(props: props) {
+  const dispatch = useDispatch();
   return (
     <Container maxW="1400px" mb="100px" fontFamily="Poppins">
       <Stack
@@ -107,6 +114,7 @@ export default function ProductDetails(props: props) {
               fontFamily="Poppins"
               fontWeight="400"
               letterSpacing="2px"
+              onClick={e => dispatch(addToCart(props.cartItemObj))}
             >
               Add to Cart
             </Button>

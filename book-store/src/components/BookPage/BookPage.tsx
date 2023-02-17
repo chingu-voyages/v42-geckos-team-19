@@ -4,18 +4,12 @@ import ProductDescription from "../ProductDescription/ProductDescription";
 import { Container } from "@chakra-ui/react";
 import { useParams, useNavigate } from 'react-router-dom';
 import { useGetWorkByIdQuery, useGetRatingsByWorkIdQuery, useGetAuthorByIdQuery } from "../../store/books/booksSlice";
-import { useDispatch } from "react-redux";
-import {
-  addToCart,
-  removeCartItem,
-  clearCartItem,
-} from "../../store/cart/cartSlice";
+import { CartItem } from "../../store/cart/types";
 
 
 export default function BookPage() {
   let { param } = useParams();
   console.log('this is your key param! ' + param)
-  const dispatch = useDispatch();
 
   const workRes = useGetWorkByIdQuery(param!);
   const ratingsRes = useGetRatingsByWorkIdQuery(param!);
@@ -31,10 +25,11 @@ export default function BookPage() {
   }
   const authorRes = useGetAuthorByIdQuery(authorData, { skip });
   
+  let cartItemObj: CartItem;
   if (workRes.isLoading || ratingsRes.isLoading || authorRes.isLoading) {
     // wait to set up cart until everything is loaded
   } else {
-    let cartObj = {
+    cartItemObj = {
       title: workRes.data!.title,
       author: workRes.data!.authors ? authorRes.data!.name! : "Anonymous",
       imageUrl: workRes.data!.covers ? workRes.data!.covers[0] : null,
@@ -42,7 +37,7 @@ export default function BookPage() {
       quantity: 1,
       price: 0
     }
-    dispatch(addToCart(cartObj));
+    
   }
   
 
@@ -59,6 +54,7 @@ export default function BookPage() {
             ratingsSummary={{ average: ratingsRes.data!.summary.average, count: ratingsRes.data!.summary.count }}
             authors={workRes.data!.authors ? authorRes.data!.name! : "Anonymous"}
             coverId={workRes.data!.covers ? workRes.data!.covers[0] : null}
+            cartItemObj={cartItemObj!}
           />
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
         </Container>
