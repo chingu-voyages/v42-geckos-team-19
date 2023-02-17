@@ -8,6 +8,7 @@ import {
   useGetRatingsByWorkIdQuery,
   useGetAuthorByIdQuery,
 } from "../../store/books/booksSlice";
+import { CartItem } from "../../store/cart/types";
 
 export default function BookPage() {
   let { param } = useParams();
