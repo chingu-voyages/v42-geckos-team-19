@@ -15,6 +15,7 @@ import {
     Flex
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import generateBookPrice from '../../utils/pricing/generateBookPrice';
 
 export default function BookCard(props) {
     const navigate = useNavigate();
@@ -149,10 +150,7 @@ export default function BookCard(props) {
                                             </Text>
                                         </Box>
                                         <Text as="b">
-                                            $
-                                            <GetBookPrice
-                                                title={props.card.title}
-                                            />
+                                            ${generateBookPrice(props.card.title)}
                                         </Text>
                                     </HStack>
                                 </GridItem>
