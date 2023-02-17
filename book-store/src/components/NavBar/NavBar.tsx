@@ -164,7 +164,7 @@ const NavBar: FC = () => {
             </Link>
           </li>
           <li>
-            <Link to="/categories" tabIndex={0} aria-label="Categories">
+            <Link to="/categories/general" tabIndex={0} aria-label="Categories">
               Categories
             </Link>
           </li>
