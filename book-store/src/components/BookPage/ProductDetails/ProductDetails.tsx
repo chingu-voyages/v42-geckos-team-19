@@ -83,7 +83,7 @@ export default function ProductDetails(props: props) {
           />
 
           <Text my={6} fontSize="25px">
-            $49.99
+            ${props.price}
           </Text>
           <HStack
             spacing={{ base: 0, sm: 2 }}

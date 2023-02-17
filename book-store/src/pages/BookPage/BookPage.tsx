@@ -59,6 +59,7 @@ export default function BookPage() {
             authors={workRes.data!.authors ? authorRes.data!.name! : "Anonymous"}
             coverId={workRes.data!.covers ? workRes.data!.covers[0] : null}
             cartItemObj={cartItemObj!}
+            price={generateBookPrice(workRes.data!.title)}
           />
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
         </Container>

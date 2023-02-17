@@ -6,6 +6,7 @@ export interface props {
   authors: string;
   coverId: coverId | null;
   cartItemObj: CartItem;
+  price: string;
 }
 
 export interface ratingsSummary {
