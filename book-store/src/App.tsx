@@ -9,7 +9,7 @@ import Authentication from "./pages/Authentication/Authentication";
 import Categories from "./components/Categories/Categories.js";
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { booksApi } from "./store/books/booksSlice";
-import BookPage from './components/BookPage/BookPage';
+import BookPage from './pages/BookPage/BookPage';
 import SearchResults from "./pages/SearchResults/SearchResults";
 import UserAccount from "./pages/UserAccount/UserAccount";
 import { checkUserSession, selectCurrentUser } from "./store/user/userSlice";
