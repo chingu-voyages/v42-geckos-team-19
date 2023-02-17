@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 
 export default function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   function add() {
-    setCount(count + 1);
+    if (count < 999) {
+      setCount(count + 1);
+    }
   }
 
   function subtract() {
-    setCount(count - 1);
+    if (count > 1) {
+      setCount(count - 1);
+    }
   }
 
   return (
