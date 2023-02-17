@@ -16,6 +16,7 @@ export default function BookPage() {
   console.log("this is your key param! " + param);
 
   const workRes = useGetWorkByIdQuery(param!);
+  let price = '?';
   const ratingsRes = useGetRatingsByWorkIdQuery(param!);
 
   // skip here is redux toolkit's way of allowing conditionally fetching from an api
@@ -33,13 +34,14 @@ export default function BookPage() {
   if (workRes.isLoading || ratingsRes.isLoading || authorRes.isLoading) {
     // wait to set up cart until everything is loaded
   } else {
+    price = generateBookPrice(workRes.data!.title);
     cartItemObj = {
       title: workRes.data!.title,
       author: workRes.data!.authors ? authorRes.data!.name! : "Anonymous",
       imageUrl: workRes.data!.covers ? workRes.data!.covers[0] : null,
       id: param!,
       quantity: 1,
-      price: 0
+      price: parseFloat(price)
     }
     
   }
@@ -59,7 +61,7 @@ export default function BookPage() {
             authors={workRes.data!.authors ? authorRes.data!.name! : "Anonymous"}
             coverId={workRes.data!.covers ? workRes.data!.covers[0] : null}
             cartItemObj={cartItemObj!}
-            price={generateBookPrice(workRes.data!.title)}
+            price={price}
           />
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
         </Container>
