@@ -14,7 +14,6 @@ import {
     HStack,
     Flex
 } from '@chakra-ui/react';
-import { AuthErrorCodes } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 
 export default function BookCard(props) {

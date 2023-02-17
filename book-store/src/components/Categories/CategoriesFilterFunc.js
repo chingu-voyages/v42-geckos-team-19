@@ -3,7 +3,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 // Must manually specify extension; too many variations
 // 15 categories per (non)fiction
-// 15 categories per (non)fiction
 const FICTION_SUBJECTS = [
     ['Romance', 'fiction_romance_general'],
     ['Thrillers', 'fiction_thrillers_general'],
@@ -55,6 +54,7 @@ export default function CategoriesFilter({ fiction }) {
                         <GridItem>
                             <a
                                 onClick={() =>
+                                    // Don't directly use navigate() or cannot go back to Categories after going to BookPage
                                     handleSelectCategory(`${item[1]}`)
                                 }
                                 id={item[0]}

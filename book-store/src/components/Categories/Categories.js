@@ -12,19 +12,9 @@ import {
     PopoverCloseButton,
     PopoverHeader,
     PopoverTrigger,
-    Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
     TableContainer,
     Text,
-    Flex,
-    Grid,
-    GridItem
+    Grid
 } from '@chakra-ui/react';
 import { useGetWorksBySubjectQuery } from '../../store/books/booksSlice';
 import CategoriesBook from '../Categories/CategoriesBook';
@@ -65,7 +55,6 @@ export default function Categories() {
         window.scrollTo(0, 0);
     }, [offset]);
 
-    /* Don't have to use isLoading, isError--just for future ref */
     const { data, isLoading, isError } = useGetWorksBySubjectQuery({
         subject: param,
         limit,
@@ -82,9 +71,9 @@ export default function Categories() {
                         <Heading size="2xl">Sort books by</Heading>
                         <Popover>
                             <PopoverTrigger>
-                                {/* if button exists, use it. Else, use "general" */}
                                 <Button mx="5" p="6" size="lg">
                                     <Box fontSize="1.5em" mb="1">
+                                        {/* Cannot use a function here; text will not display */}
                                         {param == 'general'
                                             ? '< select a category >'
                                             : (NONFICTION_PARAMS.includes(param)
@@ -96,9 +85,7 @@ export default function Categories() {
                                                   .replace(
                                                       /fiction|general/gi,
                                                       ''
-                                                  )} */}
-                                        {/* // FIX: display categories on button */}
-                                        {/* Find out if a category was chosen. If not, displays "general" by default. */}
+                                                  )}
                                     </Box>
                                 </Button>
                             </PopoverTrigger>
@@ -114,6 +101,7 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
+                                            {/* Display fiction categories in a 3x5 grid */}
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
                                                 gap={3}
@@ -132,6 +120,7 @@ export default function Categories() {
                                 <PopoverBody>
                                     <TableContainer>
                                         <Box overflowY="auto" maxHeight="10vh">
+                                            {/* Display nonfiction categories in a 3x5 grid */}
                                             <Grid
                                                 templateColumns="repeat(5, 1fr)"
                                                 gap={3}
@@ -159,6 +148,7 @@ export default function Categories() {
                                 );
                             })}
                     </SimpleGrid>
+                    {/* Displays the next 20 books */}
                     {offset + limit < data.work_count ? (
                         <Box textAlign="center">
                             <Button
