@@ -26,7 +26,7 @@ import {
 } from "../../../store/cart/cartSlice";
 import { FaRegHeart } from "react-icons/fa";
 import { FiShare2 } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
+import { RiStarFill } from "react-icons/ri";
 
 export default function ProductDetails(props: props) {
   const dispatch = useDispatch();
@@ -68,8 +68,6 @@ export default function ProductDetails(props: props) {
               justifyContent="left"
               py="15px"
             >
-              {/* TODO: display dynamic number of stars */}
-              <Image src="../images/review-rating.png" boxSize="20%"></Image>
               <Text pl="5px">
                 <Rating
                   average={props.ratingsSummary.average}
@@ -163,9 +161,9 @@ export default function ProductDetails(props: props) {
 
 function Rating(props: ratingsSummary) {
   const max = 5;
-  const size = "md";
-  const color = useColorModeValue("orange.200", "orange.600");
-  const activeColor = useColorModeValue("orange.500", "yellow.200");
+
+  const color = useColorModeValue("#d9d9d9", "#d9d9d9");
+  const activeColor = useColorModeValue("#F7B744", "orange.500");
   if (typeof props.average === "number") {
   }
 
@@ -177,13 +175,15 @@ function Rating(props: ratingsSummary) {
           .map((index) => (
             <Icon
               key={index}
-              as={FaStar}
-              fontSize={size}
+              as={RiStarFill}
+              boxSize={6}
               color={index <= Math.round(props.average!) ? activeColor : color}
             />
           ))}
+        <chakra.span pl="10px">
+          {props.average.toFixed(1)} ({props.count})
+        </chakra.span>
       </HStack>
-      {props.average.toFixed(1)} ({props.count})
     </>
   ) : (
     <>Ratings not available</>
