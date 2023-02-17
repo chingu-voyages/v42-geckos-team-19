@@ -93,7 +93,10 @@ export default function ProductDetails(props: props) {
             justifyContent={{ base: "center", md: "left" }}
             mb={5}
           >
-            <Counter />
+            <Counter
+              potentialCartItemCountAugment={props.potentialCartItemCountAugment}
+              setPotentialCartItemCountAugment={props.setPotentialCartItemCountAugment}
+            />
             <Button
               h={12}
               px={8}

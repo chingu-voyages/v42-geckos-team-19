@@ -7,6 +7,8 @@ export interface props {
   coverId: coverId | null;
   cartItemObj: CartItem;
   price: string;
+  potentialCartItemCountAugment: number;
+  setPotentialCartItemCountAugment: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ratingsSummary {
