@@ -21,7 +21,7 @@ const NavBar: FC = () => {
 
   /* Find total number of books in cart for badge on shopping cart icon */
   const cartItems = useSelector(selectCartItems);
-  const totalBooksVar = cartItems.reduce(
+  const totalBooks = cartItems.reduce(
     (acc, cartItem) => acc + cartItem.quantity,
     0
   );
@@ -116,7 +116,7 @@ const NavBar: FC = () => {
         <li className={styles.shoppingCart}>
           <Link to="/checkout">
             <GrCart fontSize="1.5em" />
-            {Boolean(totalBooksVar) && <span>{totalBooksVar}</span>}
+            {Boolean(totalBooks) && <span>{totalBooks}</span>}
           </Link>
         </li>
       </ul>
