@@ -68,7 +68,7 @@ import { clearCartItem } from "../../store/cart/cartSlice";
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         /> */}
-        <Text>X {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`(${price} per unit)`) : null}</Text>
+        <Text>X {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price} per unit)`) : null}</Text>
         
         <IconButton
           variant="outline"
