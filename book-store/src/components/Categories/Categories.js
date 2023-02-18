@@ -67,11 +67,28 @@ export default function Categories() {
         <>Loading . . .</>
       ) : (
         <>
-          <HStack spacing="5" mt="20" ml="5">
-            <Heading size="2xl">Sort books by</Heading>
+          <HStack spacing="5" mt="20" ml="5" fontFamily="poppins">
+            <Heading
+              size="2xl"
+              fontFamily="Libre Baskerville"
+              as="i"
+              fontWeight="400"
+            >
+              Sort books by
+            </Heading>
             <Popover>
               <PopoverTrigger>
-                <Button mx="5" p="6" size="lg">
+                <Button
+                  mx="5"
+                  p="6"
+                  size="lg"
+                  bg="white"
+                  color="#E4573D"
+                  variant="outline"
+                  borderColor="#E4573D"
+                  rounded="sm"
+                  _hover={{ bg: "#E4573D", color: "white" }}
+                >
                   <Box fontSize="1.5em" mb="1">
                     {/* Cannot use a function here; text will not display */}
                     {param == "general"
@@ -86,13 +103,18 @@ export default function Categories() {
                   </Box>
                 </Button>
               </PopoverTrigger>
-              <PopoverContent ml="10em" w="80vw">
+              <PopoverContent ml="10em" w="80vw" borderColor="#d9d9d9">
                 <PopoverArrow />
                 <PopoverCloseButton />
-                <PopoverHeader textAlign="center">
+                <PopoverHeader
+                  as="b"
+                  fontSize="lg"
+                  textAlign="center"
+                  borderColor="#d9d9d9"
+                >
                   Select a category
                 </PopoverHeader>
-                <PopoverHeader bg="gray.50" as="b">
+                <PopoverHeader as="b" bg="#d9d9d9" borderColor="#d9d9d9">
                   <Text ml="2">Fiction</Text>
                 </PopoverHeader>
                 <PopoverBody>
@@ -105,7 +127,7 @@ export default function Categories() {
                     </Box>
                   </TableContainer>
                 </PopoverBody>
-                <PopoverHeader bg="gray.50" as="b">
+                <PopoverHeader as="b" bg="#d9d9d9" borderColor="#d9d9d9">
                   <Text ml="2">Nonfiction</Text>
                 </PopoverHeader>
                 <PopoverBody>
@@ -136,13 +158,14 @@ export default function Categories() {
                 bgColor="#E4573D"
                 color="white"
                 colorScheme="E4573D"
-                size="sm"
+                size="md"
+                fontSize="lg"
                 rounded="sm"
                 px="12"
                 py="6"
                 mt="2"
                 variant="outline"
-                _hover={{ bg: "#F49B8B", color: "black" }}
+                _hover={{ bg: "white", color: "#E4573D" }}
                 letterSpacing="2px"
                 onClick={() => {
                   setOffset((oldOffset) => (oldOffset += 20));
