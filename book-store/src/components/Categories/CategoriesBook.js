@@ -175,7 +175,8 @@ export default function BookCard(props) {
                     const justKey = props.bookKey.replace("/works", "");
                     navigate("/book" + justKey);
                   }}
-                >
+                />
+                <Card>
                     <CardBody>
                         <BookCover coverId={props.card.cover_id} />
                         {/* Set box width for author and price */}
@@ -247,6 +248,7 @@ export default function BookCard(props) {
                         </Box>
                     </CardBody>
                 </Card>
+                </Stack>
             </Box>
           </CardBody>
         </Card>
