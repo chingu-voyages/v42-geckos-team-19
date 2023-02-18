@@ -11,6 +11,7 @@ import {
   Box,
   Divider,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 
 export default function CartOrderSummary() {
   return (

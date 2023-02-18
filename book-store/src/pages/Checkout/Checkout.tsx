@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import CheckoutCart from "../../components/CheckoutCart/CheckoutCart";
 import CartOrderSummary from "../../components/CartOrderSummary/CartOrderSummary";
 import type { RootState } from "../../store/rootReducer";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectCartItems } from "../../store/cart/cartSlice";
 import {
   addToCart,
   removeCartItem,
   clearCartItem,
 } from "../../store/cart/cartSlice";
-import data from "../../components/data/data";
 import {
   Card,
   CardBody,
@@ -19,30 +19,10 @@ import {
   Box,
   Container,
 } from "@chakra-ui/react";
+import { useAppDispatch } from "../../hooks";
 
-const AVAILABLE_ITEMS_ARR = data;
 
 const Checkout = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    AVAILABLE_ITEMS_ARR.forEach((element) => {
-      const { title, author, id, price } = element;
-      const numId = id.toString();
-      const cartItem = {
-        quantity: 2,
-        imageUrl: "",
-        id: numId,
-        title,
-        author,
-        price,
-      };
-      dispatch(addToCart(cartItem));
-    });
-  }, []);
-
-  const cart = useSelector((state: RootState) => state.cart);
-  console.log(cart);
   return (
     <Container maxW="1400px" fontFamily="Poppins" mb="200px">
       <CheckoutCartSummary />
@@ -51,6 +31,8 @@ const Checkout = () => {
 };
 
 const CheckoutCartSummary = () => {
+  const cartItems = useSelector(selectCartItems);
+  console.log(cartItems );
   return (
     <>
       <Box textAlign="center" mb="30px">
@@ -66,7 +48,6 @@ const CheckoutCartSummary = () => {
           <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
         </Box>
       </Box>
-
       <Grid templateColumns={"2fr 1fr"} columnGap="3%">
         <Card>
           <CardBody>
@@ -83,7 +64,6 @@ const CheckoutCartSummary = () => {
               ORDER SUMMARY
             </Heading>
             <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
-
             <CardBody>
               <CartOrderSummary />
             </CardBody>
