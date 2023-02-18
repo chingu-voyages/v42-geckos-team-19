@@ -6,7 +6,7 @@
   box-sizing: border-box;
 }
 
-
-body>iframe {
+/* For disabling WebPack error overlay when developing */
+/* body>iframe {
   display: none !important;
-}
+} */
