@@ -11,17 +11,26 @@ import {
   Box,
   Divider,
 } from "@chakra-ui/react";
-import { useSelector } from "react-redux";
 
-export default function CartOrderSummary() {
+
+export default function CartOrderSummary(props) {
+  const {cartItems} = props
+
+  let total = 0;
+  for (const cartItem of cartItems) {
+    total += cartItem.price * cartItem.quantity;
+  }
+  total = total.toFixed(2);
+
+
   return (
     <>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
         <Box w={{ base: "80%", md: "80%" }}>
-          <Text>Subtotal</Text>
+          <Text>${total}</Text>
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
-          <Text> $149.97</Text>
+          <Text> ${total}</Text>
         </Box>
       </HStack>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
@@ -40,7 +49,7 @@ export default function CartOrderSummary() {
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
           <Heading as="h3" size="sm" className="align-right">
-            $149.97
+           {total}
           </Heading>
         </Box>
       </HStack>

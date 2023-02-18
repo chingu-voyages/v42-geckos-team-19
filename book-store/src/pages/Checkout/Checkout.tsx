@@ -32,7 +32,7 @@ const Checkout = () => {
 
 const CheckoutCartSummary = () => {
   const cartItems = useSelector(selectCartItems);
-  console.log(cartItems );
+
   return (
     <>
       <Box textAlign="center" mb="30px">
@@ -65,7 +65,7 @@ const CheckoutCartSummary = () => {
             </Heading>
             <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
             <CardBody>
-              <CartOrderSummary />
+              <CartOrderSummary cartItems={cartItems}/>
             </CardBody>
           </CardBody>
         </Card>

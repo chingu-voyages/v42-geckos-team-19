@@ -12,6 +12,8 @@ import "@fontsource/poppins/300.css";
 import "@fontsource/poppins/400.css";
 import "@fontsource/libre-baskerville";
 import "@fontsource/libre-baskerville/400-italic.css";
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistStore } from "redux-persist";
 
 const theme = extendTheme({
   fonts: {
@@ -23,12 +25,16 @@ const theme = extendTheme({
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+let persistor = persistStore(store)
 root.render(
   <>
     <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
       <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
+      </PersistGate>
     </Provider>
   </>
 );

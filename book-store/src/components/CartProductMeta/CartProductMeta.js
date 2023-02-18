@@ -15,7 +15,7 @@ export const CartProductMeta = (props) => {
         width="120px"
         height="120px"
         fit="cover"
-        src={`../images/${coverImg}`}
+        src={coverImg}
         alt={title}
         draggable="false"
         loading="lazy"

@@ -9,6 +9,7 @@ import {
 import { FiTrash2 } from "react-icons/fi";
 import { useAppDispatch } from "../../hooks";
 import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
+import { clearCartItem } from "../../store/cart/cartSlice";
 
 // const QuantitySelect = (props) => {
 //   return (
@@ -26,7 +27,7 @@ import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
 //   );
 // };
 
-export const CartItem = ({cartItem}) => {
+ const CartItem = ({cartItem}) => {
   const dispatch = useAppDispatch()
   const {
     title,
@@ -35,6 +36,8 @@ export const CartItem = ({cartItem}) => {
     id,
     quantity,
     price,  } = cartItem;
+
+  const handleClearCartItem = () => dispatch(clearCartItem(cartItem))
   return (
     <Flex
       direction={{
@@ -47,7 +50,7 @@ export const CartItem = ({cartItem}) => {
       <CartProductMeta
         title={title}
         // description={description}
-        coverImg={imageUrl}
+        coverImg={`https://covers.openlibrary.org/b/id/${imageUrl}-M.jpg?default=false`}
       />
 
       {/* Desktop */}
@@ -65,15 +68,15 @@ export const CartItem = ({cartItem}) => {
             onChangeQuantity?.(+e.currentTarget.value);
           }}
         /> */}
-        <Text>{quantity}</Text>
-        <Text>$49.99</Text>
+        <Text>X {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`(${price} per unit)`) : null}</Text>
+        
         <IconButton
           variant="outline"
           borderColor="transparent"
           aria-label={`Delete ${title} from cart`}
           fontSize="20px"
           icon={<FiTrash2 />}
-          onClick={() => }
+          onClick={() => handleClearCartItem()}
         />
       </Flex>
 

@@ -137,6 +137,16 @@ a:focus {
   }
 }
 
+.shoppingCart {
+  position: relative;
+}
+
+.shoppingCart span {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 /* / styles for small screens (e.g. mobile landscape) / */
 @media (min-width: 480px) and (max-width: 767px) {
   /* / styles for screens between 480px and 767px / */
