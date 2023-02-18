@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { Box, Button, HStack, Text } from "@chakra-ui/react";
 
-export default function Counter() {
-  const [count, setCount] = useState(0);
+export default function Counter(props) {
+
+  const {potentialCartItemCountAugment, setPotentialCartItemCountAugment} = props;
 
   function add() {
-    setCount(count + 1);
+    if (potentialCartItemCountAugment < 999) {
+      setPotentialCartItemCountAugment((oldValue) => ++oldValue);
+    }
   }
 
   function subtract() {
-    setCount(count - 1);
+    if (potentialCartItemCountAugment > 1) {
+      setPotentialCartItemCountAugment((oldValue) => --oldValue);
+    }
   }
 
   return (
@@ -31,7 +36,7 @@ export default function Counter() {
           –
         </Button>
         <Box px={5}>
-          <Text>{count}</Text>
+          <Text>{potentialCartItemCountAugment}</Text>
         </Box>
         <Button px={6} h={12} rounded="none" bg="#F8F8F8" onClick={add}>
           +

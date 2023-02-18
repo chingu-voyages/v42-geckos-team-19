@@ -19,6 +19,7 @@ import {
 import { GrCart } from "react-icons/gr";
 import { FaRegHeart } from "react-icons/fa";
 import { useNavigate } from "react-router";
+import generateBookPrice from "../../utils/pricing/generateBookPrice";
 
 export default function BookCard({ workId }) {
   const workRes = useGetWorkByIdQuery(workId);
@@ -88,7 +89,7 @@ export default function BookCard({ workId }) {
               </GridItem>
               <GridItem w="100%" h="5">
                 <Text ml="20" as="b">
-                  $49.99
+                  ${generateBookPrice(workRes.data.title)}
                 </Text>
               </GridItem>
             </Grid>

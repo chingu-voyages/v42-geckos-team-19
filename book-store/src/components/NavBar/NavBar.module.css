@@ -98,6 +98,24 @@ a:focus {
   gap: 5px;
 }
 
+.shoppingCart {
+  position: relative;
+}
+
+.shoppingCart > a > span {
+  position: absolute;
+  width: 75%;
+  height: 75%;
+  transform: translate(50%, -50%);
+  font-size: 8px;
+  color: white;
+  background-color: #056daa;
+  border-radius: 50%;
+  text-align: center;
+  right: 0;
+  padding: 2px;
+}
+
 /* / styles for large screens (e.g. desktop) / */
 @media (min-width: 960px) and (max-width: 1260px) {
   /* / styles for screens between 1920px and 2559px / */
@@ -135,6 +153,16 @@ a:focus {
     top: 0px;
     gap: 0px;
   }
+}
+
+.shoppingCart {
+  position: relative;
+}
+
+.shoppingCart span {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 /* / styles for small screens (e.g. mobile landscape) / */

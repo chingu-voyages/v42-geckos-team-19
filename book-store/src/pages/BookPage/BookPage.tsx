@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ProductDetails from "../../components/BookPage/ProductDetails/ProductDetails";
 import ProductDescription from "../../components/BookPage/ProductDescription/ProductDescription";
 import { Container } from "@chakra-ui/react";
@@ -9,12 +9,18 @@ import {
   useGetAuthorByIdQuery,
 } from "../../store/books/booksSlice";
 import { CartItem } from "../../store/cart/types";
+import generateBookPrice from "../../utils/pricing/generateBookPrice"
 
 export default function BookPage() {
   let { param } = useParams();
-  console.log("this is your key param! " + param);
+  
+  const [
+    potentialCartItemCountAugment,
+    setPotentialCartItemCountAugment
+  ] = useState(1);
 
   const workRes = useGetWorkByIdQuery(param!);
+  let price = '?';
   const ratingsRes = useGetRatingsByWorkIdQuery(param!);
 
   // skip here is redux toolkit's way of allowing conditionally fetching from an api
@@ -32,13 +38,14 @@ export default function BookPage() {
   if (workRes.isLoading || ratingsRes.isLoading || authorRes.isLoading) {
     // wait to set up cart until everything is loaded
   } else {
+    price = generateBookPrice(workRes.data!.title);
     cartItemObj = {
       title: workRes.data!.title,
       author: workRes.data!.authors ? authorRes.data!.name! : "Anonymous",
       imageUrl: workRes.data!.covers ? workRes.data!.covers[0] : null,
       id: param!,
-      quantity: 1,
-      price: 0
+      quantity: potentialCartItemCountAugment,
+      price: parseFloat(price)
     }
     
   }
@@ -58,6 +65,9 @@ export default function BookPage() {
             authors={workRes.data!.authors ? authorRes.data!.name! : "Anonymous"}
             coverId={workRes.data!.covers ? workRes.data!.covers[0] : null}
             cartItemObj={cartItemObj!}
+            price={price}
+            potentialCartItemCountAugment={potentialCartItemCountAugment}
+            setPotentialCartItemCountAugment={setPotentialCartItemCountAugment}
           />
           <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
         </Container>
