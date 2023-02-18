@@ -1,24 +1,23 @@
 import React from "react";
 import {
-    Box,
-    Card,
-    CardBody,
-    Heading,
-    Text,
-    Divider,
-    Image,
-    Stack,
-    Grid,
-    GridItem,
-    Button,
-    HStack,
-    Flex
-} from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
-import generateBookPrice from '../../utils/pricing/generateBookPrice';
+  Box,
+  Card,
+  CardBody,
+  Heading,
+  Text,
+  Divider,
+  Image,
+  Stack,
+  Grid,
+  GridItem,
+  Button,
+  HStack,
+  Flex,
+} from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import generateBookPrice from "../../utils/pricing/generateBookPrice";
 
 export default function BookCard(props) {
-  console.log(props);
   const navigate = useNavigate();
 
   /* Truncate long titles */
@@ -117,7 +116,7 @@ export default function BookCard(props) {
             {/* Set box width for author and price */}
             <Box w="250px">
               <Stack mt="6" spacing="3">
-                <Heading size="xs" align="left">
+                <Heading size="sm" align="left">
                   {/* Shorten titles to fit on card */}
                   <Title title={props.card.title} />
                 </Heading>
@@ -151,10 +150,7 @@ export default function BookCard(props) {
                         />
                       </Text>
                     </Box>
-                    <Text as="b">
-                      $
-                      <GetBookPrice title={props.card.title} />
-                    </Text>
+                    <Text as="b">${generateBookPrice(props.card.title)}</Text>
                   </HStack>
                 </GridItem>
               </Grid>
@@ -175,80 +171,10 @@ export default function BookCard(props) {
                     const justKey = props.bookKey.replace("/works", "");
                     navigate("/book" + justKey);
                   }}
-                />
-                <Card>
-                    <CardBody>
-                        <BookCover coverId={props.card.cover_id} />
-                        {/* Set box width for author and price */}
-                        <Box w="250px">
-                            <Stack mt="6" spacing="3">
-                                <Heading size="xs" align="left">
-                                    {/* Shorten titles to fit on card */}
-                                    <Title title={props.card.title} />
-                                </Heading>
-                            </Stack>
-                            <Divider mt="3" mb="5" borderColor="#D9D9D9" />
-                            <Grid templateRows="repeat(2, 1fr)" gap={2} mb="5">
-                                <GridItem w="100%" h="5">
-                                    <HStack>
-                                        {/* Author should take up ~75% of box width */}
-                                        <Box width="195px" align="left">
-                                            <Text color="#61625F">Author</Text>
-                                        </Box>
-                                        <Text color="#61625F">Price</Text>
-                                    </HStack>
-                                </GridItem>
-                                <GridItem w="100%" h="5">
-                                    <HStack>
-                                        {/* Author should take up ~75% of box width */}
-                                        <Box width="195px" align="left">
-                                            <Text as="b" fontSize="xs">
-                                                {/* Shorten author names to fit on card */}
-                                                <Author
-                                                    author={
-                                                        props.card.authors[0]
-                                                            ? props.card
-                                                                  .authors[0]
-                                                                  .name
-                                                            : 'No author data available'
-                                                    }
-                                                />
-                                            </Text>
-                                        </Box>
-                                        <Text as="b">
-                                            ${generateBookPrice(props.card.title)}
-                                        </Text>
-                                    </HStack>
-                                </GridItem>
-                            </Grid>
-                            <Stack align="center">
-                                <Button
-                                    bgColor="white"
-                                    color="#E4573D"
-                                    colorScheme="E4573D"
-                                    size="sm"
-                                    rounded="sm"
-                                    px="12"
-                                    py="6"
-                                    mt="2"
-                                    variant="outline"
-                                    _hover={{ bg: '#E4573D', color: 'white' }}
-                                    letterSpacing="2px"
-                                    onClick={(e) => {
-                                        const justKey = props.bookKey.replace(
-                                            '/works',
-                                            ''
-                                        );
-                                        navigate('/book' + justKey);
-                                    }}
-                                >
-                                    More Details
-                                </Button>
-                            </Stack>
-                        </Box>
-                    </CardBody>
-                </Card>
-                </Stack>
+                >
+                  More Details
+                </Button>
+              </Stack>
             </Box>
           </CardBody>
         </Card>
