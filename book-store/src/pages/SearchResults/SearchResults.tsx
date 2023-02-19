@@ -60,7 +60,7 @@ export default function SearchResults() {
             as="i"
             fontWeight="400"
           >
-            {`Results For: ${searchParams}`}
+            {`Results For: ${queryTerm}`}
           </Heading>
           <SimpleGrid columns={4} spacing={5} minChildWidth="280px">
             {searchRes.data.docs.map((element) => {
