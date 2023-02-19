@@ -94,8 +94,12 @@ export default function ProductDetails(props: props) {
             mb={5}
           >
             <Counter
-              potentialCartItemCountAugment={props.potentialCartItemCountAugment}
-              setPotentialCartItemCountAugment={props.setPotentialCartItemCountAugment}
+              potentialCartItemCountAugment={
+                props.potentialCartItemCountAugment
+              }
+              setPotentialCartItemCountAugment={
+                props.setPotentialCartItemCountAugment
+              }
             />
             <Button
               h={12}
@@ -206,6 +210,18 @@ function BookCoverImg(props: BookCoverImgProps) {
       boxSize="100%"
     />
   ) : (
-    <>No image available</>
+    <Box
+      h="500px"
+      align-items="center"
+      bg="gray.100"
+      border="solid"
+      borderRadius="lg"
+      borderColor="gray.200"
+      borderWidth="1"
+    >
+      <Text fontSize="4xl" mt="120px" textColor="gray.300" textAlign="center">
+        Cover not available
+      </Text>
+    </Box>
   );
 }
