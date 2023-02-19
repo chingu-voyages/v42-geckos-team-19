@@ -69,7 +69,7 @@ export default function BookPage() {
             potentialCartItemCountAugment={potentialCartItemCountAugment}
             setPotentialCartItemCountAugment={setPotentialCartItemCountAugment}
           />
-          <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} reviews="bad book" />
+          <ProductDescription description={workRes.data!.description} bio={authorRes.data!.bio ? authorRes.data!.bio : ''} />
         </Container>
       )
   );

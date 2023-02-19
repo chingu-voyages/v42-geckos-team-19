@@ -5,5 +5,5 @@ export interface props {
   bio: string | {
     [key: string]: string;
   };
-  reviews: string;
+  reviews?: string;
 }
