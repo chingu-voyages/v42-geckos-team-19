@@ -17,6 +17,7 @@ import {
 import { IconType } from "react-icons";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../store/user/userSlice";
+import {useEffect} from 'react';
 
 type TextIconProps = { icon: IconType; text: string };
 
@@ -30,6 +31,9 @@ const TextIcon = ({ icon, text }: TextIconProps) => {
 };
 
 const UserAccount = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   const currentUser = useSelector(selectCurrentUser);
   return (
     <Center mt={16}>
