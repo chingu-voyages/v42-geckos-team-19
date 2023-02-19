@@ -56,7 +56,7 @@ const CartItem = ({ cartItem }) => {
       >
         <Text>{quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Text>
         <NumberInput defaultValue={15} min={10} max={20}>
-          <NumberInputField />
+          <NumberInputField m={0}  />
           <NumberInputStepper>
             <NumberIncrementStepper />
             <NumberDecrementStepper />
