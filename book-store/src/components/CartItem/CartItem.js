@@ -54,14 +54,14 @@ const CartItem = ({ cartItem }) => {
           md: "flex",
         }}
       >
-        <Flex>X <NumberInput defaultValue={15} min={10} max={20}>
+        <Text>{quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Text>
+        <NumberInput defaultValue={15} min={10} max={20}>
           <NumberInputField />
           <NumberInputStepper>
             <NumberIncrementStepper />
             <NumberDecrementStepper />
           </NumberInputStepper>
-        </NumberInput> {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Flex>
-
+        </NumberInput>
         <IconButton
           variant="outline"
           borderColor="transparent"
