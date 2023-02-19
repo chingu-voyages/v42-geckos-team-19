@@ -29,7 +29,6 @@ export default function Home() {
       </Stack>
       <HomeGrid />
       <Faq />
-      <Footer />
     </Container>
   );
 }

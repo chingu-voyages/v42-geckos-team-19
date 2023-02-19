@@ -12,6 +12,7 @@ import { booksApi } from "./store/books/booksSlice";
 import BookPage from './pages/BookPage/BookPage';
 import SearchResults from "./pages/SearchResults/SearchResults";
 import UserAccount from "./pages/UserAccount/UserAccount";
+import Footer from "./components/Footer/Footer";
 import { checkUserSession, selectCurrentUser } from "./store/user/userSlice";
 
 
@@ -52,6 +53,7 @@ const App = () => {
             }
           />
         </Routes>
+        <Footer />
     </Router>
   );
 };

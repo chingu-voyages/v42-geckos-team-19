@@ -15,7 +15,6 @@ export default function Body() {
   return (
     <Container maxW="1400px">
       <Categories />
-      <Footer />
     </Container>
   );
 }
