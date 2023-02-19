@@ -40,7 +40,7 @@ const App = () => {
           <Route path='categories/:param' element={<Categories />} />
           <Route path='categories/' element={<Categories />} />
           <Route path="/book/:param" element={<BookPage />} />
-          <Route path="*" element={<div><h1>404</h1></div>} />
+          <Route path="*" element={<Navigate replace to="/" />} />
           <Route path="/auth" element={<Authentication />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route
