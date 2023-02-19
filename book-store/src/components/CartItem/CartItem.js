@@ -15,12 +15,12 @@ import {
 import { FiTrash2 } from "react-icons/fi";
 import { useAppDispatch } from "../../hooks";
 import { CartProductMeta } from "../CartProductMeta/CartProductMeta";
-import { clearCartItem } from "../../store/cart/cartSlice";
+import { clearCartItem, setCartItemQuantity } from "../../store/cart/cartSlice";
 import Counter from "../Counter/Counter";
 
 
 const CartItem = ({ cartItem }) => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
   const {
     title,
     author,
@@ -44,25 +44,30 @@ const CartItem = ({ cartItem }) => {
         // description={description}
         coverImg={`https://covers.openlibrary.org/b/id/${imageUrl}-M.jpg?default=false`}
       />
-
+      <Text textAlign="center" >${(price * quantity).toFixed(2)} {(quantity > 1) ? (<Text>(${price.toFixed(2)} per unit)</Text>) : null}</Text>
       {/* Desktop */}
       <Flex
-        width="full"
-        justify="space-between"
-        display={{
-          base: "none",
-          md: "flex",
-        }}
+     
+        justify="end"
+        display="flex"
       >
-        <Text>{quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Text>
-        <NumberInput defaultValue={15} min={10} max={20}>
+        
+        
+        <Flex alignItems="center">
+          <NumberInput onChange={(value) => {
+            let updatedCartItem = { ...cartItem };
+            updatedCartItem.quantity = parseInt(value);
+            dispatch(setCartItemQuantity(updatedCartItem))
+            }} width="5em" defaultValue={quantity} min={1} max={999}>
           <NumberInputField m={0}  />
           <NumberInputStepper>
             <NumberIncrementStepper />
             <NumberDecrementStepper />
           </NumberInputStepper>
         </NumberInput>
+        </Flex>
         <IconButton
+          marginLeft="30px"
           variant="outline"
           borderColor="transparent"
           aria-label={`Delete ${title} from cart`}
@@ -72,28 +77,7 @@ const CartItem = ({ cartItem }) => {
         />
       </Flex>
 
-      {/* Mobile */}
-      <Flex
-        mt="4"
-        align="center"
-        width="full"
-        justify="space-between"
-        display={{
-          base: "flex",
-          md: "none",
-        }}
-      >
-        <Link fontSize="sm" textDecor="underline">
-          Delete
-        </Link>
-        {/* <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQuantity?.(+e.currentTarget.value);
-          }}
-        /> */}
-        <Text>$49.99</Text>
-      </Flex>
+    
     </Flex>
   );
 };

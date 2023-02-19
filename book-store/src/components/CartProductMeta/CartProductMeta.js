@@ -9,7 +9,7 @@ import {
 export const CartProductMeta = (props) => {
   const { coverImg, title} = props;
   return (
-    <Stack direction="row" spacing="5" width="full">
+    <Stack direction="row" spacing="5">
       <Image
         rounded="lg"
         width="120px"

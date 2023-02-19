@@ -16,10 +16,21 @@ const cartSlice = createSlice({
       const existingCartItem = state.cartItems.find(
         (cartItem) => cartItem.id === itemToAdd.id
       );
-      if (existingCartItem) {
+      if (existingCartItem && itemToAdd.quantity > 0) {
         existingCartItem.quantity += itemToAdd.quantity;
       } else {
         state.cartItems.push({ ...itemToAdd, quantity: itemToAdd.quantity });
+      }
+    },
+    setCartItemQuantity: (state, action: PayloadAction<CartItem>) => {
+      const itemWithNewQuantity = action.payload;
+      const existingCartItem = state.cartItems.find(
+        (cartItem) => cartItem.id === itemWithNewQuantity.id
+      );
+      if (existingCartItem && itemWithNewQuantity.quantity > 0) {
+        existingCartItem.quantity = itemWithNewQuantity.quantity;
+      } else {
+        console.log('Can\'t set quantity of item not in cart:', itemWithNewQuantity);
       }
     },
     removeCartItem: (state, action: PayloadAction<CartItem>) => {
@@ -56,5 +67,5 @@ export const selectCartIsOpen = createSelector(
   (cartSlice) => cartSlice.isCartOpen
 );
 
-export const { addToCart, removeCartItem, clearCartItem } = cartSlice.actions;
+export const { addToCart, setCartItemQuantity, removeCartItem, clearCartItem } = cartSlice.actions;
 export default cartSlice.reducer;
