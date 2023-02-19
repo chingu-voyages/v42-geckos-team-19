@@ -22,6 +22,9 @@ export default function CartOrderSummary(props) {
   }
   total = total.toFixed(2);
 
+  const today = new Date();
+  let deliveryDate = new Date();
+  deliveryDate.setDate(today.getDate() + 3);
 
   return (
     <>
@@ -63,7 +66,7 @@ export default function CartOrderSummary(props) {
       >
         <Image src="../images/delivery-truck.png" h="70px"></Image>
         <Text>
-          <chakra.span as="b">Arrives by</chakra.span> Thursday, January 19th
+          <chakra.span as="b">Arrives by</chakra.span> {deliveryDate.toLocaleDateString('en-us', { weekday:"long", month:"long", day:"numeric"}) }
         </Text>
       </HStack>
 
