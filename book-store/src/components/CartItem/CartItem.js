@@ -5,7 +5,12 @@ import {
   useColorModeValue,
   IconButton,
   Text,
-  Box
+  Box,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { FiTrash2 } from "react-icons/fi";
 import { useAppDispatch } from "../../hooks";
@@ -14,7 +19,7 @@ import { clearCartItem } from "../../store/cart/cartSlice";
 import Counter from "../Counter/Counter";
 
 
- const CartItem = ({cartItem}) => {
+const CartItem = ({ cartItem }) => {
   const dispatch = useAppDispatch()
   const {
     title,
@@ -22,7 +27,7 @@ import Counter from "../Counter/Counter";
     imageUrl,
     id,
     quantity,
-    price,  } = cartItem;
+    price, } = cartItem;
 
   const handleClearCartItem = () => dispatch(clearCartItem(cartItem))
   return (
@@ -49,8 +54,14 @@ import Counter from "../Counter/Counter";
           md: "flex",
         }}
       >
-        <Flex>X <Counter /> {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Flex>
-        
+        <Flex>X <NumberInput defaultValue={15} min={10} max={20}>
+          <NumberInputField />
+          <NumberInputStepper>
+            <NumberIncrementStepper />
+            <NumberDecrementStepper />
+          </NumberInputStepper>
+        </NumberInput> {quantity} = ${(price * quantity).toFixed(2)} {(quantity > 1) ? (`($${price.toFixed(2)} per unit)`) : null}</Flex>
+
         <IconButton
           variant="outline"
           borderColor="transparent"
