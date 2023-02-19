@@ -40,6 +40,7 @@ export default function Footer() {
           />
           <p>WEEKLY NEWSLETTER</p>
           <input
+            className="footer-email-input"
             type="text"
             id="email"
             name="email"

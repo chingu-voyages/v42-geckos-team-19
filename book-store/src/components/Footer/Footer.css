@@ -98,8 +98,7 @@ NAVLINKS, NEWSLETTER
 }
 
 /* email input */
-input[type="text"],
-select {
+input[type="text"].footer-email-input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
