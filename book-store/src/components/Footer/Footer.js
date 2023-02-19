@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -21,15 +22,15 @@ export default function Footer() {
       </div>
       <div className="container">
         <div className="left">
-          <a href="#faq" title="Page coming soon!">
+          <a href="/#faq">
             FAQ
           </a>
           <br />
-          <a href="" title="Page coming soon!">
+          <Link to="/account" title="Page coming soon!">
             My Account
-          </a>
+          </Link>
           <br />
-          <a href="" title="Page coming soon!">
+          <a title="Page coming soon!">
             Contact
           </a>
         </div>
@@ -49,17 +50,17 @@ export default function Footer() {
           <input type="submit" value="SUBSCRIBE" />
         </div>
         <div className="right">
-          <a href="" title="Page coming soon!">
+          <Link to="/" title="Page coming soon!">
             About
-          </a>
+          </Link>
           <br />
-          <a href="" title="Page coming soon!">
+          <Link to="/categories/general">
             Categories
-          </a>
+          </Link>
           <br />
-          <a href="" title="Page coming soon!">
+          <Link to="/" title="Page coming soon!">
             Wishlist
-          </a>
+          </Link>
         </div>
       </div>
       <p className="copyright">
