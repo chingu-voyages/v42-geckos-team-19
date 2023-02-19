@@ -3,12 +3,12 @@ import "./Footer.css";
 
 export default function Footer() {
   return (
-    <div class="footer">
-      <div class="divider">
-        <div class="rectangle" />
+    <div className="footer">
+      <div className="divider">
+        <div className="rectangle" />
         <img src="../images/booktown-logo.png" alt="booktown logo" />
       </div>
-      <div class="icon-links">
+      <div className="icon-links">
         <a href="https://chakra-ui.com/">
           <img src="/images/footer/chakra.png" alt="chakra icon" />
         </a>
@@ -19,8 +19,8 @@ export default function Footer() {
           <img src="/images/footer/opensource.png" alt="opensource icon" />
         </a>
       </div>
-      <div class="container">
-        <div class="left">
+      <div className="container">
+        <div className="left">
           <a href="#faq" title="Page coming soon!">
             FAQ
           </a>
@@ -33,7 +33,7 @@ export default function Footer() {
             Contact
           </a>
         </div>
-        <div class="middle">
+        <div className="middle">
           <img
             src="/images/footer/open-library-sign.png"
             alt="open library sign"
@@ -47,7 +47,7 @@ export default function Footer() {
           />
           <input type="submit" value="SUBSCRIBE" />
         </div>
-        <div class="right">
+        <div className="right">
           <a href="" title="Page coming soon!">
             About
           </a>
@@ -61,7 +61,7 @@ export default function Footer() {
           </a>
         </div>
       </div>
-      <p class="copyright">
+      <p className="copyright">
         Copyright © 2023 Team Geckos19 V42 All Rights Reserved
       </p>
     </div>
