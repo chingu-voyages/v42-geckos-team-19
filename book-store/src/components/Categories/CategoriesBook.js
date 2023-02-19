@@ -116,7 +116,7 @@ export default function BookCard(props) {
             {/* Set box width for author and price */}
             <Box w="250px">
               <Stack mt="6" spacing="3">
-                <Heading size="sm" align="left">
+                <Heading size="sm" align="left" noOfLines={1}>
                   {/* Shorten titles to fit on card */}
                   <Title title={props.card.title} />
                 </Heading>
