@@ -65,20 +65,36 @@ export default function SearchResults() {
                       fontFamily="Poppins"
                     >
                       <CardBody>
-                        <Image
-                          boxSize="100%"
-                          borderRadius="lg"
-                          src={
-                            element.cover_i
-                              ? `https://covers.openlibrary.org/b/id/${element.cover_i}-L.jpg`
-                              : "/no-image-found"
-                          }
-                          alt={
-                            element.cover_i
-                              ? `Cover image for "${element.title}"`
-                              : "No cover image available"
-                          }
-                        />
+                        {element.cover_i
+                          ? (
+                            <Image
+                              boxSize="100%"
+                              borderRadius="lg"
+                              src={
+                                element.cover_i
+                                  ? `https://covers.openlibrary.org/b/id/${element.cover_i}-L.jpg`
+                                  : "/no-image-found"
+                              }
+                              alt={`Cover image for "${element.title}"`}
+                            />
+                          )
+                          : (
+                            <Box
+                              w="250px"
+                              h="400px"
+                              align-items="center"
+                              bg="gray.100"
+                              border="solid"
+                              borderRadius="lg"
+                              borderColor="gray.200"
+                              borderWidth="1"
+                            >
+                              <Text fontSize="4xl" mt="120px" textColor="gray.300">
+                                Cover not available
+                              </Text>
+                            </Box>
+                          )}
+
 
                         <Stack mt="6" spacing="3">
                           <Heading size="sm">{element.title}</Heading>
