@@ -21,12 +21,9 @@ export const CartProductMeta = (props) => {
         loading="lazy"
       />
       <Box pt="4">
-        {/* <Stack spacing="0.5">
+        <Stack spacing="0.5">
           <Text fontWeight="medium">{title}</Text>
-          <Text color={mode("gray.600", "gray.400")} fontSize="sm">
-            {description}
-          </Text>
-        </Stack> */}
+        </Stack>
       </Box>
     </Stack>
   );
