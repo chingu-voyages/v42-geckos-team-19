@@ -10,11 +10,13 @@ import {
   chakra,
   Box,
   Divider,
+  Stat,
+  StatNumber,
 } from "@chakra-ui/react";
 
 
 export default function CartOrderSummary(props) {
-  const {cartItems} = props
+  const { cartItems } = props
 
   let total = 0;
   for (const cartItem of cartItems) {
@@ -26,14 +28,16 @@ export default function CartOrderSummary(props) {
   let deliveryDate = new Date();
   deliveryDate.setDate(today.getDate() + 3);
 
+  const deliveryFee = 4;
+
   return (
     <>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
         <Box w={{ base: "80%", md: "80%" }}>
-          <Text>${total}</Text>
+          <Text>Subtotal</Text>
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
-          <Text> ${total}</Text>
+          <Text overflowWrap="normal"> ${total}</Text>
         </Box>
       </HStack>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
@@ -41,7 +45,7 @@ export default function CartOrderSummary(props) {
           <Text>Estimated Delivery</Text>
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
-          <Text> $0.00</Text>
+          <Text overflowWrap="normal"> {(total !== "0.00") ? (`$` + deliveryFee.toFixed(2)) : ("$0.00")}</Text>
         </Box>
       </HStack>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
@@ -51,9 +55,10 @@ export default function CartOrderSummary(props) {
           </Heading>
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
-          <Heading as="h3" size="sm" className="align-right">
-           {total}
-          </Heading>
+        
+          <Stat >
+            <StatNumber overflowWrap="normal">${total}</StatNumber>
+          </Stat>
         </Box>
       </HStack>
       <Divider orientation="horizontal" borderColor="#D9D9D9" my="15px" />
@@ -66,7 +71,7 @@ export default function CartOrderSummary(props) {
       >
         <Image src="../images/delivery-truck.png" h="70px"></Image>
         <Text>
-          <chakra.span as="b">Arrives by</chakra.span> {deliveryDate.toLocaleDateString('en-us', { weekday:"long", month:"long", day:"numeric"}) }
+          <chakra.span as="b">Arrives by</chakra.span> {deliveryDate.toLocaleDateString('en-us', { weekday: "long", month: "long", day: "numeric" })}
         </Text>
       </HStack>
 
