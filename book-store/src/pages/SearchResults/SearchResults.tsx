@@ -74,41 +74,42 @@ export default function SearchResults() {
                     fontFamily="Poppins"
                   >
                     <CardBody>
-                      <Image
-                        boxSize="450px"
-                        borderRadius="lg"
-                        src={
-                          element.cover_i ? (
-                            `https://covers.openlibrary.org/b/id/${element.cover_i}-L.jpg`
-                          ) : (
-                            <Box
-                              w="250px"
-                              h="450px"
-                              align-items="center"
-                              bg="gray.100"
-                              border="solid"
-                              borderRadius="lg"
-                              borderColor="gray.200"
-                              borderWidth="1"
-                            >
-                              <Text
-                                fontSize="4xl"
-                                mt="120px"
-                                textColor="gray.300"
-                              >
-                                Cover not available
-                              </Text>
-                            </Box>
-                          )
-                        }
-                        alt={element.title}
-                      />
+                      {element.cover_i ? (
+                        <Image
+                          boxSize="450px"
+                          borderRadius="lg"
+                          src={
+                            element.cover_i
+                              ? `https://covers.openlibrary.org/b/id/${element.cover_i}-L.jpg`
+                              : "/no-image-found"
+                          }
+                          alt={`Cover image for "${element.title}"`}
+                        />
+                      ) : (
+                        <Box
+                          h="450px"
+                          align-items="center"
+                          bg="gray.100"
+                          border="solid"
+                          borderRadius="lg"
+                          borderColor="gray.200"
+                          borderWidth="1"
+                        >
+                          <Text
+                            fontSize="4xl"
+                            mt="120px"
+                            textColor="gray.300"
+                            textAlign="center"
+                          >
+                            Cover not available
+                          </Text>
+                        </Box>
+                      )}
 
                       <Stack mt="6" spacing="3">
                         <Heading noOfLines={1} size="sm">
                           {element.title}
                         </Heading>
-                        <Text noOfLines={1}>{element.title}</Text>
                       </Stack>
                       <Divider my="6" borderColor="#D9D9D9" />
                       <Grid
@@ -128,7 +129,7 @@ export default function SearchResults() {
                           </Text>
                         </GridItem>
                         <GridItem w="100%" h="5">
-                          <Text as="b" ml="3">
+                          <Text as="b" ml="3" noOfLines={1}>
                             {element.author_name}
                           </Text>
                         </GridItem>
