@@ -13,6 +13,7 @@ import {
   Stat,
   StatNumber,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 
 export default function CartOrderSummary(props) {
@@ -55,7 +56,7 @@ export default function CartOrderSummary(props) {
           </Heading>
         </Box>
         <Box w={{ base: "20%", md: "20%" }}>
-        
+
           <Stat >
             <StatNumber overflowWrap="normal">${total}</StatNumber>
           </Stat>
@@ -109,7 +110,9 @@ export default function CartOrderSummary(props) {
       <Flex direction="column" align="center" flex="1">
         <HStack mt="8" fontWeight="semibold">
           <p>or</p>
-          <Link color="blue.500">Continue Shopping</Link>
+          <Link color="blue.500">
+            <RouterLink to="/categories/general">Continue Shopping</RouterLink>
+          </Link>
         </HStack>
       </Flex>
     </>
