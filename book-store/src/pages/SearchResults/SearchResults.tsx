@@ -20,6 +20,7 @@ import {
   Alert,
   AlertTitle,
   Fade,
+  Flex,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { query } from "firebase/firestore";
@@ -41,7 +42,7 @@ export default function SearchResults() {
   let skip: boolean;
   skip = queryTerm ? false : true;
 
-  const options = { queryTerm, limit: 10, offset };
+  const options = { queryTerm, limit: 20, offset };
   const searchRes = useGetWorksBySearchQuery(options, { skip });
   console.log("searchRes.data:", searchRes.data);
 
@@ -167,12 +168,14 @@ export default function SearchResults() {
               );
             })}
           </SimpleGrid>
+          <Flex justifyContent="center">
           <SearchNavigationButtons
             setSearchParams={setSearchParams}
             searchRes={searchRes}
             offset={offset}
             queryTerm={queryTerm}
           />
+          </Flex>
         </Stack>
       ) : (
         <>
