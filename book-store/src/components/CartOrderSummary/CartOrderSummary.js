@@ -12,11 +12,20 @@ import {
   Divider,
   Stat,
   StatNumber,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 
 export default function CartOrderSummary(props) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { cartItems } = props
 
   let total = 0;
@@ -33,6 +42,26 @@ export default function CartOrderSummary(props) {
 
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader fontSize="2xl">Thanks for playing!</ModalHeader>
+          
+          <ModalCloseButton />
+          <ModalBody border="#E4573D solid 2px" margin="0 15px">
+          <Text textAlign="center" margin="5" fontSize="lg">This project built
+           by: 
+           <Text fontWeight="bold"><Link color="blue.500" href="https://github.com/chingu-voyages/v42-geckos-team-19">Voyage 42's Geckos Team 19</Link></Text> of <Text fontWeight="bold"><Link color="blue.500" href="https://www.chingu.io/">Chingu!</Link></Text>
+          </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme='blue' mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <HStack spacing={{ base: 2, sm: 10 }} my={2}>
         <Box w={{ base: "80%", md: "80%" }}>
           <Text>Subtotal</Text>
@@ -94,6 +123,7 @@ export default function CartOrderSummary(props) {
         fontFamily="Poppins"
         fontWeight="bold"
         letterSpacing="2px"
+        onClick={onOpen}
       >
         PROCEED TO PAYMENT
       </Button>
