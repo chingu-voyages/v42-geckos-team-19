@@ -9,6 +9,8 @@ import { selectCurrentUser, signOut } from "../../store/user/userSlice";
 import { selectCartItems } from "../../store/cart/cartSlice";
 import { useSelector } from "react-redux";
 import Badge from "react-bootstrap/Badge";
+import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import { NavContentsProps, NavMenuProps, LiComponentProps } from "./types";
 
 const NavBar: FC = () => {
   const navigate = useNavigate();
@@ -40,43 +42,88 @@ const NavBar: FC = () => {
   };
 
   return (
-    <nav className={styles.navBar}>
-      <Link to="/">
-        <img
-          src="../images/booktown-logo.png"
-          alt=""
-          className={styles.navBar_img}
-        />
-      </Link>
-      <form onSubmit={handleSubmit} className={styles.navBar_searchBar}>
-        <input
-          className={styles.navBar_inputText}
-          type="text"
-          placeholder="Find your favorite book"
-          value={searchValue}
-          onChange={handleChange}
-        />
-        <button type="submit" aria-label="Search">
-          <FaSearch />
-        </button>
-      </form>
-      <ul className={styles.navBar_list}>
-        <li>
+    <>
+      <Show above="md">
+        <NavContents isSingleLineMenu={true} />
+      </Show>
+      <Hide above="md">
+        <NavContents isSingleLineMenu={false} />
+      </Hide>
+    </>
+  );
+
+  function NavContents(props: NavContentsProps) {
+    return (
+
+      <nav className={styles.navBar}>
+        <Link to="/">
+          <img
+            src="../images/booktown-logo.png"
+            alt=""
+            className={styles.navBar_img}
+          />
+        </Link>
+        <form onSubmit={handleSubmit} className={styles.navBar_searchBar}>
+          <input
+            className={styles.navBar_inputText}
+            type="text"
+            placeholder="Find your favorite book"
+            value={searchValue}
+            onChange={handleChange}
+          />
+          <button type="submit" aria-label="Search">
+            <FaSearch />
+          </button>
+        </form>
+        {
+          (props.isSingleLineMenu)
+            ? (
+              <Flex flexDir="row" gap="1em">
+                <NavMenu ItemContainerTag={LiComponent} />
+              </Flex>
+            )
+            : (
+              <Menu>
+                <MenuButton as={Button} >LOL</MenuButton>
+                <MenuList>
+                  <NavMenu ItemContainerTag={MenuItem} />
+                </MenuList>
+              </Menu>
+            )
+        }
+      </nav >
+
+    )
+
+  }
+
+  function LiComponent(props: LiComponentProps) {
+    return (
+      <li>{props.children}</li>
+    )
+  }
+
+  function NavMenu(props: NavMenuProps) {
+    const ItemContainerTag = props.ItemContainerTag;
+    return (
+      <>
+
+        <ItemContainerTag>
           <Link to="/" tabIndex={0} aria-label="Home">
             Home
           </Link>
-        </li>
-        <li>
+        </ItemContainerTag>
+        <ItemContainerTag>
           <Link to="/categories/general" tabIndex={0} aria-label="Categories">
             Categories
           </Link>
-        </li>
-        <li>
+        </ItemContainerTag>
+        <ItemContainerTag>
           <Link to="#" tabIndex={0} aria-label="Wishlist">
             Wishlist
           </Link>
-        </li>
-        <li className={styles.navBar_buttonProfile}>
+        </ItemContainerTag>
+        <ItemContainerTag className={styles.navBar_buttonProfile}>
           <button
             className={styles.navBar_toggleButton}
             onClick={() => setToggle(!toggle)}
@@ -85,43 +132,45 @@ const NavBar: FC = () => {
           </button>
           {toggle && (
             <ul className={styles.navBar_toggleList}>
-              <li>
+              <ItemContainerTag>
                 <Link to="auth" aria-label="Profile">
                   Profile
                 </Link>
-              </li>
+              </ItemContainerTag>
               {currentUser ? (
-                <li>
+                <ItemContainerTag>
                   <Link to="/" onClick={() => dispatch(signOut())}>
                     Sign out
                   </Link>
-                </li>
+                </ItemContainerTag>
               ) : (
                 <>
-                  <li>
+                  <ItemContainerTag>
                     <Link to="/auth" aria-label="Login">
                       Login
                     </Link>
-                  </li>
-                  <li>
+                  </ItemContainerTag>
+                  <ItemContainerTag>
                     <Link to="auth" aria-label="Sign Up">
                       Sign Up
                     </Link>
-                  </li>
+                  </ItemContainerTag>
                 </>
               )}
             </ul>
           )}
-        </li>
-        <li className={styles.shoppingCart}>
+        </ItemContainerTag>
+        <ItemContainerTag className={styles.shoppingCart}>
           <Link to="/checkout">
             <GrCart fontSize="1.5em" />
             {Boolean(totalBooks) && <span>{totalBooks}</span>}
           </Link>
-        </li>
-      </ul>
-    </nav>
-  );
+        </ItemContainerTag>
+      </>
+    )
+  }
 };
+
+
 
 export default NavBar;
