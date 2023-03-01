@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import Badge from "react-bootstrap/Badge";
 import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { NavContentsProps, NavMenuProps, LiComponentProps } from "./types";
+// TODO: change li to something not requiring ul wrapper?
 
 const NavBar: FC = () => {
   const navigate = useNavigate();
