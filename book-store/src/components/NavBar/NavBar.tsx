@@ -71,7 +71,7 @@ function NavContents(props: NavContentsProps) {
       {
         (props.isSingleLineMenu)
           ? (
-            <Flex flexDir="row" gap="1em" alignItems="center">
+            <Flex flexDir="row" gap="2.5em" alignItems="center" >
               <NavMenu ItemContainerTag={LiComponent} />
             </Flex>
           )

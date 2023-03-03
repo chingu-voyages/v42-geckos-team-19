@@ -7,6 +7,7 @@
   justify-content: space-around;
   align-items: center;
   font-family: "Poppins", sans-serif;
+  gap: 1em;
 }
 
 .navBar_img {
@@ -14,6 +15,9 @@
   width: auto;
 }
 .navBar_searchBar {
+  display: flex;
+  max-width: 466px;
+  flex: 1 1 466px;
   border-bottom: 2px solid black;
 }
 
@@ -21,6 +25,7 @@
   text-align: left;
   padding: 0px 10px;
   color: black;
+  margin-bottom: 5px;
 }
 
 .navBar_searchBar:hover {
@@ -29,9 +34,9 @@
 
 .navBar_searchBar > input {
   height: 35px;
-  width: 400px;
+  max-width: 400px;
+  width: 95%;
   border: none;
-  margin: 5px;
 }
 
 .navBar ::placeholder {
@@ -47,7 +52,10 @@
 }
 
 .navBar_searchBar > button {
-  margin: 10px 20px;
+  width: 5%;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: 5px
 }
 
 li {
