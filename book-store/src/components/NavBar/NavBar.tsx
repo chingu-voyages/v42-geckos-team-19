@@ -14,6 +14,7 @@ import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, MenuGroup, Menu
 import { NavContentsProps, NavMenuProps, LiComponentProps, AccountOptionsProps } from "./types";
 
 // TODO: change li to something not requiring ul wrapper?
+// TODO: if cart contains greater than 99 items, badge should render 99+
 
 const NavBar: FC = () => {
 
