@@ -14,6 +14,7 @@ import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, MenuGroup, Menu
 import { NavContentsProps, NavMenuProps, LiComponentProps, AccountOptionsProps } from "./types";
 
 // TODO: change li to something not requiring ul wrapper?
+// TODO: if cart contains greater than 99 items, badge should render 99+
 
 const NavBar: FC = () => {
 
@@ -146,8 +147,8 @@ function NavMenu(props: NavMenuProps) {
         )}
 
       
-      <ItemContainerTag className={styles.shoppingCart}>
-        <Link to="/checkout">
+      <ItemContainerTag >
+        <Link to="/checkout" className={styles.shoppingCart}>
           <GrCart fontSize="1.5em" />
           {Boolean(totalBooks) && <span>{totalBooks}</span>}
         </Link>
