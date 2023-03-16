@@ -7,13 +7,17 @@
   justify-content: space-around;
   align-items: center;
   font-family: "Poppins", sans-serif;
+  gap: 1em;
 }
 
 .navBar_img {
-  height: 100px;
+  max-height: 100px;
   width: auto;
 }
 .navBar_searchBar {
+  display: flex;
+  max-width: 466px;
+  flex: 1 1 466px;
   border-bottom: 2px solid black;
 }
 
@@ -21,6 +25,7 @@
   text-align: left;
   padding: 0px 10px;
   color: black;
+  margin-bottom: 5px;
 }
 
 .navBar_searchBar:hover {
@@ -29,9 +34,9 @@
 
 .navBar_searchBar > input {
   height: 35px;
-  width: 400px;
+  max-width: 400px;
+  width: 95%;
   border: none;
-  margin: 5px;
 }
 
 .navBar ::placeholder {
@@ -47,14 +52,10 @@
 }
 
 .navBar_searchBar > button {
-  margin: 10px 20px;
-}
-
-.navBar_list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  gap: 40px;
+  width: 5%;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: 5px
 }
 
 li {
@@ -116,150 +117,3 @@ a:focus {
   padding: 2px;
 }
 
-/* / styles for large screens (e.g. desktop) / */
-@media (min-width: 960px) and (max-width: 1260px) {
-  /* / styles for screens between 1920px and 2559px / */
-  .navBar {
-    justify-content: space-evenly;
-  }
-  .navBar_searchBar > input {
-    width: 200px;
-  }
-}
-
-/* / styles for medium screens (e.g. tablets) / */
-@media (min-width: 768px) and (max-width: 968px) {
-  /* / styles for screens between 768px and 1919px / */
-  .navBar {
-    justify-content: space-evenly;
-  }
-
-  .navBar_listMobile {
-    display: flex;
-    position: absolute;
-    top: 80px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .navBar_toggleListMobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    top: 0px;
-    gap: 0px;
-  }
-}
-
-.shoppingCart {
-  position: relative;
-}
-
-.shoppingCart span {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-/* / styles for small screens (e.g. mobile landscape) / */
-@media (min-width: 480px) and (max-width: 767px) {
-  /* / styles for screens between 480px and 767px / */
-  .navBar {
-    justify-content: space-evenly;
-  }
-  .navBar_searchBar > input {
-    width: 185px;
-  }
-
-  .navBar_listMobile {
-    display: flex;
-    position: absolute;
-    top: 80px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .navBar_toggleListMobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    top: 0px;
-    gap: 0px;
-  }
-}
-
-/* / styles for extra small screens (e.g. mobile portrait) / */
-@media (max-width: 479px) {
-  /* / styles for screens 479px and below */
-  .navBar_searchBtn {
-    position: relative;
-    left: 15%;
-  }
-
-  .navBar_searchBarMobile {
-    position: absolute;
-    top: 80px;
-    border-style: solid;
-    border-color: rgb(236, 233, 233);
-    border-radius: 10px;
-    background-color: rgb(236, 233, 233);
-  }
-  .navBar_inputTextMobile {
-    text-align: left;
-    padding: 0px 10px;
-    background-color: rgb(236, 233, 233);
-  }
-
-  .navBar_searchBarMobile:hover {
-    border-style: solid;
-    border-width: 2px;
-    color: lightgray;
-  }
-
-  .navBar_searchBarMobile > input {
-    height: 35px;
-    width: 185px;
-    border: none;
-    margin: 3px;
-  }
-
-  ::placeholder {
-    color: #767fa7;
-  }
-
-  .navBar_searchBarMobile > input:focus {
-    outline: none;
-  }
-
-  .navBar_searchBarMobile > button {
-    margin: 10px 15px;
-  }
-
-  .navBar_listMobile {
-    display: flex;
-    position: absolute;
-    top: 80px;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .navBar_toggleListMobile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    position: relative;
-    top: 0px;
-    gap: 0px;
-  }
-}

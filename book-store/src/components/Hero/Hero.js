@@ -8,6 +8,7 @@ import {
   Button,
   Heading,
   Image,
+  Hide,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -27,22 +28,20 @@ export default function Hero() {
       backgroundRepeat="no-repeat"
       minH={{ base: "600px", md: "700px" }}
     >
-      <Box
-        bgGradient={{
-          base: "linear-gradient(to-r, #fff 1%, #fff 1%)",
-          md: "none",
-        }}
-        position="absolute"
-        top="12"
-        left="4"
-        width="800px"
-        height="700px"
-        zIndex="0"
-        opacity="0.8"
-      ></Box>
+      <Hide above="md">
+        <Box
+          bgGradient="linear-gradient(to-r, #fff 1%, #fff 1%)"
+          position="absolute"
+          top="12"
+          left="4"
+          width="800px"
+          height="700px"
+          zIndex="0"
+          opacity="0.8"
+        ></Box>
+      </Hide>
       <Stack
         pos="relative"
-        zIndex={1}
         direction="column"
         justifyContent="center"
         spacing={6}
