@@ -1,3 +1,6 @@
+import { UserData } from "../../utils/firebase/firebase.utils";
+import { AppDispatch } from "../../store/rootReducer";
+
 export interface NavContentsProps {
     isSingleLineMenu: boolean;
 }
@@ -12,5 +15,6 @@ export interface LiComponentProps {
 }
 
 export interface AccountOptionsProps {
-    isSingleLineMenu: boolean;
+    currentUser: UserData | null;
+    dispatch: AppDispatch;
 }
