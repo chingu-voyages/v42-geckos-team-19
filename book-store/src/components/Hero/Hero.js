@@ -42,7 +42,6 @@ export default function Hero() {
       </Hide>
       <Stack
         pos="relative"
-        zIndex={1}
         direction="column"
         justifyContent="center"
         spacing={6}
