@@ -101,18 +101,20 @@ a:focus {
 
 .shoppingCart {
   position: relative;
+  display: inline-block;
 }
 
-.shoppingCart > a > span {
+.shoppingCart > span {
   position: absolute;
-  width: 75%;
-  height: 75%;
-  transform: translate(50%, -50%);
-  font-size: 8px;
+  width: 55%;
+  height: 55%;
+  transform: translate(-40%, -200%);
+  font-size: 10px;
   color: white;
   background-color: #e4573d;
   border-radius: 50%;
   text-align: center;
+  line-height: 100%;
   right: 0;
   padding: 2px;
 }
