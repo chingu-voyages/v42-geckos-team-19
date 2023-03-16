@@ -10,8 +10,8 @@ import { selectCurrentUser, signOut } from "../../store/user/userSlice";
 import { selectCartItems } from "../../store/cart/cartSlice";
 import { useSelector } from "react-redux";
 import Badge from "react-bootstrap/Badge";
-import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
-import { NavContentsProps, NavMenuProps, LiComponentProps } from "./types";
+import { Show, Hide, Flex, Menu, MenuButton, MenuList, MenuItem, MenuGroup, MenuDivider, Button } from "@chakra-ui/react";
+import { NavContentsProps, NavMenuProps, LiComponentProps, AccountOptionsProps } from "./types";
 // TODO: change li to something not requiring ul wrapper?
 
 const NavBar: FC = () => {
@@ -72,14 +72,14 @@ function NavContents(props: NavContentsProps) {
         (props.isSingleLineMenu)
           ? (
             <Flex flexDir="row" gap="2.5em" alignItems="center" >
-              <NavMenu ItemContainerTag={LiComponent} />
+              <NavMenu ItemContainerTag={LiComponent} isSingleLineMenu={false} />
             </Flex>
           )
           : (
             <Menu>
               <MenuButton as={Button} ><GrMenu fontSize="1.5em" /></MenuButton>
               <MenuList>
-                <NavMenu ItemContainerTag={MenuItem} />
+                <NavMenu ItemContainerTag={MenuItem} isSingleLineMenu={true} />
               </MenuList>
             </Menu>
           )
@@ -126,44 +126,22 @@ function NavMenu(props: NavMenuProps) {
         </Link>
       </ItemContainerTag>
       <ItemContainerTag className={styles.navBar_buttonProfile}>
-        <button
-          className={styles.navBar_toggleButton}
-          onClick={() => setToggle(!toggle)}
-        >
-          My Account
-        </button>
-        {toggle && (
-          <ul className={styles.navBar_toggleList}>
-            
-            {currentUser ? (
-              <>
-              <ItemContainerTag>
-              <Link to="auth" aria-label="Profile">
-                Profile
-              </Link>
-            </ItemContainerTag>
-              <ItemContainerTag>
-                <Link to="/" onClick={() => dispatch(signOut())}>
-                  Sign out
-                </Link>
-              </ItemContainerTag>
-              </>
-            ) : (
-              <>
-                <ItemContainerTag>
-                  <Link to="/auth" aria-label="Login">
-                    Login
-                  </Link>
-                </ItemContainerTag>
-                <ItemContainerTag>
-                  <Link to="auth" aria-label="Sign Up">
-                    Sign Up
-                  </Link>
-                </ItemContainerTag>
-              </>
-            )}
-          </ul>
+        {props.isSingleLineMenu ? (
+          <>
+          <MenuDivider />
+          <MenuGroup title="Account Options">
+            <AccountOptions />
+          </MenuGroup>
+          </>
+        ) : (
+          <Menu>
+          <MenuButton as={Button} >My Account</MenuButton>
+                <MenuList>
+                  <AccountOptions />
+                  </MenuList>
+                  </Menu>
         )}
+        
       </ItemContainerTag>
       <ItemContainerTag className={styles.shoppingCart}>
         <Link to="/checkout">
@@ -172,6 +150,45 @@ function NavMenu(props: NavMenuProps) {
         </Link>
       </ItemContainerTag>
     </>
+  )
+}
+
+function AccountOptions(props: AccountOptionsProps) {
+  return (
+ 
+                
+     
+
+          <>
+            
+            {currentUser ? (
+              <>
+              <MenuItem>
+              <Link to="auth" aria-label="Profile">
+                Profile
+              </Link>
+            </MenuItem>
+              <MenuItem>
+                <Link to="/" onClick={() => dispatch(signOut())}>
+                  Sign out
+                </Link>
+              </MenuItem>
+              </>
+            ) : (
+              <>
+                <MenuItem>
+                  <Link to="/auth" aria-label="Login">
+                    Login
+                  </Link>
+                </MenuItem>
+                <MenuItem>
+                  <Link to="/auth" aria-label="Sign Up">
+                    Sign Up
+                  </Link>
+                </MenuItem>
+              </>
+            )}
+          </>
   )
 }
 
