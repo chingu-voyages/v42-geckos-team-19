@@ -134,17 +134,20 @@ function NavMenu(props: NavMenuProps) {
         </button>
         {toggle && (
           <ul className={styles.navBar_toggleList}>
-            <ItemContainerTag>
+            
+            {currentUser ? (
+              <>
+              <ItemContainerTag>
               <Link to="auth" aria-label="Profile">
                 Profile
               </Link>
             </ItemContainerTag>
-            {currentUser ? (
               <ItemContainerTag>
                 <Link to="/" onClick={() => dispatch(signOut())}>
                   Sign out
                 </Link>
               </ItemContainerTag>
+              </>
             ) : (
               <>
                 <ItemContainerTag>
