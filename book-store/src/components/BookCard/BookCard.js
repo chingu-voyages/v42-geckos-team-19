@@ -63,7 +63,7 @@ export default function BookCard({ workId }) {
             />
             <Stack mt="6" spacing="3">
               <Heading size="sm">{workRes.data.title}</Heading>
-              <Text noOfLines={2}>{workRes.data.description}</Text>
+              <Text noOfLines={2}>{workRes.data.description.value ?? workRes.data.description}</Text>
             </Stack>
             <Divider my="6" borderColor="#D9D9D9" />
             <Grid
